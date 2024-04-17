@@ -1,0 +1,32 @@
+* {
+    font-family: Roboto;
+    color: white;
+}
+
+body {
+    background-color: rgb(32, 32, 32);
+}
+
+h1 {
+    font-size: 30px;
+}
+p {
+    font-size: 20px;
+}
+
+/* Custom */
+.noMargin {
+    margin: 0px;
+}
+.centerItem {
+    @apply flex items-center;
+}
+.spin {
+    animation: spin 2s linear 0s infinite
+}
+
+/* Topbar (you don't need 1000 tailwind strings.) */
+/* Moved to default.vue */
+
+/* Home Page */
+/* Moved to <style> in index.vue */
