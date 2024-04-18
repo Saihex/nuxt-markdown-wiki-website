@@ -1,0 +1,72 @@
+.wiki_header {
+    @apply px-8 max-h-96 flex items-center my-5;
+    z-index: 1;
+    position: relative;
+}
+
+.wiki_header_buttons {
+    @apply h-32 px-4;
+}
+
+.wiki_header_buttons:hover {
+    background-color: rgb(255, 255, 255, 0.2);
+}
+
+.pageDataContainer {
+    @apply mx-14 bg-gray-800 px-5 py-2 mb-20
+}
+
+.wiki_container img {
+    @apply m-2
+}
+
+.wiki_container h1 {
+    @apply mt-20 underline font-bold text-5xl
+}
+
+.wiki_container h2 {
+    @apply mt-20 underline font-bold text-3xl
+}
+
+.wiki_container h3 {
+    @apply mt-5 underline font-bold text-xl text-white
+}
+
+.wiki_container p {
+    @apply mb-5
+}
+
+.wiki_container em {
+    @apply text-base
+}
+
+.wiki_container a {
+    @apply text-purple-400 underline
+}
+
+.wiki_container disc ul {
+    @apply ml-5 my-5
+}
+
+.wiki_container disc ul li {
+    @apply ml-2 my-1 list-disc
+}
+
+.wiki_container ul {
+    @apply ml-5 my-2
+}
+
+.wiki_container ul li {
+    @apply mb-5 list-decimal
+}
+.wiki_container ul li strong {
+    @apply underline
+}
+
+.wiki_container ul ul li {
+    @apply ml-2 my-1 list-disc
+}
+
+.wiki_container code {
+    @apply bg-yellow-900 p-0.5
+}

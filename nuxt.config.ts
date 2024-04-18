@@ -11,22 +11,27 @@ export default defineNuxtConfig({
   modules: ["@nuxtjs/tailwindcss", "@nuxtjs/google-fonts", "@nuxt/image", "@nuxt/content"],
 
   routeRules: {
-    "/blogs/**": {
-      headers: {
-        "cache-control": "public, max-age=3600"
-      }
-    },
-    "/*": {
+    "/**": {
       headers: {
         "cache-control": "public, max-age=7200"
       }
     }
   },
+  ssr: true,
 
   tailwindcss: {},
   googleFonts: {
     preload: true,
     families: { Roboto: true },
+  },
+
+  content: {
+    markdown: {
+      // Object syntax can be used to override default options
+      anchorLinks: {
+        exclude: [0]
+      }
+    }
   },
 
   app: {

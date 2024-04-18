@@ -5,9 +5,7 @@ useHead({
     meta: [
         { name: 'description', content: desc }
     ],
-    link: [
-        { rel: 'icon', type: 'image/png', href: 'https://img.saihex.com/saihex.ico' }
-    ],
+    link: [],
     htmlAttrs: { lang: 'en' }
 })
 
@@ -22,9 +20,8 @@ useSeoMeta({
 <template>
     <div>
         <div class="min-h-svh">
-            <div class="homeImage"></div>
             <div class="my-10" />
-            <h2 class="py-4 text-center font-bold text-6xl">Welcome to Saihex Studios' Official Wiki Website!</h2>
+            <h2 class="py-4 text-center font-bold text-6xl">Select a wiki lmfao</h2>
         </div>
     </div>
 </template>

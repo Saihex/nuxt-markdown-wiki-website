@@ -1,18 +1,4 @@
-<!-- Use this if you want to import a css specific to some page -->
-<!--<style>
-@import url("~/assets/css/primary.css");
-</style>
--->
-
 <script setup lang="ts">
-// import {
-//   useFirestore,
-//   useFirebaseStorage
-// } from 'vuefire'
-
-// const firestore = useFirestore();
-// const storage = useFirebaseStorage();
-// This will set the appropriate head element for the whole website
 useHead({
 	title: 'Saihex Studios',
 	meta: [
@@ -23,7 +9,7 @@ useHead({
 	link: [
 		{ rel: 'icon', type: 'image/png', href: 'https://img.saihex.com/saihex.ico' } // You don't need "public/".
 	],
-	htmlAttrs: { lang: 'en' } // i dont see the necessity here but it's to "help" search engines
+	htmlAttrs: { lang: 'en' }
 })
 
 // This will set some embed parameters
