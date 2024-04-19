@@ -21,10 +21,10 @@ onMounted(async () => {
             <div class="topbar justify-between"> <!-- a div to make elements a little bit far from the sides. -->
 
                 <!-- logo -->
-                <NuxtLink to="/" class="centerItem topbarButton">
+                <a href="/" class="centerItem topbarButton">
                     <img preload src="https://img.saihex.com/saihex.svg" class="h-8 w-8 mr-1" />
                     <h2>Saihex Studios Official Wiki</h2>
-                </NuxtLink>
+                </a>
 
                 <!-- primary navigation -->
                 <div class="hidden flex md:flex">
