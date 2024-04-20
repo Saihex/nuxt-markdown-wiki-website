@@ -7,6 +7,12 @@ export default defineNuxtConfig({
       enabled: true,
     },
   },
+  components: [
+    {
+      path: "~/components",
+      pathPrefix: true
+    }
+  ],
   css: ["~/assets/css/primary.css"],
   modules: ["@nuxtjs/tailwindcss", "@nuxtjs/google-fonts", "@nuxt/image", "@nuxt/content"],
 

@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import Wiki_header from '~/components/wiki_header.vue';
+
 const route = useRoute();
 const path = `${route.params.franchise}/${route.params.category}/${route.params.page}.md`;
 const show_loading = ref(true);
-const {parsed_markdown, franchise_data} = await fetch_markdown_parse(path, route.params.franchise as string, route);
+const {parsed_markdown, franchise_data, used_path} = await fetch_markdown_parse(path, route.params.franchise as string, route);
 
 show_loading.value = false;
 
@@ -30,16 +32,19 @@ useSeoMeta({
 <template>
     <div class="wiki_header justify-between"> <!-- a div to make elements a little bit far from the sides. -->
 
-        <!-- logo -->
-        <a :href="`/wiki/${route.params.franchise}`" class="centerItem wiki_header_buttons">
-            <img preload :src="franchise_data.wiki_head_image" class="h-32 mr-1" />
-        </a>
+        <Wiki_header :franchise="route.params.franchise" :franchise_image="franchise_data.wiki_head_image"
+            :raw_json="used_path" />
+
+        <div class="centerItem wiki_header_buttons_nohover">
+            <img preload :src="parsed_markdown.data.image" class="h-32 mr-1" />
+        </div>
     </div>
 
     <div class="pageDataContainer">
         <container class="wiki_container">
             <pa class="flex text-5xl m-24 content-center min-h-svh" v-if="show_loading">Loading...</pa>
-            <ContentRendererMarkdown v-if="!show_loading" :value="parsed_markdown" class="min-h-svh"></ContentRendererMarkdown>
+            <ContentRendererMarkdown v-if="!show_loading" :value="parsed_markdown" class="min-h-svh">
+            </ContentRendererMarkdown>
         </container>
     </div>
 </template>

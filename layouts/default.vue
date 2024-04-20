@@ -54,11 +54,11 @@ onMounted(async () => {
 
         <!-- Footer -->
         <footer class="mainFooter">
-            <div class="flex mt-3 font-bold justify-between h-full mx-2">
+            <div class="flex mt-3 font-bold justify-between h-auto mx-2 mb-2">
                 <div class="text-xs md:text-lg">
                     Page content is under the <a class="text-purple-300 underline" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a> unless otherwise noted.
                 </div>
-                <img src="https://commons.wiki.gg/images/b/bd/CC-BY-NC-SA.svg"/>
+                <img src="https://commons.wiki.gg/images/b/bd/CC-BY-NC-SA.svg" class="w-24 h-11 mx-2"/>
             </div>
             <div class="flex justify-center my-1">
                 <a href="https://discord.gg/eJjsqzkQ7t"><img
@@ -75,13 +75,13 @@ onMounted(async () => {
 
 <style>
 .mainTopbar {
-    @apply bg-gray-900 h-16;
+    @apply bg-gray-900 h-28;
     z-index: 1;
     position: relative;
 }
 
 .mainFooter {
-    @apply flex bg-zinc-900 h-28 grid grid-rows-3 gap-2 content-end justify-center;
+    @apply bg-zinc-900 h-56 md:h-28 grid grid-rows-3 grid-cols-1 gap-5 justify-center;
 }
 
 .topbar {

@@ -85,7 +85,8 @@ export const fetch_markdown_parse = async function (
   route: RouteLocationNormalizedLoaded
 ) {
   // Run the requests in parallel
-  const markdown_return = await useFetch(`/api/get_markdown/${path}`, {
+  const used_path = `/api/get_markdown/${path}`;
+  const markdown_return = await useFetch(used_path, {
     server: true,
   });
 
@@ -122,5 +123,5 @@ export const fetch_markdown_parse = async function (
 
   const parsed_markdown = await parseMarkdown(value.markdown_string);
   const franchise_data = value.franchise_data;
-  return { parsed_markdown, franchise_data };
+  return { parsed_markdown, franchise_data, used_path};
 };

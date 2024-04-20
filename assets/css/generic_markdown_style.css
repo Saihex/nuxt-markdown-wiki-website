@@ -8,12 +8,16 @@
     @apply h-32 px-4;
 }
 
+.wiki_header_buttons_nohover {
+    @apply h-32 px-4;
+}
+
 .wiki_header_buttons:hover {
     background-color: rgb(255, 255, 255, 0.2);
 }
 
 .pageDataContainer {
-    @apply mx-14 bg-gray-800 px-5 py-2 mb-20
+    @apply mx-2 md:mx-7 bg-gray-800 px-5 py-2 mb-20
 }
 
 .wiki_container img {
