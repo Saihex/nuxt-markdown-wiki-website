@@ -7,7 +7,7 @@ useHead({
         { name: 'cache-control', content: `public, max-age=7200` }
 	],
 	link: [
-		{ rel: 'icon', type: 'image/png', href: 'https://img.saihex.com/saihex.ico' } // You don't need "public/".
+		{ rel: 'icon', type: 'image/x-icon', href: 'https://img.saihex.com/saihex.ico' } // You don't need "public/".
 	],
 	htmlAttrs: { lang: 'en' }
 })

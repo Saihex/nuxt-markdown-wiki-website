@@ -54,7 +54,13 @@ onMounted(async () => {
 
         <!-- Footer -->
         <footer class="mainFooter">
-            <div class="flex justify-center my-5">
+            <div class="flex mt-3 font-bold justify-between h-full mx-2">
+                <div class="text-xs md:text-lg">
+                    Page content is under the <a class="text-purple-300 underline" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a> unless otherwise noted.
+                </div>
+                <img src="https://commons.wiki.gg/images/b/bd/CC-BY-NC-SA.svg"/>
+            </div>
+            <div class="flex justify-center my-1">
                 <a href="https://discord.gg/eJjsqzkQ7t"><img
                         src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6ca814282eca7172c6_icon_clyde_white_RGB.svg"
                         class="mobile_socials_footer" /></a>
@@ -62,7 +68,7 @@ onMounted(async () => {
                 <a href="https://www.youtube.com/@saihex_studios"><img src="https://img.saihex.com/website_exclusive/socials/yt_logo_mono_dark.png"
                         class="mobile_socials_footer" /></a>
             </div>
-            <div class="flex text-center my-5 justify-center">Saihex Studios © 2024</div>
+            <div class="flex text-center justify-center">Saihex Studios © 2024</div>
         </footer>
     </div>
 </template>
@@ -75,7 +81,7 @@ onMounted(async () => {
 }
 
 .mainFooter {
-    @apply flex bg-zinc-900 h-24 grid grid-rows-3 gap-2 content-end justify-center;
+    @apply flex bg-zinc-900 h-28 grid grid-rows-3 gap-2 content-end justify-center;
 }
 
 .topbar {

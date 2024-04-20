@@ -12,7 +12,7 @@ useHead({
         { name: 'description', content: parsed_markdown.data.description }
     ],
     link: [
-        { rel: 'icon', type: 'image/png', href: franchise_data.ico_image }
+        { rel: 'icon', type: 'image/x-icon', href: franchise_data.ico_image }
     ],
     htmlAttrs: { lang: 'en' }
 })

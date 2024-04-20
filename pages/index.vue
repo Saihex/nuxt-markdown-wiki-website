@@ -6,7 +6,7 @@ useHead({
         { name: 'description', content: desc }
     ],
     link: [
-        { rel: 'icon', type: 'image/png', href: 'https://img.saihex.com/saihex.ico' }
+        { rel: 'icon', type: 'image/x-icon', href: 'https://img.saihex.com/saihex.ico' }
     ],
     htmlAttrs: { lang: 'en' }
 })

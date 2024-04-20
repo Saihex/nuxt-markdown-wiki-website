@@ -53,11 +53,11 @@
 }
 
 .wiki_container ul {
-    @apply ml-5 my-2
+    @apply ml-12 my-5
 }
 
 .wiki_container ul li {
-    @apply mb-5 list-decimal
+    @apply mb-5 list-decimal text-xl
 }
 .wiki_container ul li strong {
     @apply underline
@@ -65,6 +65,14 @@
 
 .wiki_container ul ul li {
     @apply ml-2 my-1 list-disc
+}
+
+.wiki_container li li {
+    @apply ml-2 my-1 list-disc text-lg
+}
+
+.wiki_container li ul {
+    @apply ml-2 my-1
 }
 
 .wiki_container code {

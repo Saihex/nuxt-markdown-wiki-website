@@ -32,7 +32,18 @@
 <script>
 export default {
     props: ['error'],
-    layout: "default"
+    layout: "default",
+    head() {
+        return {
+            link: [
+                {
+                    rel: "icon",
+                    type: "image/x-icon",
+                    href: "https://img.saihex.com/saihex.ico",
+                }
+            ]
+        }
+    }
 }
 </script>
 

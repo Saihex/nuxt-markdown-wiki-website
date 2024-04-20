@@ -16,6 +16,11 @@ interface search_result {
   dynamic_route: string
 }
 
+interface markdown_return {
+  markdown_string: string,
+  franchise_data: franchise_data
+}
+
 const check_error = function (
   status: globalThis.Ref<AsyncDataRequestStatus>,
   error: any,
@@ -87,10 +92,14 @@ export const fetch_markdown_parse = async function (
   // Destructure the responses
   const { data: markdownString, status, error } = markdown_return;
 
-  const value = markdownString.value as {
-    markdown_string: string;
-    franchise_data: franchise_data;
+  if (error.value && error.value?.statusCode != 200) {
+    throw createError({
+      statusCode: error.value?.statusCode,
+      statusMessage: "",
+    });
   };
+
+  const value = markdownString.value as markdown_return;
 
   if (
     typeof value !== "object" || // Check if value is not an object
@@ -113,6 +122,5 @@ export const fetch_markdown_parse = async function (
 
   const parsed_markdown = await parseMarkdown(value.markdown_string);
   const franchise_data = value.franchise_data;
-
   return { parsed_markdown, franchise_data };
 };
