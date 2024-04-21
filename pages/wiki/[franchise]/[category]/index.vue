@@ -2,7 +2,7 @@
 const route = useRoute();
 const path = `${route.params.franchise}/${route.params.category}/index.md`;
 const show_loading = ref(true);
-const {parsed_markdown, franchise_data} = await fetch_markdown_parse(path, route.params.franchise as string, route);
+const {parsed_markdown, franchise_data, used_path} = await fetch_markdown_parse(path, route.params.franchise as string, route);
 
 show_loading.value = false;
 
@@ -29,6 +29,8 @@ useSeoMeta({
 
 <template>
     <div class="wiki_header justify-between"> <!-- a div to make elements a little bit far from the sides. -->
+        <Wiki_header :franchise="route.params.franchise" :franchise_image="franchise_data.wiki_head_image"
+            :raw_json="used_path" :page_count="franchise_data.page_count" />
 
         <!-- logo -->
         <NuxtLink :to="`/wiki/${route.params.franchise}`" class="centerItem wiki_header_buttons">

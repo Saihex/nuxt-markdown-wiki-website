@@ -25,7 +25,7 @@
 }
 
 .wiki_container h1 {
-    @apply mt-20 underline font-bold text-5xl
+    @apply mt-3 underline font-bold text-5xl
 }
 
 .wiki_container h2 {

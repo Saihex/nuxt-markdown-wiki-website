@@ -14,7 +14,13 @@ export default defineNuxtConfig({
     }
   ],
   css: ["~/assets/css/primary.css"],
-  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/google-fonts", "@nuxt/image", "@nuxt/content"],
+  modules: [
+    "@nuxt/ui",
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/google-fonts",
+    "@nuxt/image",
+    "@nuxt/content"
+  ],
 
   routeRules: {
     "/**": {

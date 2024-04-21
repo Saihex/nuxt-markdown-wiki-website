@@ -9,7 +9,6 @@ onMounted(async () => {
     // event listeners
     btn?.addEventListener('click', () => {
         menu?.classList.toggle("hidden");
-        console.log("button work");
     });
 })
 </script>
@@ -30,6 +29,9 @@ onMounted(async () => {
                 <div class="hidden flex md:flex">
                     <NuxtLink to="https://www.saihex.com" class="topbarButton centerItem">Main Website</NuxtLink>
                     <NuxtLink to="/list" class="topbarButton centerItem">List of wikis</NuxtLink>
+                    <UTooltip text="The 4Tris Wiki" :popper="{ arrow: true }">
+                        <NuxtLink to="/wiki/The4Tris" class="block topbarButton centerItem"><img src="https://img.saihex.com/wiki_exclusive/The4Tris/The4Tris.svg" class="h-10 mr-1" /></NuxtLink>
+                    </UTooltip>
                 </div>
 
                 <!-- mobile menu stuff -->
@@ -44,13 +46,17 @@ onMounted(async () => {
                 </div>
 
             </div>
-            <div class="md:hidden bg-gray-900 mobile-menu hidden">
-                <NuxtLink to="https://www.saihex.com" class="block topbarButton centerItem">Main Website</NuxtLink>
-                <NuxtLink to="/list" class="block topbarButton centerItem">List of wikis</NuxtLink>
+            <div class="md:hidden hidden bg-gray-900 mobile-menu z-50">
+                <a href="https://www.saihex.com" class="block topbarButton centerItem">Main Website</a>
+                <a href="/list" class="block topbarButton centerItem">List of wikis</a>
+                <a href="/wiki/The4Tris" class="block topbarButton centerItem mb-20">
+                    <img src="https://img.saihex.com/wiki_exclusive/The4Tris/The4Tris.svg" class="h-12 mr-1" />
+                    The 4Tris Wiki
+                </a>
             </div>
         </nav>
 
-        <slot /> <!-- Inject page Vue code -->
+        <slot class="z-0"/> <!-- Inject page Vue code -->
 
         <!-- Footer -->
         <footer class="mainFooter">
@@ -76,7 +82,7 @@ onMounted(async () => {
 <style>
 .mainTopbar {
     @apply bg-gray-900 h-28;
-    z-index: 1;
+    z-index: 20;
     position: relative;
 }
 

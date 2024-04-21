@@ -30,9 +30,9 @@ useSeoMeta({
 <template>
     <div class="wiki_header justify-between"> <!-- a div to make elements a little bit far from the sides. -->
         <Wiki_header :franchise="route.params.franchise" :franchise_image="franchise_data.wiki_head_image"
-            :raw_json="used_path" />
+            :raw_json="used_path" :page_count="franchise_data.page_count" />
         <!-- logo -->
-        <div class="hidden md:centerItem md:wiki_header_buttons_nohover h-32 w-32">
+        <div class="hidden md:flex md:centerItem md:wiki_header_buttons_nohover h-32 w-32">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-32 h-32">
                 <path stroke-linecap="round" stroke-linejoin="round"

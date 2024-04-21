@@ -7,6 +7,7 @@ interface franchise_data {
   ico_image: string,
   wiki_head_image: string,
   default_embed_image: string,
+  page_count: Number
 }
 
 interface search_result {
