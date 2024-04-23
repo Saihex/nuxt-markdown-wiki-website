@@ -2,14 +2,15 @@
 const route = useRoute();
 const path = `${route.params.franchise}/index.md`;
 const show_loading = ref(true);
-const {parsed_markdown, franchise_data, used_path} = await fetch_markdown_parse(path, route.params.franchise as string, route);
+const {parsed_markdown, franchise_data, used_path} = await fetch_markdown_parse(path, route);
 
 show_loading.value = false;
 
 useHead({
-    title: parsed_markdown.data.title,
+    title: `${franchise_data.franchise_proper_name} - Home`,
     meta: [
-        { name: 'description', content: parsed_markdown.data.description }
+        { name: 'description', content: parsed_markdown.data.description },
+        { name: 'twitter:card', content: "summary"}
     ],
     link: [
         { rel: 'icon', type: 'image/x-icon', href: franchise_data.ico_image }
@@ -18,12 +19,12 @@ useHead({
 })
 
 useSeoMeta({
-    ogTitle: parsed_markdown.data.title,
-    twitterTitle: parsed_markdown.data.title,
+    ogTitle: `${franchise_data.franchise_proper_name} - Home`,
+    twitterTitle: `${franchise_data.franchise_proper_name} - Home`,
     ogDescription: parsed_markdown.data.description,
     twitterDescription: parsed_markdown.data.description,
-	ogImage: parsed_markdown.data.image,
-	twitterImage: parsed_markdown.data.image,
+	ogImage: parsed_markdown.data.default_embed_image,
+	twitterImage: parsed_markdown.data.default_embed_image,
 })
 </script>
 

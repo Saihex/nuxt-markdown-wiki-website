@@ -1,22 +1,28 @@
+interface category_search_result {
+  title: string;
+  description: string;
+  image: string;
+  dynamic_route: string;
+}
+
 export default defineEventHandler(async (event) => {
   const endpoint =
     process.env.NODE_ENV !== "production"
       ? "http://localhost:8080"
       : "http://markdown_cat_server:8080";
-  let [response1, response2]: [object, object] = [{}, {}];
+  let response1: category_search_result[] = [];
+  let reqQuery = getQuery(event);
 
   try {
-    [response1, response2] = await Promise.all([
-      $fetch(`${endpoint}/${event.context.params?._}`, {
+    response1 = (await $fetch(
+      `${endpoint}/${event.context.params?.franchise}/${reqQuery.catalog}`,
+      {
         method: "GET",
-      }) as object,
-      $fetch(
-        `${endpoint}/${
-          event.context.params?._.split(".")[0].split("/")[0]
-        }/index.md?frontmatter_only=true`,
-        { method: "GET" }
-      ) as object,
-    ]);
+        query: {
+          search_input: reqQuery.search_input
+        },
+      }
+    )) as category_search_result[];
   } catch (error: any) {
     if (typeof error == "object" && error instanceof Error) {
       if (error.message.indexOf("404") > 0) {
@@ -25,10 +31,9 @@ export default defineEventHandler(async (event) => {
         event.node.res.statusCode = 500;
       }
     }
-    
+
     return;
   }
 
-  
-  return { markdown_string: response1, franchise_data: response2 };
+  return response1;
 });

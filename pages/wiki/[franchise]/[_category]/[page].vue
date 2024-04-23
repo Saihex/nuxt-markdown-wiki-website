@@ -2,16 +2,17 @@
 import Wiki_header from '~/components/wiki_header.vue';
 
 const route = useRoute();
-const path = `${route.params.franchise}/${route.params.category}/${route.params.page}.md`;
+const path = `${route.params.franchise}/${route.params._category}/${route.params.page}.md`;
 const show_loading = ref(true);
-const {parsed_markdown, franchise_data, used_path} = await fetch_markdown_parse(path, route.params.franchise as string, route);
+const {parsed_markdown, franchise_data, used_path} = await fetch_markdown_parse(path, route);
 
 show_loading.value = false;
 
 useHead({
-    title: parsed_markdown.data.title,
+    title: `${franchise_data.franchise_proper_name} - ${parsed_markdown.data.title}`,
     meta: [
-        { name: 'description', content: parsed_markdown.data.description }
+        { name: 'description', content: parsed_markdown.data.description },
+        { name: 'twitter:card', content: "summary"}
     ],
     link: [
         { rel: 'icon', type: 'image/x-icon', href: franchise_data.ico_image }
@@ -20,8 +21,8 @@ useHead({
 })
 
 useSeoMeta({
-    ogTitle: parsed_markdown.data.title,
-    twitterTitle: parsed_markdown.data.title,
+    ogTitle: `${franchise_data.franchise_proper_name} - ${parsed_markdown.data.title}`,
+    twitterTitle: `${franchise_data.franchise_proper_name} - ${parsed_markdown.data.title}`,
     ogDescription: parsed_markdown.data.description,
     twitterDescription: parsed_markdown.data.description,
 	ogImage: parsed_markdown.data.image,

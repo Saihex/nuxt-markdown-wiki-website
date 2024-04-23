@@ -64,7 +64,7 @@ onMounted(async () => {
                 <div class="text-xs md:text-lg">
                     Page content is under the <a class="text-purple-300 underline" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a> unless otherwise noted.
                 </div>
-                <img src="https://commons.wiki.gg/images/b/bd/CC-BY-NC-SA.svg" class="w-24 h-11 mx-2"/>
+                <img src="https://commons.wiki.gg/images/b/bd/CC-BY-NC-SA.svg" class="w-24 h-9 mx-2"/>
             </div>
             <div class="flex justify-center my-1">
                 <a href="https://discord.gg/eJjsqzkQ7t"><img
