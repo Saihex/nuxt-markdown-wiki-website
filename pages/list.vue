@@ -1,5 +1,6 @@
 <script setup lang="ts">
-const results = ref({});
+const route = useRoute();
+const results = ref(await fetch_search_wikis(""));
 const inputValue = ref('');
 const errored = ref(false);
 const debouce = ref(false);
@@ -11,7 +12,7 @@ const search_input = async (inputValue: string) => {
         return
     };
     try {
-        results.value = await fetch_category_search(route.params.franchise as string, inputValue.replace(" ", "_"));
+        results.value = await fetch_search_wikis(inputValue.replace(" ", "_"));
         errored.value = false;
     } catch (e) {
         errored.value = true;
@@ -59,9 +60,9 @@ useSeoMeta({
 
             <div class="result_box">
                 <li v-for="one_of_rsult in results" class="result_boxes">
-                    <a :href="`${one_of_rsult.dynamic_path}`" class="md:flex md:justify-between">
+                    <a :href="`/wiki/${one_of_rsult.dynamic_path}`" class="md:flex md:justify-between">
                         <div>
-                            <h1 class="underline">{{one_of_rsult.title}}</h1>
+                            <h1 class="underline">{{one_of_rsult.franchise_proper_name}}</h1>
                             <h2 class="hidden md:flex text-2xl overflow-hidden">{{one_of_rsult.description}}</h2>
                         </div>
                         <img :src="one_of_rsult.image" class="w-32 h-32" />

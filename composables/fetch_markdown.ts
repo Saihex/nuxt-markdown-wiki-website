@@ -14,8 +14,10 @@ interface franchise_data {
   ico_image: string,
   wiki_head_image: string,
   default_embed_image: string,
+  image: string,
   franchise_proper_name: String,
-  page_count: Number
+  page_count: Number,
+  dynamic_path: String,
 }
 
 interface search_result {
@@ -131,7 +133,7 @@ export const fetch_markdown_parse = async function (
 
   const parsed_markdown = await parseMarkdown(value.markdown_string);
   const franchise_data = value.franchise_data;
-  return { parsed_markdown, franchise_data, used_path};
+  return { parsed_markdown, franchise_data, used_path };
 };
 
 export const fetch_category_search = async function (
@@ -182,6 +184,35 @@ export const fetch_category_content_search = async function (
   const { data: searchList, status, error } = search_return;
 
   const value = searchList.value as unknown as category_search_result[];
+
+  if (
+    value === null || // Check if value is null
+    typeof value !== "object"
+  ) {
+    throw createError({
+      statusCode: 500,
+      statusMessage: "Oop",
+    });
+  }
+
+  return value;
+};
+
+export const fetch_search_wikis = async function (
+  search_input: string,
+) {
+  // Run the requests in parallel
+  const search_return = await useFetch(`/api/search/wiki_search`, {
+    server: true,
+    params: {
+      search_input: search_input
+    }
+  });
+
+  // Destructure the responses
+  const { data: searchList, status, error } = search_return;
+
+  const value = searchList.value as unknown as franchise_data[];
 
   if (
     value === null || // Check if value is null

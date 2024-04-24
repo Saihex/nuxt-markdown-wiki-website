@@ -2,9 +2,12 @@
 const route = useRoute();
 const path = `${route.params.franchise}/${route.params._category}/index.md`;
 console.log(path);
-const show_loading = ref(true);
-const {parsed_markdown, franchise_data, used_path} = await fetch_markdown_parse(path, route);
-const results = ref(await fetch_category_content_search(route.params.franchise as string, route.params._category as string, ""));
+const [ { parsed_markdown, franchise_data, used_path }, unref_results ] = await Promise.all([
+    fetch_markdown_parse(path, route), // Assuming fetch_markdown_parse() returns an array with three elements
+    fetch_category_content_search(route.params.franchise as string, route.params._category as string, "")
+]);
+
+const results = ref(unref_results);
 const inputValue = ref('');
 const errored = ref(false);
 const debouce = ref(false);
@@ -26,8 +29,6 @@ const search_input = async (inputValue: string) => {
     debouce_interfered.value = false;
     debouce.value = false;
 }
-
-show_loading.value = false;
 
 useHead({
     title: `${franchise_data.franchise_proper_name} - ${parsed_markdown.data.title}`,
@@ -63,8 +64,7 @@ useSeoMeta({
 
     <div class="pageDataContainer">
         <container class="wiki_container">
-            <pa class="flex text-5xl m-24 content-center min-h-svh" v-if="show_loading">Loading...</pa>
-            <ContentRendererMarkdown v-if="!show_loading" :value="parsed_markdown" class="min-h-20">
+            <ContentRendererMarkdown :value="parsed_markdown" class="min-h-20">
             </ContentRendererMarkdown>
         </container>
     </div>
