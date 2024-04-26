@@ -60,12 +60,12 @@ useSeoMeta({
 
             <div class="result_box">
                 <li v-for="one_of_rsult in results" class="result_boxes">
-                    <a :href="`/wiki/${one_of_rsult.dynamic_path}`" class="md:flex md:justify-between">
+                    <a :href="`/wiki/${one_of_rsult.dynamic_path}`" class="md:flex">
+                        <img :src="one_of_rsult.image" class="w-32 h-32 mx-3" />
                         <div>
                             <h1 class="underline">{{one_of_rsult.franchise_proper_name}}</h1>
                             <h2 class="hidden md:flex text-2xl overflow-hidden">{{one_of_rsult.description}}</h2>
                         </div>
-                        <img :src="one_of_rsult.image" class="w-32 h-32" />
                     </a>
                 </li>
             </div>

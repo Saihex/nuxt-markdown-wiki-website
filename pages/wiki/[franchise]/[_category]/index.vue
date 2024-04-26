@@ -86,12 +86,12 @@ useSeoMeta({
 
     <div class="result_box mb-20">
         <li v-for="one_of_rsult in results" class="result_boxes">
-            <a :href="`${route.params._category}/${one_of_rsult.dynamic_path}`" class="md:flex md:justify-between">
+            <a :href="`${route.params._category}/${one_of_rsult.dynamic_path}`" class="md:flex">
+                <img :src="one_of_rsult.image" class="w-32 h-32 mx-3" />
                 <div>
                     <h1 class="underline">{{one_of_rsult.title}}</h1>
                     <h2 class="hidden md:flex text-2xl overflow-hidden">{{one_of_rsult.description}}</h2>
                 </div>
-                <img :src="one_of_rsult.image" class="w-32 h-32" />
             </a>
         </li>
     </div>
