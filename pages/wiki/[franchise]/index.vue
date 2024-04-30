@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const route = useRoute();
+remove_trailing_slash(route);
 const path = `${route.params.franchise}/index.md`;
 const show_loading = ref(true);
 const {parsed_markdown, franchise_data, used_path} = await fetch_markdown_parse(path, route);
@@ -18,13 +19,15 @@ useHead({
     htmlAttrs: { lang: 'en' }
 })
 
+const embed_image = embed_svg_url(parsed_markdown.data.default_embed_image);
+
 useSeoMeta({
     ogTitle: `${franchise_data.franchise_proper_name} - Home`,
     twitterTitle: `${franchise_data.franchise_proper_name} - Home`,
     ogDescription: parsed_markdown.data.description,
     twitterDescription: parsed_markdown.data.description,
-	ogImage: parsed_markdown.data.default_embed_image,
-	twitterImage: parsed_markdown.data.default_embed_image,
+	ogImage: embed_image,
+	twitterImage: embed_image,
 })
 </script>
 

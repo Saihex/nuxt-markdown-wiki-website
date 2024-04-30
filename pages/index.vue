@@ -31,7 +31,7 @@ useSeoMeta({
 
 <style>
 .homeImage {
-    background-image: linear-gradient(to bottom, transparent, transparent, rgb(32, 32, 32)), url("https://img.saihex.com/website_exclusive/general/sairo.png");
+    background-image: linear-gradient(to bottom, transparent, transparent, rgb(32, 32, 32)), url("https://img.saihex.com/website_exclusive/general/web_banner.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: calc(50%) calc(50%);

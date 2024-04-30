@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const route = useRoute();
+remove_trailing_slash(route);
 const path = `${route.params.franchise}/${route.params._category}/index.md`;
 console.log(path);
 const [ { parsed_markdown, franchise_data, used_path }, unref_results ] = await Promise.all([
@@ -42,13 +43,15 @@ useHead({
     htmlAttrs: { lang: 'en' }
 })
 
+const embed_images = embed_svg_url(parsed_markdown.data.image);
+
 useSeoMeta({
     ogTitle: `${franchise_data.franchise_proper_name} - ${parsed_markdown.data.title}`,
     twitterTitle: `${franchise_data.franchise_proper_name} - ${parsed_markdown.data.title}`,
     ogDescription: `${parsed_markdown.data.description}`,
     twitterDescription: `${parsed_markdown.data.description}`,
-	ogImage: parsed_markdown.data.image,
-	twitterImage: parsed_markdown.data.image,
+	ogImage: embed_images,
+	twitterImage: embed_images,
 })
 </script>
 
