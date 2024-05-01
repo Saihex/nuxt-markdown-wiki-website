@@ -26,7 +26,7 @@ onMounted(async () => {
                 </a>
 
                 <!-- primary navigation -->
-                <div class="hidden flex md:flex">
+                <div class="hidden md:flex">
                     <NuxtLink to="https://www.saihex.com" class="topbarButton centerItem">Main Website</NuxtLink>
                     <NuxtLink to="/list" class="topbarButton centerItem">List of wikis</NuxtLink>
                     <UTooltip text="The 4Tris Wiki" :popper="{ arrow: true }">

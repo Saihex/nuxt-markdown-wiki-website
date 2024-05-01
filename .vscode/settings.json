@@ -1,3 +1,14 @@
 {
-  "css.customData": [".vscode/tailwind.json"]
+  "css.customData": [
+    ".vscode/tailwind.json"
+  ],
+  "cSpell.words": [
+    "composables",
+    "debouce",
+    "nohover",
+    "Nuxt",
+    "rsult",
+    "Topbar",
+    "Tris"
+  ]
 }
