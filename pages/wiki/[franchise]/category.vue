@@ -32,7 +32,9 @@ useHead({
         { name: 'description', content: `Search this wiki's categories.` },
         { name: 'twitter:card', content: "summary"}
     ],
-    link: [],
+    link: [
+        { rel: 'icon', type: 'image/x-icon', href: franchise_data.ico_image }
+    ],
     htmlAttrs: { lang: 'en' }
 })
 
