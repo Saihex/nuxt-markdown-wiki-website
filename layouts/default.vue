@@ -28,7 +28,7 @@ onMounted(async () => {
                 <!-- primary navigation -->
                 <div class="hidden md:flex">
                     <NuxtLink to="https://www.saihex.com" class="topbarButton centerItem">Main Website</NuxtLink>
-                    <NuxtLink to="/list" class="topbarButton centerItem">List of wikis</NuxtLink>
+                    <NuxtLink to="/wiki" class="topbarButton centerItem">List of wikis</NuxtLink>
                     <UTooltip text="The 4Tris Wiki" :popper="{ arrow: true }">
                         <NuxtLink to="/wiki/The4Tris" class="block topbarButton centerItem"><img src="https://img.saihex.com/wiki_exclusive/The4Tris/The4Tris.svg" class="h-10 mr-1" /></NuxtLink>
                     </UTooltip>
@@ -48,7 +48,7 @@ onMounted(async () => {
             </div>
             <div class="md:hidden hidden bg-gray-900 mobile-menu z-50">
                 <a href="https://www.saihex.com" class="block topbarButton centerItem">Main Website</a>
-                <a href="/list" class="block topbarButton centerItem">List of wikis</a>
+                <a href="/wiki" class="block topbarButton centerItem">List of wikis</a>
                 <a href="/wiki/The4Tris" class="block topbarButton centerItem mb-20">
                     <img src="https://img.saihex.com/wiki_exclusive/The4Tris/The4Tris.svg" class="h-12 mr-1" />
                     The 4Tris Wiki

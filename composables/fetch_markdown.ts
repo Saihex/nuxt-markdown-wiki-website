@@ -8,7 +8,7 @@ interface category_search_result {
   dynamic_path: string
 }
 
-interface franchise_data {
+export default interface franchise_data {
   title: string,
   description: string,
   ico_image: string,
@@ -18,6 +18,7 @@ interface franchise_data {
   franchise_proper_name: String,
   page_count: Number,
   dynamic_path: String,
+  saihex_creation: boolean,
 }
 
 interface search_result {
