@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const desc = "Welcome to Saihex Studios' Official Wiki Website! This website is where all Saihex's franchise and other creations official wikis are located.";
 useHead({
-    title: 'Saihex Studios Official Wiki - Homepage',
+    title: 'Saihex Studios Official Wiki',
     meta: [
         { name: 'description', content: desc }
     ],
@@ -12,8 +12,8 @@ useHead({
 })
 
 useSeoMeta({
-    ogTitle: 'Saihex Studios Homepage',
-    twitterTitle: 'Saihex Studios Homepage',
+    ogTitle: 'Saihex Studios\' Wiki Homepage',
+    twitterTitle: 'Saihex Studios\' Wiki Homepage',
     ogDescription: desc,
     twitterDescription: desc
 })
@@ -76,7 +76,7 @@ useSeoMeta({
                 <div>
                     <h1 class="underline font-bold">Syntax highlighting</h1>
                     <p class="my-2 text-2xl">Header 1 or the title is only used as the page title. <a
-                            class="text-purple-400 underline cursor-pointer">Text that are colored
+                            class="text-purple-400 underline cursor-pointer" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Text that are colored
                             purple and underlined</a> are links and you can click on them to go to other pages or
                         website, be
                         ware that there is no confirmation dialogue.</p>

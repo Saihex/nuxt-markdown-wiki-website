@@ -27,10 +27,10 @@ const search_input = async (inputValue: string) => {
 }
 
 useHead({
-    title: `${franchise_data.franchise_proper_name} - Category search`,
+    title: `Category search - ${franchise_data.franchise_proper_name}`,
     meta: [
         { name: 'description', content: `Search this wiki's categories.` },
-        { name: 'twitter:card', content: "summary"}
+        { name: 'twitter:card', content: "summary_large_image"}
     ],
     link: [
         { rel: 'icon', type: 'image/x-icon', href: franchise_data.ico_image }
@@ -40,8 +40,8 @@ useHead({
 
 const embed_images = embed_svg_url(parsed_markdown.data.default_embed_image);
 useSeoMeta({
-    ogTitle: `${franchise_data.franchise_proper_name} - Category search`,
-    twitterTitle: `${franchise_data.franchise_proper_name} - Category search`,
+    ogTitle: `Category search - ${franchise_data.franchise_proper_name}`,
+    twitterTitle: `Category search - ${franchise_data.franchise_proper_name}`,
     ogDescription: `Search this wiki's categories.`,
     twitterDescription: `Search this wiki's categories.`,
 	ogImage: embed_images,

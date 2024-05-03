@@ -32,10 +32,10 @@ const search_input = async (inputValue: string) => {
 }
 
 useHead({
-    title: `${franchise_data.franchise_proper_name} - ${parsed_markdown.data.title}`,
+    title: `${parsed_markdown.data.title} - ${franchise_data.franchise_proper_name}`,
     meta: [
         { name: 'description', content: parsed_markdown.data.description },
-        { name: 'twitter:card', content: "summary"}
+        { name: 'twitter:card', content: "summary_large_image"}
     ],
     link: [
         { rel: 'icon', type: 'image/x-icon', href: franchise_data.ico_image }
@@ -46,8 +46,8 @@ useHead({
 const embed_images = embed_svg_url(parsed_markdown.data.image);
 
 useSeoMeta({
-    ogTitle: `${franchise_data.franchise_proper_name} - ${parsed_markdown.data.title}`,
-    twitterTitle: `${franchise_data.franchise_proper_name} - ${parsed_markdown.data.title}`,
+    ogTitle: `${parsed_markdown.data.title} - ${franchise_data.franchise_proper_name}`,
+    twitterTitle: `${parsed_markdown.data.title} - ${franchise_data.franchise_proper_name}`,
     ogDescription: `${parsed_markdown.data.description}`,
     twitterDescription: `${parsed_markdown.data.description}`,
 	ogImage: embed_images,

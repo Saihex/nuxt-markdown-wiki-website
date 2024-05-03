@@ -8,10 +8,10 @@ const {parsed_markdown, franchise_data, used_path} = await fetch_markdown_parse(
 show_loading.value = false;
 
 useHead({
-    title: `${franchise_data.franchise_proper_name} - Home`,
+    title: `Home - ${franchise_data.franchise_proper_name}`,
     meta: [
         { name: 'description', content: parsed_markdown.data.description },
-        { name: 'twitter:card', content: "summary"}
+        { name: 'twitter:card', content: "summary_large_image"}
     ],
     link: [
         { rel: 'icon', type: 'image/x-icon', href: franchise_data.ico_image }
@@ -22,8 +22,8 @@ useHead({
 const embed_image = embed_svg_url(parsed_markdown.data.default_embed_image);
 
 useSeoMeta({
-    ogTitle: `${franchise_data.franchise_proper_name} - Home`,
-    twitterTitle: `${franchise_data.franchise_proper_name} - Home`,
+    ogTitle: `Home - ${franchise_data.franchise_proper_name}`,
+    twitterTitle: `Home - ${franchise_data.franchise_proper_name}`,
     ogDescription: parsed_markdown.data.description,
     twitterDescription: parsed_markdown.data.description,
 	ogImage: embed_image,
