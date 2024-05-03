@@ -1,9 +1,9 @@
 <template>
     <div class="py-32 text-center justify-center flex">
         <div class="hidden md:flex">
-            <img v-if="error.statusCode === 404" src="https://img.saihex.com/website_exclusive/error_images/404.png"
+            <img v-if="error.statusCode === 404" src="https://img.saihex.com/website_exclusive/error_images/404.png?downscale=fm"
                 class="image_err" />
-            <img v-if="error.statusCode === 500" src="https://img.saihex.com/website_exclusive/error_images/500.png"
+            <img v-if="error.statusCode === 500" src="https://img.saihex.com/website_exclusive/error_images/500.png?downscale=fm"
                 class="image_err" />
         </div>
         <div>
@@ -20,9 +20,9 @@
                 </div>
             </div>
             <div class="flex md:hidden">
-                <img v-if="error.statusCode === 404" src="https://img.saihex.com/website_exclusive/error_images/404.png"
+                <img v-if="error.statusCode === 404" src="https://img.saihex.com/website_exclusive/error_images/404.png?downscale=fm"
                     class="image_err" />
-                <img v-if="error.statusCode === 500" src="https://img.saihex.com/website_exclusive/error_images/500.png"
+                <img v-if="error.statusCode === 500" src="https://img.saihex.com/website_exclusive/error_images/500.png?downscale=fm"
                     class="image_err" />
             </div>
         </div>
