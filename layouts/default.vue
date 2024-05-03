@@ -29,8 +29,20 @@ onMounted(async () => {
                 <div class="hidden md:flex">
                     <NuxtLink to="https://www.saihex.com" class="topbarButton centerItem">Main Website</NuxtLink>
                     <NuxtLink to="/wiki" class="topbarButton centerItem">List of wikis</NuxtLink>
+                    <UTooltip text="Backend Software List" :popper="{ arrow: true }">
+                        <NuxtLink to="/backends" class="topbarButton centerItem">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-10">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M5.25 14.25h13.5m-13.5 0a3 3 0 0 1-3-3m3 3a3 3 0 1 0 0 6h13.5a3 3 0 1 0 0-6m-16.5-3a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3m-19.5 0a4.5 4.5 0 0 1 .9-2.7L5.737 5.1a3.375 3.375 0 0 1 2.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 0 1 .9 2.7m0 0a3 3 0 0 1-3 3m0 3h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Zm-3 6h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Z" />
+                            </svg>
+                        </NuxtLink>
+                    </UTooltip>
+
                     <UTooltip text="The 4Tris Wiki" :popper="{ arrow: true }">
-                        <NuxtLink to="/wiki/The4Tris" class="block topbarButton centerItem"><img src="https://img.saihex.com/wiki_exclusive/The4Tris/The4Tris.svg" class="h-10 mr-1" /></NuxtLink>
+                        <NuxtLink to="/wiki/The4Tris" class="block topbarButton centerItem"><img
+                                src="https://img.saihex.com/wiki_exclusive/The4Tris/The4Tris.svg" class="h-10 mr-1" />
+                        </NuxtLink>
                     </UTooltip>
                 </div>
 
@@ -49,6 +61,16 @@ onMounted(async () => {
             <div class="md:hidden hidden bg-gray-900 mobile-menu z-50">
                 <a href="https://www.saihex.com" class="block topbarButton centerItem">Main Website</a>
                 <a href="/wiki" class="block topbarButton centerItem">List of wikis</a>
+
+                <a href="/backends" class="block topbarButton centerItem">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-12 mr-1">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M5.25 14.25h13.5m-13.5 0a3 3 0 0 1-3-3m3 3a3 3 0 1 0 0 6h13.5a3 3 0 1 0 0-6m-16.5-3a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3m-19.5 0a4.5 4.5 0 0 1 .9-2.7L5.737 5.1a3.375 3.375 0 0 1 2.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 0 1 .9 2.7m0 0a3 3 0 0 1-3 3m0 3h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Zm-3 6h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Z" />
+                            </svg>
+                    Backend Software List
+                </a>
+
                 <a href="/wiki/The4Tris" class="block topbarButton centerItem mb-20">
                     <img src="https://img.saihex.com/wiki_exclusive/The4Tris/The4Tris.svg" class="h-12 mr-1" />
                     The 4Tris Wiki
@@ -56,22 +78,27 @@ onMounted(async () => {
             </div>
         </nav>
 
-        <slot class="z-0"/> <!-- Inject page Vue code -->
+        <slot class="z-0" /> <!-- Inject page Vue code -->
 
         <!-- Footer -->
         <footer class="mainFooter">
             <div class="flex mt-3 font-bold justify-between h-auto mx-2 mb-2">
                 <div class="text-xs md:text-lg">
-                    Page content is under the <a class="text-purple-300 underline" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a> unless otherwise noted.
+                    Page content is under the <a class="text-purple-300 underline" target="_blank"
+                        href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons
+                        Attribution-NonCommercial-ShareAlike 4.0 International</a> unless otherwise noted.
                 </div>
-                <img src="https://commons.wiki.gg/images/b/bd/CC-BY-NC-SA.svg" class="w-24 h-9 mx-2"/>
+                <img src="https://commons.wiki.gg/images/b/bd/CC-BY-NC-SA.svg" class="w-24 h-9 mx-2" />
             </div>
             <div class="flex justify-center my-1">
                 <a href="https://discord.gg/eJjsqzkQ7t"><img
                         src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6ca814282eca7172c6_icon_clyde_white_RGB.svg"
                         class="mobile_socials_footer" /></a>
-                <a href="https://twitter.com/saihex_studios"><img src="https://img.saihex.com/website_exclusive/socials/x.svg" class="mobile_socials_footer" /></a>
-                <a href="https://www.youtube.com/@saihex_studios"><img src="https://img.saihex.com/website_exclusive/socials/yt_logo_mono_dark.png"
+                <a href="https://twitter.com/saihex_studios"><img
+                        src="https://img.saihex.com/website_exclusive/socials/x.svg"
+                        class="mobile_socials_footer" /></a>
+                <a href="https://www.youtube.com/@saihex_studios"><img
+                        src="https://img.saihex.com/website_exclusive/socials/yt_logo_mono_dark.png"
                         class="mobile_socials_footer" /></a>
             </div>
             <div class="flex text-center justify-center">Saihex Studios © 2024</div>
