@@ -59,9 +59,9 @@ useSeoMeta({
                     <a href="https://nuxt.com/" class="text-2xl underline text-purple-400" external>Link to Nuxt's
                         website: https://nuxt.com/</a>
                     <br />
-                    <a href="https://github.com/Saihex/nuxt-static-markdown-wiki-website"
+                    <a href="https://github.com/Saihex/nuxt-markdown-wiki-website"
                         class="text-2xl underline text-purple-400" external>Link to the GitHub repository:
-                        https://github.com/Saihex/nuxt-static-markdown-wiki-website</a>
+                        https://github.com/Saihex/nuxt-markdown-wiki-website</a>
                 </div>
                 <img src="https://nuxt.com/assets/design-kit/icon-green.svg"
                     class="flex w-[256px] mr-5 h-fit max-sm:hidden" />
