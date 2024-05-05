@@ -80,15 +80,15 @@ useSeoMeta({
             </div>
 
             <div class="result_box">
-                <li v-for="one_of_rsult in results" class="result_boxes">
-                    <a :href="`${one_of_rsult.dynamic_path}`" class="md:flex">
-                        <img :src="one_of_rsult.image" class="w-32 h-32 mx-3" />
+                <a v-for="one_of_rsult in results" class="result_boxes" :href="`${one_of_rsult.dynamic_path}`">
+                    <div class="md:flex">
+                        <img :src="one_of_rsult.image" class="w-20 md:w-32 mx-3" />
                         <div>
                             <h1 class="underline">{{one_of_rsult.title}}</h1>
                             <h2 class="hidden md:flex text-2xl overflow-hidden">{{one_of_rsult.description}}</h2>
                         </div>
-                    </a>
-                </li>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
@@ -96,15 +96,15 @@ useSeoMeta({
 
 <style>
 .search_box {
-    @apply flex bg-gray-950 h-16 mx-16 rounded-sm outline outline-2 outline-black p-2
+    @apply flex bg-gray-950 h-16 mx-2 md:mx-16 rounded-sm outline outline-2 outline-black p-2
 }
 
 .result_box {
-    @apply flex flex-col bg-zinc-800 h-dvh mx-12 my-5 px-5 py-2
+    @apply flex flex-col bg-zinc-800 h-dvh mx-2 md:mx-12 my-5 px-5 py-2
 }
 
 .result_boxes {
-    @apply block justify-between bg-zinc-900 min-h-32 p-2 mb-2 transition bounce-ease
+    @apply flex justify-between bg-zinc-900 h-fit mb-2 transition bounce-ease py-2 overflow-hidden p-2
 }
 
 .result_boxes:hover {
