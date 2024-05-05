@@ -61,7 +61,7 @@ useSeoMeta({
             <div class="result_box">
                 <a v-for="one_of_rsult in results" class="result_boxes" :href="`/wiki/${one_of_rsult.dynamic_path}`">
                     <div class="flex max-sm:flex-col">
-                        <img :src="one_of_rsult.image" class="w-20 md:w-32 mx-3" />
+                        <img :src="one_of_rsult.image" class="h-20 md:min-h-28 aspect-square mx-3" />
                         <div>
                             <p class="non-saihex" v-if="!one_of_rsult.saihex_creation">Not owned or/and controlled by Saihex Studios</p>
                             <h1 class="underline max-sm:block max-sm:text-center">{{one_of_rsult.franchise_proper_name}}</h1>
@@ -80,11 +80,11 @@ useSeoMeta({
 }
 
 .result_box {
-    @apply flex flex-col bg-zinc-800 h-dvh mx-2 md:mx-12 my-5 px-5 py-2
+    @apply flex flex-col bg-zinc-800 h-fit mx-2 md:mx-12 my-5 px-5 py-2
 }
 
 .result_boxes {
-    @apply flex justify-between bg-zinc-900 h-fit mb-2 transition bounce-ease py-2 overflow-hidden p-2
+    @apply flex justify-between bg-zinc-900 h-32 mb-2 transition bounce-ease py-2 overflow-hidden p-2
 }
 
 .result_boxes:hover {
