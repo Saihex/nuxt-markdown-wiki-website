@@ -40,7 +40,7 @@ useSeoMeta({
                         button.</p>
                     <p class="my-2 text-2xl">You may find wikis with <b class="bg-orange-600 p-1">NOT OWNED OR/AND
                             CONTROLLED BY SAIHEX
-                            STUDIOS</b> written inside a orange box, this indicates that wiki franchise is not owned
+                            STUDIOS</b> written inside a orange box <b>(the entire box appear as orange and the text won't be present for mobile)</b>, this indicates that wiki franchise is not owned
                         or/and controlled by Saihex Studios. However it still falls under <a
                             class="text-purple-400 underline"
                             href="https://creativecommons.org/licenses/by-nc-sa/4.0/">BY-NC-SA</a>.</p>

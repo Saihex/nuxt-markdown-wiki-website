@@ -59,13 +59,13 @@ useSeoMeta({
             </div>
 
             <div class="result_box">
-                <a v-for="one_of_rsult in results" class="result_boxes" :href="`/wiki/${one_of_rsult.dynamic_path}`">
+                <a v-for="one_of_rsult in results" :class="one_of_rsult.saihex_creation ? `result_boxes` : `result_boxes_non_saihex`" :href="`/wiki/${one_of_rsult.dynamic_path}`">
                     <div class="flex max-sm:flex-col">
                         <img :src="one_of_rsult.image" class="h-20 md:min-h-28 aspect-square mx-3" />
                         <div>
-                            <p class="non-saihex" v-if="!one_of_rsult.saihex_creation">Not owned or/and controlled by Saihex Studios</p>
+                            <p class="non-saihex hidden md:flex" v-if="!one_of_rsult.saihex_creation">Not owned or/and controlled by Saihex Studios</p>
                             <h1 class="underline max-sm:block max-sm:text-center">{{one_of_rsult.franchise_proper_name}}</h1>
-                            <h2 class="flex max-sm:hidden text-2xl overflow-hidden">{{one_of_rsult.description}}</h2>
+                            <h2 class="hidden md:flex text-2xl overflow-hidden">{{one_of_rsult.description}}</h2>
                         </div>
                     </div>
                 </a>
@@ -87,6 +87,14 @@ useSeoMeta({
     @apply flex justify-between bg-zinc-900 h-32 mb-2 transition bounce-ease py-2 overflow-hidden p-2
 }
 
+.result_boxes_non_saihex {
+    @apply flex justify-between bg-orange-950 md:bg-zinc-900 h-32 mb-2 transition bounce-ease py-2 overflow-hidden p-2
+}
+
+.result_boxes_non_saihex:hover {
+    @apply bg-orange-500 translate-x-5 -translate-y-5 transition ease-in
+}
+
 .result_boxes:hover {
     @apply bg-green-700 translate-x-5 -translate-y-5 transition ease-in
 }
@@ -96,6 +104,6 @@ useSeoMeta({
 }
 
 .non-saihex {
-    @apply bg-orange-700 p-1 font-bold uppercase max-sm:text-center max-sm:text-base
+    @apply bg-orange-700 p-1 font-bold uppercase text-center md:text-left
 }
 </style>
