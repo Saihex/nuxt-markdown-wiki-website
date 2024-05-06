@@ -21,7 +21,6 @@ class EventCollectionImpl implements EventCollection {
   removeAllEvents(): void {
     this.events.forEach(({ event, handler }) => {
       window.removeEventListener(event, handler);
-      console.log(`Removed event ${event}`);
     });
     this.events = [];
   }
