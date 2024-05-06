@@ -40,9 +40,9 @@ onMounted(() => {
   }
 
   bg_event_handler();
-  no_scroll.value = false;
 
   event_collection.addEvent("scroll", bg_event_handler);
+  no_scroll.value = false;
 })
 
 onUnmounted(() => {
