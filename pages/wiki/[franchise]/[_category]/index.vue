@@ -90,10 +90,10 @@ useSeoMeta({
     <div class="result_box mb-20">
         <a v-for="one_of_rsult in results" class="result_boxes" :href="`${route.params._category}/${one_of_rsult.dynamic_path}`">
             <div class="md:flex">
-                <img :src="one_of_rsult.image" class="h-20 md:min-h-28 aspect-square mx-3" />
+                <img :src="one_of_rsult.image" class="w-28 h-28 mx-3" />
                 <div>
                     <h1 class="underline">{{one_of_rsult.title}}</h1>
-                    <h2 class="hidden md:flex text-2xl overflow-hidden">{{one_of_rsult.description}}</h2>
+                    <h2 class="text-2xl overflow-hidden">{{one_of_rsult.description}}</h2>
                 </div>
             </div>
         </a>
@@ -112,7 +112,7 @@ useSeoMeta({
 }
 
 .result_boxes {
-    @apply flex justify-between bg-zinc-900 h-32 mb-2 transition bounce-ease py-2 overflow-hidden p-2
+    @apply flex justify-between bg-zinc-900 min-h-32 h-fit mb-2 transition bounce-ease py-2 overflow-hidden p-2
 }
 
 .result_boxes:hover {

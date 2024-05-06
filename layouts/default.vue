@@ -103,7 +103,9 @@ onMounted(async () => {
                         href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons
                         Attribution-NonCommercial-ShareAlike 4.0 International</a> unless otherwise noted.
                 </div>
-                <img src="https://commons.wiki.gg/images/b/bd/CC-BY-NC-SA.svg" class="w-24 h-9 mx-2" />
+                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" class="inline-block w-24 h-9 mx-2">
+                    <img src="https://commons.wiki.gg/images/b/bd/CC-BY-NC-SA.svg" alt="Creative Commons License" class="object-contain">
+                 </a>
             </div>
             <div class="flex justify-center my-1">
                 <a href="https://discord.gg/eJjsqzkQ7t"><img

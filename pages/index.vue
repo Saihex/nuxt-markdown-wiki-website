@@ -17,13 +17,40 @@ useSeoMeta({
     ogDescription: desc,
     twitterDescription: desc
 })
+
+///
+
+const bg_image_reaction = ref({
+    opacity: 1, top_margin: "4rem"
+});
+const event_collection = create_event_collection();
+
+function clamp(value: number, min: number, max: number): number {
+  return Math.min(Math.max(value, min), max);
+}
+
+onMounted(() => {
+  const bg_event_handler = () => {
+    const scroll_position = window.scrollY;
+    const scroll_progress = scroll_position / 500; // to threshold
+
+    bg_image_reaction.value.opacity = Math.max(1 - scroll_progress, 0.2);
+    bg_image_reaction.value.top_margin = `${clamp(1 - scroll_progress * 5, 0, 1) * 4}rem`
+  }
+
+  event_collection.addEvent("scroll", bg_event_handler);
+})
+
+onUnmounted(() => {
+    event_collection.removeAllEvents();
+})
 </script>
 
 <template>
     <div>
-        <div class="min-h-svh">
+        <div class="min-h-dvh">
             <div class="homeImage"></div>
-            <div class="my-10" />
+            <div class="my-10 mb-[350px]" />
             <h2 class="py-4 text-center font-bold text-6xl">Welcome to Saihex Studios' Official Wiki Website!</h2>
 
             <p class="text-center text-3xl mb-20">This website contains all the wiki for all of franchises under Saihex
@@ -40,7 +67,8 @@ useSeoMeta({
                         button.</p>
                     <p class="my-2 text-2xl">You may find wikis with <b class="bg-orange-600 p-1">NOT OWNED OR/AND
                             CONTROLLED BY SAIHEX
-                            STUDIOS</b> written inside a orange box <b>(the entire box appear as orange and the text won't be present for mobile)</b>, this indicates that wiki franchise is not owned
+                            STUDIOS</b> written inside a orange box <b>(the entire box appear as orange and the text
+                            won't be present for mobile)</b>, this indicates that wiki franchise is not owned
                         or/and controlled by Saihex Studios. However it still falls under <a
                             class="text-purple-400 underline"
                             href="https://creativecommons.org/licenses/by-nc-sa/4.0/">BY-NC-SA</a>.</p>
@@ -76,7 +104,8 @@ useSeoMeta({
                 <div>
                     <h1 class="underline font-bold">Syntax highlighting</h1>
                     <p class="my-2 text-2xl">Header 1 or the title is only used as the page title. <a
-                            class="text-purple-400 underline cursor-pointer" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Text that are colored
+                            class="text-purple-400 underline cursor-pointer"
+                            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Text that are colored
                             purple and underlined</a> are links and you can click on them to go to other pages or
                         website, be
                         ware that there is no confirmation dialogue.</p>
@@ -96,11 +125,18 @@ useSeoMeta({
 
 <style>
 .homeImage {
+    position: fixed;
+    /* or absolute */
+    z-index: -1;
+    top: v-bind('bg_image_reaction.top_margin');
+    left: 0;
+    right: 0;
     background-image: linear-gradient(to bottom, transparent, transparent, rgb(32, 32, 32)), url("https://img.saihex.com/website_exclusive/general/web_banner.png");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: calc(50%) calc(50%);
+    background-position: center center;
     height: 350px;
+    opacity: v-bind('bg_image_reaction.opacity');
 }
 
 .information_texts {
