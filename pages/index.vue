@@ -23,6 +23,7 @@ useSeoMeta({
 const bg_image_reaction = ref({
     opacity: 1, top_margin: "4rem"
 });
+const no_scroll = ref(true);
 const event_collection = create_event_collection();
 
 function clamp(value: number, min: number, max: number): number {
@@ -38,6 +39,9 @@ onMounted(() => {
     bg_image_reaction.value.top_margin = `${clamp(1 - scroll_progress * 5, 0, 1) * 4}rem`
   }
 
+  bg_event_handler();
+  no_scroll.value = false;
+
   event_collection.addEvent("scroll", bg_event_handler);
 })
 
@@ -47,7 +51,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div>
+    <div :class="no_scroll ? `overflow-hidden` : ``">
         <div class="min-h-dvh">
             <div class="homeImage"></div>
             <div class="my-10 mb-[350px]" />
