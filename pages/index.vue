@@ -51,7 +51,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div :class="no_scroll ? `overflow-hidden` : ``">
+    <div :class="no_scroll ? `hidden` : ``">
         <div class="min-h-dvh">
             <div class="homeImage"></div>
             <div class="my-10 mb-[350px]" />
