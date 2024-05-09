@@ -9,6 +9,11 @@ const inputValue = ref('');
 const errored = ref(false);
 const debouce = ref(false);
 const debouce_interfered = ref(false);
+const mounted = ref(false);
+
+onMounted(() => {
+    mounted.value = true;
+})
 
 const search_input = async (inputValue: string) => {
     if (debouce.value) {
@@ -50,7 +55,11 @@ useSeoMeta({
 </script>
 
 <template>
-    <div>
+    <div class="block bg-orange-600 m-5 p-2 font-bold text-center text-2xl" v-if="!mounted">
+        Page still loading, hold on...
+    </div>
+
+    <div :class="!mounted ? `overflow-hidden` : ``">
         <div class="wiki_header justify-between"> <!-- a div to make elements a little bit far from the sides. -->
             <Wiki_header :franchise="route.params.franchise" :franchise_image="franchise_data.wiki_head_image"
                 :raw_json="used_path" :page_count="franchise_data.page_count" :no_json="true" :saihex_creation="franchise_data.saihex_creation" />

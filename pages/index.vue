@@ -60,7 +60,7 @@ onUnmounted(() => {
             <p class="text-center text-3xl mb-20">This website contains all the wiki for all of franchises under Saihex
                 Studios and not. Here are few guides to use this website!</p>
 
-            <div class="information_texts ">
+            <div class="information_texts justify-between">
                 <img src="https://img.saihex.com/wiki_exclusive/tutorial/wiki_list.png"
                     class="w-[512px] mr-5 outline outline-black outline-2 h-fit" />
                 <div>
@@ -83,7 +83,7 @@ onUnmounted(() => {
                 </div>
             </div>
 
-            <div class="information_texts  justify-end">
+            <div class="information_texts justify-between">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="hidden w-[256px] outline outline-1 outline-black max-sm:flex">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -102,7 +102,7 @@ onUnmounted(() => {
                 </svg>
             </div>
 
-            <div class="information_texts ">
+            <div class="information_texts justify-between">
                 <img src="https://img.saihex.com/wiki_exclusive/tutorial/syntax.png"
                     class="w-[512px] mr-5 outline outline-black outline-2 h-fit" />
                 <div>
@@ -122,6 +122,19 @@ onUnmounted(() => {
                         anchor hashtag to the page URL which can be useful for sharing specific subtitle of a page to
                         others.</p>
                 </div>
+            </div>
+
+            <div class="information_texts justify-between">
+                <img src="https://img.saihex.com/wiki_exclusive/tutorial/anchor_urls.png"
+                    class="flex md:hidden w-[512px] mr-5 outline outline-black outline-2 h-fit" />
+                <div>
+                    <h1 class="underline font-bold">Hash URL</h1>
+                    <p class="my-2 text-2xl">Hash URL will result in the page scrolling down to the subtitle upon page
+                        load. It will have a outline and pulsating green background to make it more noticeable thus
+                        easier to see especially in text cluttered page.</p>
+                </div>
+                <img src="https://img.saihex.com/wiki_exclusive/tutorial/anchor_urls.png"
+                    class="hidden md:flex w-[512px] mr-5 outline outline-black outline-2 h-fit" />
             </div>
         </div>
     </div>

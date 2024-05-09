@@ -1,3 +1,18 @@
+@keyframes pulsate {
+    0% {
+        background-color: #002e0f;
+    }
+
+    100% {
+        background-color: #0a5701;
+    }
+}
+
+.highlight_bg {
+    animation: pulsate 2s ease-in-out infinite alternate;
+    @apply outline outline-1 p-1
+}
+
 .wiki_header {
     @apply px-8 max-h-96 flex items-center my-5;
     z-index: 1;
@@ -63,6 +78,7 @@
 .wiki_container ul li {
     @apply mb-5 list-decimal text-xl
 }
+
 .wiki_container ul li strong {
     @apply underline
 }

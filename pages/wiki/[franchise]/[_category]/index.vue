@@ -13,6 +13,11 @@ const inputValue = ref('');
 const errored = ref(false);
 const debouce = ref(false);
 const debouce_interfered = ref(false);
+const mounted = ref(false);
+
+onMounted(() => {
+    mounted.value = true;
+})
 
 const search_input = async (inputValue: string) => {
     if (debouce.value) {
@@ -56,47 +61,53 @@ useSeoMeta({
 </script>
 
 <template>
-    <div class="wiki_header justify-between"> <!-- a div to make elements a little bit far from the sides. -->
-        <Wiki_header :franchise="route.params.franchise" :franchise_image="franchise_data.wiki_head_image"
-            :raw_json="used_path" :page_count="franchise_data.page_count" :no_json="true" :saihex_creation="franchise_data.saihex_creation" />
-
-        <div class="hidden md:flex md:centerItem md:wiki_header_buttons_nohover">
-            <img preload :src="parsed_markdown.data.image" class="h-32 mr-1" />
-        </div>
+    <div class="block bg-orange-600 m-5 p-2 font-bold text-center text-2xl" v-if="!mounted">
+        Page still loading, hold on...
     </div>
 
-    <div class="pageDataContainer">
-        <container class="wiki_container">
-            <ContentRendererMarkdown :value="parsed_markdown" class="min-h-20">
-            </ContentRendererMarkdown>
-        </container>
-    </div>
-
-    <h2 class="py-4 text-center font-bold text-6xl underline">Category contents search page</h2>
-    <h3 class="my-2 text-center text-xl">Limited to 50 results per search</h3>
-    <div class="my-5 p-1 text-center text-2xl bg-yellow-500 mx-20 text-black" v-if="debouce_interfered">Wait a little alright?</div>
-    <div class="my-2 p-5 text-center text-3xl bg-red-400 mx-20 text-black" v-if="errored">Oh uh... something
-        failed...</div>
-    <div class="search_box">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-            class="w-16">
-            <path stroke-linecap="round" stroke-linejoin="round"
-                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-        </svg>
-        <input type="text" class="p-1 w-full" :placeholder="`Search contents of ${route.params._category} category`" v-model="inputValue"
-            @keyup.enter="search_input(inputValue)" @blur="search_input(inputValue)" />
-    </div>
-
-    <div class="result_box mb-20">
-        <a v-for="one_of_rsult in results" class="result_boxes" :href="`${route.params._category}/${one_of_rsult.dynamic_path}`">
-            <div class="md:flex">
-                <img :src="one_of_rsult.image" class="w-28 h-28 mx-3" />
-                <div>
-                    <h1 class="underline">{{one_of_rsult.title}}</h1>
-                    <h2 class="text-2xl overflow-hidden">{{one_of_rsult.description}}</h2>
-                </div>
+    <div :class="!mounted ? `overflow-hidden` : ``">
+        <div class="wiki_header justify-between"> <!-- a div to make elements a little bit far from the sides. -->
+            <Wiki_header :franchise="route.params.franchise" :franchise_image="franchise_data.wiki_head_image"
+                :raw_json="used_path" :page_count="franchise_data.page_count" :no_json="true" :saihex_creation="franchise_data.saihex_creation" />
+    
+            <div class="hidden md:flex md:centerItem md:wiki_header_buttons_nohover">
+                <img preload :src="parsed_markdown.data.image" class="h-32 mr-1" />
             </div>
-        </a>
+        </div>
+    
+        <div class="pageDataContainer">
+            <div class="wiki_container">
+                <ContentRendererMarkdown :value="parsed_markdown" class="min-h-20">
+                </ContentRendererMarkdown>
+            </div>
+        </div>
+    
+        <h2 class="py-4 text-center font-bold text-6xl underline">Category contents search page</h2>
+        <h3 class="my-2 text-center text-xl">Limited to 50 results per search</h3>
+        <div class="my-5 p-1 text-center text-2xl bg-yellow-500 mx-20 text-black" v-if="debouce_interfered">Wait a little alright?</div>
+        <div class="my-2 p-5 text-center text-3xl bg-red-400 mx-20 text-black" v-if="errored">Oh uh... something
+            failed...</div>
+        <div class="search_box">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                class="w-16">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+            <input type="text" class="p-1 w-full" :placeholder="`Search contents of ${route.params._category} category`" v-model="inputValue"
+                @keyup.enter="search_input(inputValue)" @blur="search_input(inputValue)" />
+        </div>
+    
+        <div class="result_box mb-20">
+            <a v-for="one_of_rsult in results" class="result_boxes" :href="`${route.params._category}/${one_of_rsult.dynamic_path}`">
+                <div class="md:flex">
+                    <img :src="one_of_rsult.image" class="w-28 h-28 mx-3" />
+                    <div>
+                        <h1 class="underline">{{one_of_rsult.title}}</h1>
+                        <h2 class="text-2xl overflow-hidden">{{one_of_rsult.description}}</h2>
+                    </div>
+                </div>
+            </a>
+        </div>
     </div>
 </template>
 
