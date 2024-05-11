@@ -104,7 +104,7 @@ onMounted(async () => {
                         Attribution-NonCommercial-ShareAlike 4.0 International</a> unless otherwise noted.
                 </div>
                 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" class="inline-block w-24 h-9 mx-2">
-                    <img src="https://commons.wiki.gg/images/b/bd/CC-BY-NC-SA.svg" alt="Creative Commons License" class="object-contain">
+                    <img src="https://img.saihex.com/wiki_exclusive/etc/CC-BY-NC-SA.svg" alt="Creative Commons License" class="object-contain">
                  </a>
             </div>
             <div class="flex justify-center my-1">

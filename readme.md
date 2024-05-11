@@ -1,3 +1,6 @@
+**Version: 0.0.2-a**
+Note: Letters after the version numbers are their sub-evolutions when non-major changes were added. Version number will increase after the letter hits `z`.
+
 # Saihex Studios' Nuxt Markdown Wiki Website
 Runs together with [Saihex Studios' Markdown Catalogue Server](https://github.com/Saihex/markdown_catalogue_server).
 
@@ -18,6 +21,11 @@ used dependencies
     "vue": "^3.3.4", -- MIT
     "vue-router": "^4.2.5" -- MIT
 }
+```
+
+**Docker Image**
+```
+saihex/nuxt-markdown-wiki-website:v0.0.2-a
 ```
 
 proper readme will be written soon.
