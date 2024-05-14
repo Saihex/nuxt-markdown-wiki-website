@@ -80,7 +80,7 @@ useSeoMeta({
 }
 
 .result_box {
-    @apply flex flex-col bg-zinc-800 h-dvh mx-2 md:mx-12 my-5 px-5 py-2
+    @apply flex flex-col bg-zinc-800 min-h-dvh h-fit mx-2 md:mx-12 my-5 px-5 py-2
 }
 
 .result_boxes {
