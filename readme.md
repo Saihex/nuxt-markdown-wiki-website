@@ -1,4 +1,4 @@
-**Version: 0.0.2-a**
+**Version: 0.0.2-b**
 Note: Letters after the version numbers are their sub-evolutions when non-major changes were added. Version number will increase after the letter hits `z`.
 
 # Saihex Studios' Nuxt Markdown Wiki Website
@@ -25,7 +25,7 @@ used dependencies
 
 **Docker Image**
 ```
-saihex/nuxt-markdown-wiki-website:v0.0.2-a
+saihex/nuxt-markdown-wiki-website:v0.0.2-b
 ```
 
 proper readme will be written soon.
