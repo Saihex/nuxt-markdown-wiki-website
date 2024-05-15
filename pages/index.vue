@@ -25,12 +25,13 @@ const bg_image_reaction = ref({
 });
 const no_scroll = ref(true);
 const event_collection = create_event_collection();
+const view_image_ref = create_image_viewer_ref();
 
 function clamp(value: number, min: number, max: number): number {
   return Math.min(Math.max(value, min), max);
 }
 
-onMounted(() => {
+onMounted(async () => {
   const bg_event_handler = () => {
     const scroll_position = window.scrollY;
     const scroll_progress = scroll_position / 500; // to threshold
@@ -43,6 +44,9 @@ onMounted(() => {
 
   event_collection.addEvent("scroll", bg_event_handler);
   no_scroll.value = false;
+
+  await nextTick();
+  refresh_image_elements(view_image_ref);
 })
 
 onUnmounted(() => {
@@ -51,7 +55,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div v-if="!no_scroll">
+    <ImageViewer :visible_ref="view_image_ref.visible_ref.value" :url_ref="view_image_ref.url_ref.value"
+        @close="view_image_ref.url_ref.value = ``; view_image_ref.visible_ref.value = false"></ImageViewer>
+
+    <div v-if="!no_scroll" id="page_contents">
         <div class="min-h-dvh">
             <div class="homeImage"></div>
             <div class="my-10 mb-[350px]" />
@@ -75,7 +82,7 @@ onUnmounted(() => {
                             won't be present for mobile)</b>, this indicates that wiki franchise is not owned
                         or/and controlled by Saihex Studios. However it still falls under <a
                             class="text-purple-400 underline"
-                            href="https://creativecommons.org/licenses/by-nc-sa/4.0/">BY-NC-SA</a>.</p>
+                            href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA</a>.</p>
                     <p class="my-2 text-2xl">Franchises that are not owned or/and controlled by Saihex Studios are
                         likely to be from our allies or our developer's own projects who wanted to host their franchise
                         on our wiki website. We are not
@@ -134,6 +141,60 @@ onUnmounted(() => {
                         easier to see especially in text cluttered page.</p>
                 </div>
                 <img src="https://img.saihex.com/wiki_exclusive/tutorial/anchor_urls.png"
+                    class="hidden md:flex w-[512px] mr-5 outline outline-black outline-2 h-fit" />
+            </div>
+
+            <div class="information_texts justify-between">
+                <img src="https://img.saihex.com/wiki_exclusive/tutorial/spoilers.png"
+                    class="w-[512px] mr-5 outline outline-black outline-2 h-fit" />
+                <div>
+                    <h1 class="underline font-bold">Spoiler warnings</h1>
+                    <ul class="list-disc ml-3">
+                        <li>
+                            <p class="my-2 text-2xl">At some point, we don't want to hear nor read any spoilers about
+                                the
+                                franchise we are enjoying. Any category or pages that are spoilers will have a spoiler
+                                warning
+                                under the interaction button navbar. It is a orange box that pulsates and have outline
+                                around
+                                it.</p>
+                        </li>
+                        <li>
+                            <p class="my-2 text-2xl">Categories that are made as a spoiler by itself will be tagged as
+                                spoiler.
+                                This depends on the wiki writer decision but normally categories will not be considered
+                                a
+                                spoiler if only one or two pages in it are spoilers.
+                            </p>
+                        </li>
+                        <li>
+                            <p class="my-2 text-2xl">Pages that are spoilers will be tagged too.</p>
+                            <p class="my-2 text-2xl">Embed will have [SPOILER WARNING] text at the beginning of its
+                                description.</p>
+                        </li>
+                        <li>
+                            <p class="my-2 text-2xl font-bold">Due to scaling issue, on mobile the spoiler indicator
+                                only
+                                appears as orange result box color in search results.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="information_texts justify-between">
+                <img src="https://img.saihex.com/wiki_exclusive/tutorial/image_viewer.png"
+                    class="flex md:hidden w-[512px] mr-5 outline outline-black outline-2 h-fit" />
+                <div>
+                    <h1 class="underline font-bold">Image Viewer</h1>
+                    <p class="my-2 text-2xl">By clicking on the images within the wiki pages or even this page; a
+                        dialogue will
+                        appear showing you the image as well URL to its source link at the bottom.</p>
+                    <p class="my-2 text-2xl">The image is set to be minimum scale of 288px and maximum scale of 60% of
+                        the screen width. Height will scale alongside with width to maintain aspect ratio.</p>
+                    <p class="my-2 text-2xl font-bold">Images on this website falls under <a class="text-purple-400 underline"
+                            href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA</a> unless otherwise noted.</p>
+                </div>
+                <img src="https://img.saihex.com/wiki_exclusive/tutorial/image_viewer.png"
                     class="hidden md:flex w-[512px] mr-5 outline outline-black outline-2 h-fit" />
             </div>
         </div>

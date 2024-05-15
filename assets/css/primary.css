@@ -28,6 +28,19 @@ p {
     animation: spin 2s linear 0s infinite
 }
 
+.image_scale_up {
+    @apply scale-100
+}
+
+.image_scale_up:hover {
+    @apply scale-105
+}
+
+.image_scale_up {
+    transition: transform 0.2s ease-in-out;
+}
+
+
 /* Topbar (you don't need 1000 tailwind strings.) */
 /* Moved to default.vue */
 

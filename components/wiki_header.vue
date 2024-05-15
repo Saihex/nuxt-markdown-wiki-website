@@ -1,7 +1,7 @@
 <!-- Logo.vue -->
 <template>
   <div class="flex flex-col mt-5">
-    <p class="non-saihex w-full mb-2" v-if="!saihex_creation">Not owned or/and controlled by Saihex Studios</p>
+    <p class="non-saihex w-fit mb-2" v-if="!saihex_creation">Not owned or/and controlled by Saihex Studios</p>
 
     <div class="md:flex md:justify-between select-none">
       <a :href="`/wiki/${franchise}`" class="centerItem wiki_header_buttons">
@@ -46,6 +46,8 @@
         </div>
       </div>
     </div>
+
+    <p class="spoiler w-full m-2 max-sm:mb-20 text-3xl" v-if="spoiler">[SPOILER WARNING]</p>
   </div>
 </template>
 
@@ -75,6 +77,10 @@
       saihex_creation: {
         type: Boolean,
         required: true
+      },
+      spoiler: {
+        type: Boolean,
+        required: false
       }
     }
   }
@@ -92,7 +98,27 @@
 .wiki_header_topbar:hover {
   background-color: rgb(255, 255, 255, 0.2);
 }
+
 .non-saihex {
   @apply bg-orange-700 p-1 font-bold uppercase max-sm:text-center max-sm:text-base
+}
+
+.spoiler {
+  @apply bg-orange-700 p-1 font-bold uppercase max-sm:text-center max-sm:text-base
+}
+
+@keyframes spoiler_pulsate {
+  0% {
+      background-color: #c23d00;
+  }
+
+  100% {
+      background-color: #381500;
+  }
+}
+
+.spoiler {
+  animation: spoiler_pulsate 2s ease-in-out infinite alternate;
+  @apply outline outline-1 p-2 text-center
 }
 </style>

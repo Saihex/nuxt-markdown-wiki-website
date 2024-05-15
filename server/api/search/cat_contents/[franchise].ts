@@ -3,6 +3,7 @@ interface category_search_result {
   description: string;
   image: string;
   dynamic_route: string;
+  spoiler: boolean;
 }
 
 export default defineEventHandler(async (event) => {

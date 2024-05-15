@@ -5,6 +5,12 @@ const inputValue = ref('');
 const errored = ref(false);
 const debouce = ref(false);
 const debouce_interfered = ref(false);
+const view_image_ref = create_image_viewer_ref();
+
+onMounted(async () => {
+  await nextTick();
+  refresh_image_elements(view_image_ref);
+})
 
 const search_input = async (inputValue: string) => {
     if (debouce.value) {
@@ -43,28 +49,38 @@ useSeoMeta({
 
 <template>
     <div>
+        <ImageViewer :visible_ref="view_image_ref.visible_ref.value" :url_ref="view_image_ref.url_ref.value"
+            @close="view_image_ref.url_ref.value = ``; view_image_ref.visible_ref.value = false"></ImageViewer>
+
         <div class="min-h-svh">
             <div class="my-10" />
             <h2 class="py-4 text-center font-bold text-6xl underline">Wiki Search Page</h2>
             <h3 class="my-2 text-center text-xl">Limited to 50 results per search</h3>
-            <div class="my-5 p-1 text-center text-2xl bg-yellow-500 mx-20 text-black" v-if="debouce_interfered">Wait a little alright?</div>
-            <div class="my-2 p-5 text-center text-3xl bg-red-400 mx-20 text-black" v-if="errored">Oh uh... something failed...</div>
+            <div class="my-5 p-1 text-center text-2xl bg-yellow-500 mx-20 text-black" v-if="debouce_interfered">Wait a
+                little alright?</div>
+            <div class="my-2 p-5 text-center text-3xl bg-red-400 mx-20 text-black" v-if="errored">Oh uh... something
+                failed...</div>
             <div class="search_box">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-16">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                 </svg>
-                <input type="text" class="p-1 w-full" placeholder="Search for a wiki" v-model="inputValue" @keyup.enter="search_input(inputValue)" @blur="search_input(inputValue)"/>
+                <input type="text" class="p-1 w-full" placeholder="Search for a wiki" v-model="inputValue"
+                    @keyup.enter="search_input(inputValue)" @blur="search_input(inputValue)" />
             </div>
 
             <div class="result_box">
-                <a v-for="one_of_rsult in results" :class="one_of_rsult.saihex_creation ? `result_boxes` : `result_boxes_non_saihex`" :href="`/wiki/${one_of_rsult.dynamic_path}`">
+                <a v-for="one_of_rsult in results"
+                    :class="one_of_rsult.saihex_creation ? `result_boxes` : `result_boxes_non_saihex`"
+                    :href="`/wiki/${one_of_rsult.dynamic_path}`">
                     <div class="md:flex">
                         <img :src="one_of_rsult.image" class="w-32 h-32 mx-3" />
                         <div>
-                            <p class="non-saihex hidden md:flex" v-if="!one_of_rsult.saihex_creation">Not owned or/and controlled by Saihex Studios</p>
-                            <h1 class="underline block md:flex">{{one_of_rsult.franchise_proper_name}}</h1>
+                            <p class="non-saihex hidden md:flex" v-if="!one_of_rsult.saihex_creation">Not owned or/and
+                                controlled by Saihex Studios</p>
+                            <h1 class="underline block md:flex no-view-image">{{one_of_rsult.franchise_proper_name}}
+                            </h1>
                             <h2 class="flex text-2xl overflow-hidden">{{one_of_rsult.description}}</h2>
                         </div>
                     </div>

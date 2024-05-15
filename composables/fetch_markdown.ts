@@ -5,7 +5,8 @@ interface category_search_result {
   title: string,
   description: string,
   image: string,
-  dynamic_path: string
+  dynamic_path: string,
+  spoiler: boolean,
 }
 
 export default interface franchise_data {
@@ -25,7 +26,8 @@ interface search_result {
   title: string,
   description: string,
   image: string,
-  dynamic_route: string
+  dynamic_route: string,
+  spoiler: boolean
 }
 
 interface markdown_return {

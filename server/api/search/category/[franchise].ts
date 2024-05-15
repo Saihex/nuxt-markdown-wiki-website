@@ -2,7 +2,8 @@ interface category_search_result {
   title: string,
   description: string,
   image: string,
-  dynamic_route: string
+  dynamic_route: string,
+  spoiler: boolean
 }
 
 export default defineEventHandler(async (event) => {

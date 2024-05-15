@@ -89,10 +89,11 @@ useSeoMeta({
             </div>
 
             <div class="result_box">
-                <a v-for="one_of_rsult in results" class="result_boxes" :href="`${one_of_rsult.dynamic_path}`">
+                <a v-for="one_of_rsult in results" :class="!one_of_rsult.spoiler ? `result_boxes` : `result_boxes_spoiler`" :href="`${one_of_rsult.dynamic_path}`">
                     <div class="md:flex">
                         <img :src="one_of_rsult.image" class="w-28 h-28 mx-3" />
                         <div>
+                            <p class="spoiler hidden md:flex" v-if="one_of_rsult.spoiler">SPOILER WARNING</p>
                             <h1 class="underline">{{one_of_rsult.title}}</h1>
                             <h2 class="text-2xl overflow-hidden">{{one_of_rsult.description}}</h2>
                         </div>
@@ -122,5 +123,17 @@ useSeoMeta({
 
 .bounce-ease {
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.result_boxes_spoiler {
+    @apply flex justify-between bg-orange-950 md:bg-zinc-900 min-h-32 h-fit mb-2 transition bounce-ease py-2 overflow-hidden p-2
+}
+
+.result_boxes_spoiler:hover {
+    @apply bg-orange-500 translate-x-5 -translate-y-5 transition ease-in
+}
+
+.spoiler {
+    @apply bg-orange-700 p-1 font-bold uppercase text-center md:text-left
 }
 </style>

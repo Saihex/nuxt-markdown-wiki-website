@@ -36,10 +36,12 @@ const search_input = async (inputValue: string) => {
     debouce.value = false;
 }
 
+const spoiler_warning = parsed_markdown.data.spoiler ? '[SPOILER WARNING]\n' : '';
+
 useHead({
     title: `${parsed_markdown.data.title} - ${franchise_data.franchise_proper_name}`,
     meta: [
-        { name: 'description', content: parsed_markdown.data.description },
+        { name: 'description', content: spoiler_warning + parsed_markdown.data.description },
         { name: 'twitter:card', content: "summary_large_image"}
     ],
     link: [
@@ -53,8 +55,8 @@ const embed_images = embed_svg_url(parsed_markdown.data.image);
 useSeoMeta({
     ogTitle: `${parsed_markdown.data.title} - ${franchise_data.franchise_proper_name}`,
     twitterTitle: `${parsed_markdown.data.title} - ${franchise_data.franchise_proper_name}`,
-    ogDescription: `${parsed_markdown.data.description}`,
-    twitterDescription: `${parsed_markdown.data.description}`,
+    ogDescription: `${spoiler_warning}${parsed_markdown.data.description}`,
+    twitterDescription: `${spoiler_warning}${parsed_markdown.data.description}`,
 	ogImage: embed_images,
 	twitterImage: embed_images,
 })
@@ -68,7 +70,7 @@ useSeoMeta({
     <div :class="!mounted ? `overflow-hidden` : ``">
         <div class="wiki_header justify-between"> <!-- a div to make elements a little bit far from the sides. -->
             <Wiki_header :franchise="route.params.franchise" :franchise_image="franchise_data.wiki_head_image"
-                :raw_json="used_path" :page_count="franchise_data.page_count" :no_json="true" :saihex_creation="franchise_data.saihex_creation" />
+                :raw_json="used_path" :page_count="franchise_data.page_count" :no_json="true" :saihex_creation="franchise_data.saihex_creation" :spoiler="parsed_markdown.data.spoiler" />
     
             <div class="hidden md:flex md:centerItem md:wiki_header_buttons_nohover">
                 <img preload :src="parsed_markdown.data.image" class="h-32 mr-1" />
@@ -98,10 +100,11 @@ useSeoMeta({
         </div>
     
         <div class="result_box mb-20">
-            <a v-for="one_of_rsult in results" class="result_boxes" :href="`${route.params._category}/${one_of_rsult.dynamic_path}`">
+            <a v-for="one_of_rsult in results" :class="!one_of_rsult.spoiler ? `result_boxes` : `result_boxes_spoiler`" :href="`${route.params._category}/${one_of_rsult.dynamic_path}`">
                 <div class="md:flex">
                     <img :src="one_of_rsult.image" class="w-28 h-28 mx-3" />
                     <div>
+                        <p class="spoiler hidden md:flex" v-if="one_of_rsult.spoiler">SPOILER WARNING</p>
                         <h1 class="underline">{{one_of_rsult.title}}</h1>
                         <h2 class="text-2xl overflow-hidden">{{one_of_rsult.description}}</h2>
                     </div>
@@ -132,5 +135,17 @@ useSeoMeta({
 
 .bounce-ease {
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.result_boxes_spoiler {
+    @apply flex justify-between bg-orange-950 md:bg-zinc-900 min-h-32 h-fit mb-2 transition bounce-ease py-2 overflow-hidden p-2
+}
+
+.result_boxes_spoiler:hover {
+    @apply bg-orange-500 translate-x-5 -translate-y-5 transition ease-in
+}
+
+.spoiler {
+    @apply bg-orange-700 p-1 font-bold uppercase text-center md:text-left
 }
 </style>
