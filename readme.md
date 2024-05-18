@@ -1,5 +1,6 @@
 **Version: 0.0.2-c**
-Note: Letters after the version numbers are their sub-evolutions when non-major changes were added. Version number will increase after the letter hits `z`.
+
+Note: Letters after the version numbers are their sub-evolutions when non-major changes were added. Version number will increase after the letter hits `z`. If we found lethal issues after a push we will delete the last image build from docker hub and push fixes under the same version. Version won't increase if changes are less than `three` unless huge change such as UI rework.
 
 # Saihex Studios' Nuxt Markdown Wiki Website
 Runs together with [Saihex Studios' Markdown Catalogue Server](https://github.com/Saihex/markdown_catalogue_server) **v0.0.2-b**.
