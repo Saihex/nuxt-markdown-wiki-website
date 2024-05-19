@@ -40,8 +40,8 @@ useHead({
 const embed_images = embed_svg_url(parsed_markdown.data.image);
 
 useSeoMeta({
-    ogTitle: `${parsed_markdown.data.title} - ${franchise_data.franchise_proper_name}`,
-    twitterTitle: `${parsed_markdown.data.title} - ${franchise_data.franchise_proper_name}`,
+    ogTitle: `${parsed_markdown.data.title} - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
+    twitterTitle: `${parsed_markdown.data.title} - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
     ogDescription: add_description_mark(spoiler_warning + parsed_markdown.data.description),
     twitterDescription: add_description_mark(spoiler_warning + parsed_markdown.data.description),
 	ogImage: embed_images,

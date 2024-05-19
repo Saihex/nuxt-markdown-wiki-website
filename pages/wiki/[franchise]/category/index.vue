@@ -34,7 +34,7 @@ const search_input = async (inputValue: string) => {
 useHead({
     title: `Category search - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
     meta: [
-        { name: 'description', content: `Search this wiki's categories.` },
+        { name: 'description', content: add_description_mark(`Search this wiki's categories.`) },
         { name: 'twitter:card', content: "summary_large_image"}
     ],
     link: [
@@ -45,10 +45,10 @@ useHead({
 
 const embed_images = embed_svg_url(parsed_markdown.data.default_embed_image);
 useSeoMeta({
-    ogTitle: `Category search - ${franchise_data.franchise_proper_name}`,
-    twitterTitle: `Category search - ${franchise_data.franchise_proper_name}`,
-    ogDescription: `Search this wiki's categories.`,
-    twitterDescription: `Search this wiki's categories.`,
+    ogTitle: `Category search - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
+    twitterTitle: `Category search - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
+    ogDescription: add_description_mark(`Search this wiki's categories.`),
+    twitterDescription: add_description_mark(`Search this wiki's categories.`),
 	ogImage: embed_images,
 	twitterImage: embed_images,
 })

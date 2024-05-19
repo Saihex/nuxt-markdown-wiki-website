@@ -36,8 +36,8 @@ useHead({
 const embed_image = embed_svg_url(parsed_markdown.data.default_embed_image);
 
 useSeoMeta({
-    ogTitle: `Home - ${franchise_data.franchise_proper_name}`,
-    twitterTitle: `Home - ${franchise_data.franchise_proper_name}`,
+    ogTitle: `Home - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
+    twitterTitle: `Home - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
     ogDescription: add_description_mark(parsed_markdown.data.description),
     twitterDescription: add_description_mark(parsed_markdown.data.description),
 	ogImage: embed_image,
