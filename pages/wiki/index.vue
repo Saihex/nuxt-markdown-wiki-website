@@ -55,7 +55,7 @@ useSeoMeta({
         <div class="min-h-svh">
             <div class="my-10" />
             <h2 class="py-4 text-center font-bold text-6xl underline">Wiki Search Page</h2>
-            <h3 class="my-2 text-center text-xl">Limited to 50 results per search</h3>S
+            <h3 class="my-2 text-center text-xl">Limited to 50 results per search</h3>
             <div class="my-5 p-1 text-center text-2xl bg-yellow-500 mx-20 text-black" v-if="debouce_interfered">Wait a
                 little alright?</div>
             <div class="my-2 p-5 text-center text-3xl bg-red-400 mx-20 text-black" v-if="errored">Oh uh... something
