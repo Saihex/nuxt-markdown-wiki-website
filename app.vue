@@ -17,8 +17,8 @@ useSeoMeta({
 	ogTitle: 'Saihex Studios\' official website',
 	twitterTitle: "Saihex Studios\' official website",
 	ogDescription: 'Saihex Studios\' official website',
-	ogImage: 'https://img.saihex.com/embed_pic.png',
-	twitterImage: 'https://img.saihex.com/embed_pic.png',
+	ogImage: 'https://img.saihex.com/webp?src=embed_pic.png',
+	twitterImage: 'https://img.saihex.com/webp?src=embed_pic.png',
 	ogUrl: '/',
 	twitterDescription: "Saihex Studio\' official website",
 	twitterCard: 'summary_large_image'

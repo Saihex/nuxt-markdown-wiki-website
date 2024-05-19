@@ -68,7 +68,7 @@ onUnmounted(() => {
                 Studios and not. Here are few guides to use this website!</p>
 
             <div class="information_texts justify-between">
-                <img src="https://img.saihex.com/wiki_exclusive/tutorial/wiki_list.png"
+                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/wiki_list.png"
                     class="w-[512px] mr-5 outline outline-black outline-2 h-fit" />
                 <div>
                     <h1 class="underline font-bold">Wiki List</h1>
@@ -110,7 +110,7 @@ onUnmounted(() => {
             </div>
 
             <div class="information_texts justify-between">
-                <img src="https://img.saihex.com/wiki_exclusive/tutorial/syntax.png"
+                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/syntax.png"
                     class="w-[512px] mr-5 outline outline-black outline-2 h-fit" />
                 <div>
                     <h1 class="underline font-bold">Syntax highlighting</h1>
@@ -132,7 +132,7 @@ onUnmounted(() => {
             </div>
 
             <div class="information_texts justify-between">
-                <img src="https://img.saihex.com/wiki_exclusive/tutorial/anchor_urls.png"
+                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/anchor_urls.png"
                     class="flex md:hidden w-[512px] mr-5 outline outline-black outline-2 h-fit" />
                 <div>
                     <h1 class="underline font-bold">Hash URL</h1>
@@ -140,12 +140,12 @@ onUnmounted(() => {
                         load. It will have a outline and pulsating green background to make it more noticeable thus
                         easier to see especially in text cluttered page.</p>
                 </div>
-                <img src="https://img.saihex.com/wiki_exclusive/tutorial/anchor_urls.png"
+                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/anchor_urls.png"
                     class="hidden md:flex w-[512px] mr-5 outline outline-black outline-2 h-fit" />
             </div>
 
             <div class="information_texts justify-between">
-                <img src="https://img.saihex.com/wiki_exclusive/tutorial/spoilers.png"
+                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/spoilers.png"
                     class="w-[512px] mr-5 outline outline-black outline-2 h-fit" />
                 <div>
                     <h1 class="underline font-bold">Spoiler warnings</h1>
@@ -182,7 +182,7 @@ onUnmounted(() => {
             </div>
 
             <div class="information_texts justify-between">
-                <img src="https://img.saihex.com/wiki_exclusive/tutorial/image_viewer.png"
+                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/image_viewer.png"
                     class="flex md:hidden w-[512px] mr-5 outline outline-black outline-2 h-fit" />
                 <div>
                     <h1 class="underline font-bold">Image Viewer</h1>
@@ -195,7 +195,7 @@ onUnmounted(() => {
                             class="text-purple-400 underline" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
                             target="_blank">CC BY-NC-SA</a> unless otherwise noted.</p>
                 </div>
-                <img src="https://img.saihex.com/wiki_exclusive/tutorial/image_viewer.png"
+                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/image_viewer.png"
                     class="hidden md:flex w-[512px] mr-5 outline outline-black outline-2 h-fit" />
             </div>
         </div>
@@ -210,7 +210,7 @@ onUnmounted(() => {
     top: v-bind('bg_image_reaction.top_margin');
     left: 0;
     right: 0;
-    background-image: linear-gradient(to bottom, transparent, transparent, rgb(32, 32, 32)), url("https://img.saihex.com/website_exclusive/general/web_banner.png");
+    background-image: linear-gradient(to bottom, transparent, transparent, rgb(32, 32, 32)), url("https://img.saihex.com/webp?src=website_exclusive/general/web_banner.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;

@@ -115,7 +115,7 @@ onMounted(async () => {
                         src="https://img.saihex.com/website_exclusive/socials/x.svg"
                         class="mobile_socials_footer" /></a>
                 <a href="https://www.youtube.com/@saihex_studios"><img
-                        src="https://img.saihex.com/website_exclusive/socials/yt_logo_mono_dark.png"
+                        src="https://img.saihex.com/webp?src=website_exclusive/socials/yt_logo_mono_dark.png"
                         class="mobile_socials_footer" /></a>
             </div>
             <div class="flex text-center justify-center">Saihex Studios © 2024</div>
