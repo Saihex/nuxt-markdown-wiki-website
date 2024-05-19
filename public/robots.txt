@@ -1,3 +1,8 @@
+# robots.txt file for Saihex Wiki
+# I like how nobody know that
+#
+# insert silence here
+
 User-agent: *
 Disallow: /backends
 Disallow: /api/
