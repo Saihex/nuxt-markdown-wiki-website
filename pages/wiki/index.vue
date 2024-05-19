@@ -27,9 +27,9 @@ const search_input = async (inputValue: string) => {
     debouce_interfered.value = false;
     debouce.value = false;
 }
-const desc = "Welcome to Saihex Studios' Official Wiki Website! This website is where all Saihex's franchise and other creations official wikis are located.";
+const desc = "List of wikis available on Saihex Studios Wiki | Saihex Wiki";
 useHead({
-    title: 'Saihex Studios Official Wiki - Wiki List',
+    title: 'Saihex Studios Official Wiki - Wiki List | Saihex wiki list',
     meta: [
         { name: 'description', content: desc }
     ],
@@ -40,8 +40,8 @@ useHead({
 })
 
 useSeoMeta({
-    ogTitle: 'Saihex Studios Wiki List',
-    twitterTitle: 'Saihex Studios Wiki List',
+    ogTitle: 'Saihex Studios Wiki List | Saihex wiki list',
+    twitterTitle: 'Saihex Studios Wiki List | Saihex wiki list',
     ogDescription: desc,
     twitterDescription: desc
 })
@@ -55,7 +55,7 @@ useSeoMeta({
         <div class="min-h-svh">
             <div class="my-10" />
             <h2 class="py-4 text-center font-bold text-6xl underline">Wiki Search Page</h2>
-            <h3 class="my-2 text-center text-xl">Limited to 50 results per search</h3>
+            <h3 class="my-2 text-center text-xl">Limited to 50 results per search</h3>S
             <div class="my-5 p-1 text-center text-2xl bg-yellow-500 mx-20 text-black" v-if="debouce_interfered">Wait a
                 little alright?</div>
             <div class="my-2 p-5 text-center text-3xl bg-red-400 mx-20 text-black" v-if="errored">Oh uh... something

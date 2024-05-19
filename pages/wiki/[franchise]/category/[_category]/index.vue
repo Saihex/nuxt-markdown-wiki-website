@@ -39,9 +39,9 @@ const search_input = async (inputValue: string) => {
 const spoiler_warning = parsed_markdown.data.spoiler ? '[SPOILER WARNING]\n' : '';
 
 useHead({
-    title: `${parsed_markdown.data.title} - ${franchise_data.franchise_proper_name}`,
+    title: `${parsed_markdown.data.title} - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
     meta: [
-        { name: 'description', content: spoiler_warning + parsed_markdown.data.description },
+        { name: 'description', content: add_description_mark(spoiler_warning + parsed_markdown.data.description) },
         { name: 'twitter:card', content: "summary_large_image"}
     ],
     link: [
@@ -55,8 +55,8 @@ const embed_images = embed_svg_url(parsed_markdown.data.image);
 useSeoMeta({
     ogTitle: `${parsed_markdown.data.title} - ${franchise_data.franchise_proper_name}`,
     twitterTitle: `${parsed_markdown.data.title} - ${franchise_data.franchise_proper_name}`,
-    ogDescription: `${spoiler_warning}${parsed_markdown.data.description}`,
-    twitterDescription: `${spoiler_warning}${parsed_markdown.data.description}`,
+    ogDescription: `${spoiler_warning}${add_description_mark(parsed_markdown.data.description)}`,
+    twitterDescription: `${spoiler_warning}${add_description_mark(parsed_markdown.data.description)}`,
 	ogImage: embed_images,
 	twitterImage: embed_images,
 })

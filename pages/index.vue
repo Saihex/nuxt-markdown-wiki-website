@@ -1,7 +1,7 @@
 <script setup lang="ts">
-const desc = "Welcome to Saihex Studios' Official Wiki Website! This website is where all Saihex's franchise and other creations official wikis are located.";
+const desc = "Welcome to Saihex Studios' Official Wiki Website! This website is where all Saihex's franchise and other creations official wikis are located. This website name can be shorten as Saihex Wiki";
 useHead({
-    title: 'Saihex Studios Official Wiki',
+    title: 'Saihex Studios Official Wiki | Saihex Wiki',
     meta: [
         { name: 'description', content: desc }
     ],
@@ -12,8 +12,8 @@ useHead({
 })
 
 useSeoMeta({
-    ogTitle: 'Saihex Studios\' Wiki Homepage',
-    twitterTitle: 'Saihex Studios\' Wiki Homepage',
+    ogTitle: 'Saihex Studios\' Wiki Homepage | Saihex Wiki Homepage',
+    twitterTitle: 'Saihex Studios\' Wiki Homepage | Saihex Wiki Homepage',
     ogDescription: desc,
     twitterDescription: desc
 })
@@ -81,8 +81,8 @@ onUnmounted(() => {
                             STUDIOS</b> written inside a orange box <b>(the entire box appear as orange and the text
                             won't be present for mobile)</b>, this indicates that wiki franchise is not owned
                         or/and controlled by Saihex Studios. However it still falls under <a
-                            class="text-purple-400 underline"
-                            href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA</a>.</p>
+                            class="text-purple-400 underline" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                            target="_blank">CC BY-NC-SA</a>.</p>
                     <p class="my-2 text-2xl">Franchises that are not owned or/and controlled by Saihex Studios are
                         likely to be from our allies or our developer's own projects who wanted to host their franchise
                         on our wiki website. We are not
@@ -191,8 +191,9 @@ onUnmounted(() => {
                         appear showing you the image as well URL to its source link at the bottom.</p>
                     <p class="my-2 text-2xl">The image is set to be minimum scale of 288px and maximum scale of 60% of
                         the screen width. Height will scale alongside with width to maintain aspect ratio.</p>
-                    <p class="my-2 text-2xl font-bold">Images on this website falls under <a class="text-purple-400 underline"
-                            href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA</a> unless otherwise noted.</p>
+                    <p class="my-2 text-2xl font-bold">Images on this website falls under <a
+                            class="text-purple-400 underline" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                            target="_blank">CC BY-NC-SA</a> unless otherwise noted.</p>
                 </div>
                 <img src="https://img.saihex.com/wiki_exclusive/tutorial/image_viewer.png"
                     class="hidden md:flex w-[512px] mr-5 outline outline-black outline-2 h-fit" />

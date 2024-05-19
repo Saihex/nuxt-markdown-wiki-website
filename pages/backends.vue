@@ -1,7 +1,7 @@
 <script setup lang="ts">
-const desc = "Saihex Studios' wiki website backend software.";
+const desc = "Saihex Studios' wiki website backend software. Saihex wiki backend softwares";
 useHead({
-    title: 'Saihex Studios Official Wiki Backends',
+    title: 'Saihex Studios Official Wiki Backends | Saihex Wiki Backends',
     meta: [
         { name: 'description', content: desc }
     ],
@@ -12,8 +12,8 @@ useHead({
 })
 
 useSeoMeta({
-    ogTitle: 'Saihex Studios\' Wiki Backends',
-    twitterTitle: 'Saihex Studios\' Wiki Backends',
+    ogTitle: 'Saihex Studios\' Wiki Backends | Saihex Wiki Backends',
+    twitterTitle: 'Saihex Studios\' Wiki Backends | Saihex Wiki Backends',
     ogDescription: desc,
     twitterDescription: desc
 })

@@ -32,7 +32,7 @@ const search_input = async (inputValue: string) => {
 }
 
 useHead({
-    title: `Category search - ${franchise_data.franchise_proper_name}`,
+    title: `Category search - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
     meta: [
         { name: 'description', content: `Search this wiki's categories.` },
         { name: 'twitter:card', content: "summary_large_image"}

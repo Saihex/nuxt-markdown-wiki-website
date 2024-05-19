@@ -22,9 +22,9 @@ watch(() => route.hash, () => {
 show_loading.value = false;
 
 useHead({
-    title: `Home - ${franchise_data.franchise_proper_name}`,
+    title: `Home - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
     meta: [
-        { name: 'description', content: parsed_markdown.data.description },
+        { name: 'description', content: add_description_mark(parsed_markdown.data.description) },
         { name: 'twitter:card', content: "summary_large_image"}
     ],
     link: [
@@ -38,8 +38,8 @@ const embed_image = embed_svg_url(parsed_markdown.data.default_embed_image);
 useSeoMeta({
     ogTitle: `Home - ${franchise_data.franchise_proper_name}`,
     twitterTitle: `Home - ${franchise_data.franchise_proper_name}`,
-    ogDescription: parsed_markdown.data.description,
-    twitterDescription: parsed_markdown.data.description,
+    ogDescription: add_description_mark(parsed_markdown.data.description),
+    twitterDescription: add_description_mark(parsed_markdown.data.description),
 	ogImage: embed_image,
 	twitterImage: embed_image,
 })
