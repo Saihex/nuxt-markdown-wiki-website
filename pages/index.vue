@@ -69,7 +69,7 @@ onUnmounted(() => {
 
             <div class="information_texts justify-between">
                 <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/wiki_list.png"
-                    class="w-[512px] mr-5 outline outline-black outline-2 h-fit" />
+                    class="w-[512px] mr-5 outline outline-black outline-2 h-fit" alt="wiki list example"/>
                 <div>
                     <h1 class="underline font-bold">Wiki List</h1>
                     <p class="my-2 text-2xl">You can access the wiki list and search page from clicking the <b
@@ -111,7 +111,7 @@ onUnmounted(() => {
 
             <div class="information_texts justify-between">
                 <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/syntax.png"
-                    class="w-[512px] mr-5 outline outline-black outline-2 h-fit" />
+                    class="w-[512px] mr-5 outline outline-black outline-2 h-fit" alt="syntax example"/>
                 <div>
                     <h1 class="underline font-bold">Syntax highlighting</h1>
                     <p class="my-2 text-2xl">Header 1 or the title is only used as the page title. <a
@@ -133,7 +133,7 @@ onUnmounted(() => {
 
             <div class="information_texts justify-between">
                 <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/anchor_urls.png"
-                    class="flex md:hidden w-[512px] mr-5 outline outline-black outline-2 h-fit" />
+                    class="flex md:hidden w-[512px] mr-5 outline outline-black outline-2 h-fit" alt="anchor url example"/>
                 <div>
                     <h1 class="underline font-bold">Hash URL</h1>
                     <p class="my-2 text-2xl">Hash URL will result in the page scrolling down to the subtitle upon page
@@ -141,12 +141,12 @@ onUnmounted(() => {
                         easier to see especially in text cluttered page.</p>
                 </div>
                 <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/anchor_urls.png"
-                    class="hidden md:flex w-[512px] mr-5 outline outline-black outline-2 h-fit" />
+                    class="hidden md:flex w-[512px] mr-5 outline outline-black outline-2 h-fit" alt="anchor url example"/>
             </div>
 
             <div class="information_texts justify-between">
                 <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/spoilers.png"
-                    class="w-[512px] mr-5 outline outline-black outline-2 h-fit" />
+                    class="w-[512px] mr-5 outline outline-black outline-2 h-fit" alt="spoiler warning example"/>
                 <div>
                     <h1 class="underline font-bold">Spoiler warnings</h1>
                     <ul class="list-disc ml-3">
@@ -183,7 +183,7 @@ onUnmounted(() => {
 
             <div class="information_texts justify-between">
                 <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/image_viewer.png"
-                    class="flex md:hidden w-[512px] mr-5 outline outline-black outline-2 h-fit" />
+                    class="flex md:hidden w-[512px] mr-5 outline outline-black outline-2 h-fit" alt="image viewer example"/>
                 <div>
                     <h1 class="underline font-bold">Image Viewer</h1>
                     <p class="my-2 text-2xl">By clicking on the images within the wiki pages or even this page; a
@@ -196,7 +196,7 @@ onUnmounted(() => {
                             target="_blank">CC BY-NC-SA</a> unless otherwise noted.</p>
                 </div>
                 <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/image_viewer.png"
-                    class="hidden md:flex w-[512px] mr-5 outline outline-black outline-2 h-fit" />
+                    class="hidden md:flex w-[512px] mr-5 outline outline-black outline-2 h-fit" alt="image viewer example"/>
             </div>
         </div>
     </div>

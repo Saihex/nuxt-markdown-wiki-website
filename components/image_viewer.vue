@@ -12,7 +12,7 @@
             <h1 class="font-bold underline">Image Viewer</h1>
             <h3 class="mb-2 italic">Image may be CSS downscaled in order to fit on your screen</h3>
             <div class="flex justify-center">
-                <img :src="url_ref" class="min-w-72 max-w-[60%] h-auto outline outline-1 outline-white" />
+                <img :src="url_ref" class="min-w-72 max-w-[60%] h-auto outline outline-1 outline-white" alt="image viewer box"/>
             </div>
             <a class="m-2 text-purple-300 underline text-base" :href="url_ref" target="_blank">{{
                 url_ref }}</a>

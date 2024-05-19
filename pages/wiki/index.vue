@@ -75,7 +75,7 @@ useSeoMeta({
                     :class="one_of_rsult.saihex_creation ? `result_boxes` : `result_boxes_non_saihex`"
                     :href="`/wiki/${one_of_rsult.dynamic_path}`">
                     <div class="md:flex">
-                        <img :src="one_of_rsult.image" class="w-32 h-32 mx-3" />
+                        <img :src="one_of_rsult.image" class="w-32 h-32 mx-3" alt="franchise icon"/>
                         <div>
                             <p class="non-saihex hidden md:flex" v-if="!one_of_rsult.saihex_creation">Not owned or/and
                                 controlled by Saihex Studios</p>

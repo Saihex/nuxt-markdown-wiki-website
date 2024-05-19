@@ -21,7 +21,7 @@ onMounted(async () => {
 
                 <!-- logo -->
                 <a href="/" class="centerItem topbarButton">
-                    <img preload src="https://img.saihex.com/saihex.svg" class="h-8 w-8 mr-1" />
+                    <img preload src="https://img.saihex.com/saihex.svg" class="h-8 w-8 mr-1" alt="Saihex Studios Icon"/>
                     <h2>Saihex Studios Official Wiki</h2>
                 </a>
 
@@ -48,7 +48,7 @@ onMounted(async () => {
 
                     <UTooltip text="The 4Tris Wiki" :popper="{ arrow: true }">
                         <NuxtLink to="/wiki/The4Tris" class="block topbarButton centerItem"><img
-                                src="https://img.saihex.com/wiki_exclusive/The4Tris/The4Tris.svg" class="h-10 mr-1" />
+                                src="https://img.saihex.com/wiki_exclusive/The4Tris/The4Tris.svg" class="h-10 mr-1" alt="The 4Tris icon"/>
                         </NuxtLink>
                     </UTooltip>
                 </div>
@@ -87,7 +87,7 @@ onMounted(async () => {
                 </a>
 
                 <a href="/wiki/The4Tris" class="block topbarButton centerItem mb-20">
-                    <img src="https://img.saihex.com/wiki_exclusive/The4Tris/The4Tris.svg" class="h-12 mr-1" />
+                    <img src="https://img.saihex.com/wiki_exclusive/The4Tris/The4Tris.svg" class="h-12 mr-1" alt="The 4Tris wiki"/>
                     The 4Tris Wiki
                 </a>
             </div>
@@ -110,13 +110,13 @@ onMounted(async () => {
             <div class="flex justify-center my-1">
                 <a href="https://discord.gg/eJjsqzkQ7t"><img
                         src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6ca814282eca7172c6_icon_clyde_white_RGB.svg"
-                        class="mobile_socials_footer" /></a>
+                        class="mobile_socials_footer" alt="discord"/></a>
                 <a href="https://twitter.com/saihex_studios"><img
                         src="https://img.saihex.com/website_exclusive/socials/x.svg"
-                        class="mobile_socials_footer" /></a>
+                        class="mobile_socials_footer" alt="twitter"/></a>
                 <a href="https://www.youtube.com/@saihex_studios"><img
                         src="https://img.saihex.com/webp?src=website_exclusive/socials/yt_logo_mono_dark.png"
-                        class="mobile_socials_footer" /></a>
+                        class="mobile_socials_footer" alt="youtube"/></a>
             </div>
             <div class="flex text-center justify-center">Saihex Studios © 2024</div>
         </footer>

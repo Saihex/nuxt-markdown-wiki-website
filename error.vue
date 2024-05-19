@@ -2,9 +2,9 @@
     <div class="py-32 text-center justify-center flex">
         <div class="hidden md:flex">
             <img v-if="error.statusCode === 404" src="https://img.saihex.com/webp?src=website_exclusive/error_images/404.png"
-                class="image_err" />
+                class="image_err" alt="404 warning"/>
             <img v-if="error.statusCode === 500" src="https://img.saihex.com/webp?src=website_exclusive/error_images/500.png"
-                class="image_err" />
+                class="image_err" alt="500 warning"/>
         </div>
         <div>
             <div class="inline-block align-middle md:pt-36">
@@ -21,9 +21,9 @@
             </div>
             <div class="flex md:hidden">
                 <img v-if="error.statusCode === 404" src="https://img.saihex.com/webp?src=website_exclusive/error_images/404.png"
-                    class="image_err" />
+                    class="image_err" alt="404 warning"/>
                 <img v-if="error.statusCode === 500" src="https://img.saihex.com/webp?src=website_exclusive/error_images/500.png"
-                    class="image_err" />
+                    class="image_err" alt="500 warning"/>
             </div>
         </div>
     </div>

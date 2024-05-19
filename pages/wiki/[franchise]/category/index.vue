@@ -91,7 +91,7 @@ useSeoMeta({
             <div class="result_box">
                 <a v-for="one_of_rsult in results" :class="!one_of_rsult.spoiler ? `result_boxes` : `result_boxes_spoiler`" :href="`category/${one_of_rsult.dynamic_path}`">
                     <div class="md:flex">
-                        <img :src="one_of_rsult.image" class="w-28 h-28 mx-3" />
+                        <img :src="one_of_rsult.image" class="w-28 h-28 mx-3" alt="category contents"/>
                         <div>
                             <p class="spoiler hidden md:flex" v-if="one_of_rsult.spoiler">SPOILER WARNING</p>
                             <h1 class="underline">{{one_of_rsult.title}}</h1>

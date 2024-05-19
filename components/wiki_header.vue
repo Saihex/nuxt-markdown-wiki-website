@@ -5,7 +5,7 @@
 
     <div class="md:flex md:justify-between select-none">
       <a :href="`/wiki/${franchise}`" class="centerItem wiki_header_buttons">
-        <img :src="franchise_image" class="h-32 mr-1" />
+        <img :src="franchise_image" class="h-32 mr-1" alt="franchise head image"/>
       </a>
 
       <UTooltip text="Including home page and category page" :popper="{ arrow: true }">

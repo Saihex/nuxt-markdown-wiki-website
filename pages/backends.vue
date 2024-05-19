@@ -33,7 +33,7 @@ useSeoMeta({
 
             <div class="information_texts">
                 <img src="https://img.saihex.com/software_logos/markdown_catalogue_server.svg"
-                    class="w-[256px] h-fit mr-5" />
+                    class="w-[256px] h-fit mr-5" alt="markdown catalogue server icon"/>
 
                 <div>
                     <h1 class="underline font-bold">Markdown Catalogue Server</h1>
@@ -49,7 +49,7 @@ useSeoMeta({
 
             <div class="information_texts  justify-end">
                 <img src="https://nuxt.com/assets/design-kit/icon-green.svg"
-                    class="hidden w-[256px] mr-5 h-fit max-sm:flex" />
+                    class="hidden w-[256px] mr-5 h-fit max-sm:flex" alt="nuxt icon"/>
                 <div>
                     <h1 class="underline font-bold">Front-end framework</h1>
                     <p class="my-2 text-2xl">We used <b>Nuxt 3</b> as our website framework because it is generally easy
@@ -64,7 +64,7 @@ useSeoMeta({
                         https://github.com/Saihex/nuxt-markdown-wiki-website</a>
                 </div>
                 <img src="https://nuxt.com/assets/design-kit/icon-green.svg"
-                    class="flex w-[256px] mr-5 h-fit max-sm:hidden" />
+                    class="flex w-[256px] mr-5 h-fit max-sm:hidden" alt="nuxt icon"/>
             </div>
         </div>
     </div>

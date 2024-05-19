@@ -73,7 +73,7 @@ useSeoMeta({
                 :raw_json="used_path" :page_count="franchise_data.page_count" :no_json="true" :saihex_creation="franchise_data.saihex_creation" :spoiler="parsed_markdown.data.spoiler" />
     
             <div class="hidden md:flex md:centerItem md:wiki_header_buttons_nohover">
-                <img preload :src="parsed_markdown.data.image" class="h-32 mr-1" />
+                <img preload :src="parsed_markdown.data.image" class="h-32 mr-1" alt="page_icon"/>
             </div>
         </div>
     
@@ -102,7 +102,7 @@ useSeoMeta({
         <div class="result_box mb-20">
             <a v-for="one_of_rsult in results" :class="!one_of_rsult.spoiler ? `result_boxes` : `result_boxes_spoiler`" :href="`${route.params._category}/${one_of_rsult.dynamic_path}`">
                 <div class="md:flex">
-                    <img :src="one_of_rsult.image" class="w-28 h-28 mx-3" />
+                    <img :src="one_of_rsult.image" class="w-28 h-28 mx-3" alt="category result"/>
                     <div>
                         <p class="spoiler hidden md:flex" v-if="one_of_rsult.spoiler">SPOILER WARNING</p>
                         <h1 class="underline">{{one_of_rsult.title}}</h1>

@@ -64,7 +64,7 @@ useSeoMeta({
                 :raw_json="used_path" :page_count="franchise_data.page_count" :saihex_creation="franchise_data" :spoiler="parsed_markdown.data.spoiler" />
     
             <div class="hidden md:flex md:centerItem md:wiki_header_buttons_nohover">
-                <img preload :src="parsed_markdown.data.image" class="h-32 mr-1" />
+                <img preload :src="parsed_markdown.data.image" class="h-32 mr-1" alt="page icon"/>
             </div>
         </div>
     
