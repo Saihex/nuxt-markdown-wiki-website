@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /backends
+Disallow: /api/
+Disallow: /super_secret_no_normal_user_knows
+Allow: /api/sitemap
+Allow: /api/sitemap/
+Allow: /api/sitemap_xml
+Allow: /api/sitemap_xml/
+
+Sitemap: /api/sitemap
+Sitemap: /api/sitemap_xml
