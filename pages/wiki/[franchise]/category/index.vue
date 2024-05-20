@@ -47,8 +47,8 @@ const embed_images = embed_svg_url(parsed_markdown.data.default_embed_image);
 useSeoMeta({
     ogTitle: `Category search - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
     twitterTitle: `Category search - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
-    ogDescription: add_description_mark(`Search this wiki's categories.`),
-    twitterDescription: add_description_mark(`Search this wiki's categories.`),
+    ogDescription: add_description_mark(`Search ${franchise_data.franchise_proper_name} wiki's categories.`),
+    twitterDescription: add_description_mark(`Search ${franchise_data.franchise_proper_name} wiki's categories.`),
 	ogImage: embed_images,
 	twitterImage: embed_images,
 })
@@ -91,7 +91,7 @@ useSeoMeta({
             <div class="result_box">
                 <a v-for="one_of_rsult in results" :class="!one_of_rsult.spoiler ? `result_boxes` : `result_boxes_spoiler`" :href="`category/${one_of_rsult.dynamic_path}`">
                     <div class="md:flex">
-                        <img :src="one_of_rsult.image" class="w-28 h-28 mx-3" alt="category contents"/>
+                        <img :src="one_of_rsult.image" class="w-28 h-28 mx-3" :alt="`${one_of_rsult.title} category icon`"/>
                         <div>
                             <p class="spoiler hidden md:flex" v-if="one_of_rsult.spoiler">SPOILER WARNING</p>
                             <h1 class="underline">{{one_of_rsult.title}}</h1>

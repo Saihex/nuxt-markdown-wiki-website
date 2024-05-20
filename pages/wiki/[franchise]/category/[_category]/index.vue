@@ -2,7 +2,6 @@
 const route = useRoute();
 remove_trailing_slash(route);
 const path = `${route.params.franchise}/${route.params._category}/index.md`;
-console.log(path);
 const [ { parsed_markdown, franchise_data, used_path }, unref_results ] = await Promise.all([
     fetch_markdown_parse(path, route), // Assuming fetch_markdown_parse() returns an array with three elements
     fetch_category_content_search(route.params.franchise as string, route.params._category as string, "")
@@ -39,7 +38,7 @@ const search_input = async (inputValue: string) => {
 const spoiler_warning = parsed_markdown.data.spoiler ? '[SPOILER WARNING]\n' : '';
 
 useHead({
-    title: `${parsed_markdown.data.title} - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
+    title: `${parsed_markdown.data.title} Category - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
     meta: [
         { name: 'description', content: add_description_mark(spoiler_warning + parsed_markdown.data.description) },
         { name: 'twitter:card', content: "summary_large_image"}
@@ -53,10 +52,10 @@ useHead({
 const embed_images = embed_svg_url(parsed_markdown.data.image);
 
 useSeoMeta({
-    ogTitle: `${parsed_markdown.data.title} - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
-    twitterTitle: `${parsed_markdown.data.title} - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
-    ogDescription: `${spoiler_warning}${add_description_mark(parsed_markdown.data.description)}`,
-    twitterDescription: `${spoiler_warning}${add_description_mark(parsed_markdown.data.description)}`,
+    ogTitle: `${parsed_markdown.data.title} Category - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
+    twitterTitle: `${parsed_markdown.data.title} Category - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
+    ogDescription: `${spoiler_warning} [Category]\n ${add_description_mark(parsed_markdown.data.description)}`,
+    twitterDescription: `${spoiler_warning} [Category]\n ${add_description_mark(parsed_markdown.data.description)}`,
 	ogImage: embed_images,
 	twitterImage: embed_images,
 })
@@ -102,7 +101,7 @@ useSeoMeta({
         <div class="result_box mb-20">
             <a v-for="one_of_rsult in results" :class="!one_of_rsult.spoiler ? `result_boxes` : `result_boxes_spoiler`" :href="`${route.params._category}/${one_of_rsult.dynamic_path}`">
                 <div class="md:flex">
-                    <img :src="one_of_rsult.image" class="w-28 h-28 mx-3" alt="category result"/>
+                    <img :src="one_of_rsult.image" class="w-28 h-28 mx-3" :alt="`${one_of_rsult.title} page icon`"/>
                     <div>
                         <p class="spoiler hidden md:flex" v-if="one_of_rsult.spoiler">SPOILER WARNING</p>
                         <h1 class="underline">{{one_of_rsult.title}}</h1>

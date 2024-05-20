@@ -22,14 +22,11 @@ const refresh_image_elements = function (ref: references) {
 
       element.addEventListener("click", () => {
         const src = element.getAttribute("src");
-        console.log("update fool");
         ref.url_ref.value = typeof src == "string" ? src : "";
         ref.visible_ref.value = true;
       });
     }
   });
-
-  console.log(arr_of_elements.length);
 };
 
 const create_image_viewer_ref = function (): references {
