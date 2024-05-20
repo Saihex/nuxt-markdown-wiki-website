@@ -25,8 +25,11 @@ watch(() => route.hash, () => {
 
 const spoiler_warning = parsed_markdown.data.spoiler ? '[SPOILER WARNING]\n' : '';
 
+const page_title = `${parsed_markdown.data.title} - ${fixup_category_name(route.params._category as string)} Category - ${franchise_data.franchise_proper_name} - Saihex Wiki`;
+const page_desc = add_description_mark(spoiler_warning + `\n[${fixup_category_name(route.params._category as string)} Category]\n` + parsed_markdown.data.description);
+
 useHead({
-    title: `${parsed_markdown.data.title} - ${route.params._category} Category - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
+    title: page_title,
     meta: [
         { name: 'description', content: add_description_mark(spoiler_warning + parsed_markdown.data.description) },
         { name: 'twitter:card', content: "summary_large_image"}
@@ -40,10 +43,10 @@ useHead({
 const embed_images = embed_svg_url(parsed_markdown.data.image);
 
 useSeoMeta({
-    ogTitle: `${parsed_markdown.data.title} - ${route.params._category} Category - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
-    twitterTitle: `${parsed_markdown.data.title} - ${route.params._category} Category - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
-    ogDescription: add_description_mark(spoiler_warning + `\n[${route.params._category} Category]\n` + parsed_markdown.data.description),
-    twitterDescription: add_description_mark(spoiler_warning + `\n[${route.params._category} Category]\n` + parsed_markdown.data.description),
+    ogTitle: page_title,
+    twitterTitle: page_title,
+    ogDescription: page_desc,
+    twitterDescription: page_desc,
 	ogImage: embed_images,
 	twitterImage: embed_images,
 })
