@@ -38,7 +38,7 @@ export const add_description_mark = function (
 
   return (
     url +
-    `\n[Last database change: ${date_formatter(
+    `\n\n[Last database change: ${date_formatter(
       last_modified
     )}]\n[Saihex Studios Official Wiki | Saihex Wiki]`
   );
