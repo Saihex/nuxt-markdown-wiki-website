@@ -4,8 +4,10 @@ import { embed_svg_url } from '~/composables/embed_svg';
 const route = useRoute();
 const path = `${route.params.franchise}/index.md`;
 const {parsed_markdown, franchise_data, used_path} = await fetch_markdown_parse(path, route);
-const results = ref(await fetch_category_search(route.params.franchise as string, ""));
-const inputValue = ref('');
+
+const inputValue = ref(typeof route.query.search == "string" ? route.query.search : "");
+const results = ref(await fetch_category_search(route.params.franchise as string, inputValue.value));
+
 const errored = ref(false);
 const debouce = ref(false);
 const debouce_interfered = ref(false);
@@ -16,12 +18,13 @@ onMounted(() => {
 })
 
 const search_input = async (inputValue: string) => {
+    navigateTo(inputValue != "" ? `?search=${inputValue}` : "?");
     if (debouce.value) {
         debouce_interfered.value = true;
         return
     };
     try {
-        results.value = await fetch_category_search(route.params.franchise as string, inputValue.replace(" ", "_"));
+        results.value = await fetch_category_search(route.params.franchise as string, inputValue);
         errored.value = false;
     } catch (e) {
         errored.value = true;
@@ -34,7 +37,7 @@ const search_input = async (inputValue: string) => {
 useHead({
     title: `Category search - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
     meta: [
-        { name: 'description', content: add_description_mark(`Search this wiki's categories.`) },
+        { name: 'description', content: add_description_mark(`Search this wiki's categories.`, undefined) },
         { name: 'twitter:card', content: "summary_large_image"}
     ],
     link: [
@@ -47,8 +50,8 @@ const embed_images = embed_svg_url(parsed_markdown.data.default_embed_image);
 useSeoMeta({
     ogTitle: `Category search - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
     twitterTitle: `Category search - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
-    ogDescription: add_description_mark(`Search ${franchise_data.franchise_proper_name} wiki's categories.`),
-    twitterDescription: add_description_mark(`Search ${franchise_data.franchise_proper_name} wiki's categories.`),
+    ogDescription: add_description_mark(`Search ${franchise_data.franchise_proper_name} wiki's categories.`, undefined),
+    twitterDescription: add_description_mark(`Search ${franchise_data.franchise_proper_name} wiki's categories.`, undefined),
 	ogImage: embed_images,
 	twitterImage: embed_images,
 })
@@ -75,8 +78,7 @@ useSeoMeta({
 
         <div class="min-h-svh">
             <div class="my-10" />
-            <h2 class="py-4 text-center font-bold text-6xl underline">Category search page</h2>
-            <h3 class="my-2 text-center text-xl">Limited to 50 results per search</h3>
+            <h2 class="py-4 text-center font-bold text-6xl underline my-3">Category search page</h2>
             <div class="my-5 p-1 text-center text-2xl bg-yellow-500 mx-20 text-black" v-if="debouce_interfered">Wait a little alright?</div>
             <div class="my-2 p-5 text-center text-3xl bg-red-400 mx-20 text-black" v-if="errored">Oh uh... something failed...</div>
             <div class="search_box">

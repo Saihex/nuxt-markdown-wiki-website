@@ -2,37 +2,40 @@ import type { AsyncDataRequestStatus } from "#app";
 import type { RouteLocationNormalizedLoaded } from "vue-router";
 
 interface category_search_result {
-  title: string,
-  description: string,
-  image: string,
-  dynamic_path: string,
-  spoiler: boolean,
+  title: string;
+  description: string;
+  image: string;
+  dynamic_path: string;
+  spoiler: boolean;
+  last_modified: number;
 }
 
 export default interface franchise_data {
-  title: string,
-  description: string,
-  ico_image: string,
-  wiki_head_image: string,
-  default_embed_image: string,
-  image: string,
-  franchise_proper_name: String,
-  page_count: Number,
-  dynamic_path: String,
-  saihex_creation: boolean,
+  title: string;
+  description: string;
+  ico_image: string;
+  wiki_head_image: string;
+  default_embed_image: string;
+  image: string;
+  franchise_proper_name: String;
+  page_count: Number;
+  dynamic_path: String;
+  saihex_creation: boolean;
+  last_modified: number;
 }
 
 interface search_result {
-  title: string,
-  description: string,
-  image: string,
-  dynamic_route: string,
-  spoiler: boolean
+  title: string;
+  description: string;
+  image: string;
+  dynamic_route: string;
+  spoiler: boolean;
+  last_modified: number;
 }
 
 interface markdown_return {
-  markdown_string: string,
-  franchise_data: franchise_data
+  markdown_string: string;
+  franchise_data: franchise_data;
 }
 
 const check_error = function (
@@ -93,6 +96,19 @@ export const fetch_search = async function (
   return { search_results, franchise_data };
 };
 
+export const fetch_last_changed = async function (path: string): Promise<number> {
+  // Run the requests in parallel
+  const last_changed = await useFetch(`/api/last_changed/${path}`, {
+    server: true,
+  });
+
+  const { data: last_changed_data, status, error } = last_changed;
+
+  const value = last_changed_data.value as number;
+
+  return value;
+};
+
 export const fetch_markdown_parse = async function (
   path: string,
   route: RouteLocationNormalizedLoaded
@@ -111,7 +127,7 @@ export const fetch_markdown_parse = async function (
       statusCode: error.value?.statusCode,
       statusMessage: "",
     });
-  };
+  }
 
   const value = markdownString.value as markdown_return;
 
@@ -141,14 +157,14 @@ export const fetch_markdown_parse = async function (
 
 export const fetch_category_search = async function (
   franchise: string,
-  search_input: string,
+  search_input: string
 ) {
   // Run the requests in parallel
   const search_return = await useFetch(`/api/search/category/${franchise}`, {
     server: true,
     params: {
-      search_input: search_input
-    }
+      search_input: search_input,
+    },
   });
 
   // Destructure the responses
@@ -172,16 +188,19 @@ export const fetch_category_search = async function (
 export const fetch_category_content_search = async function (
   franchise: string,
   category: string,
-  search_input: string,
+  search_input: string
 ) {
   // Run the requests in parallel
-  const search_return = await useFetch(`/api/search/cat_contents/${franchise}`, {
-    server: true,
-    params: {
-      search_input: search_input,
-      catalog: category
+  const search_return = await useFetch(
+    `/api/search/cat_contents/${franchise}`,
+    {
+      server: true,
+      params: {
+        search_input: search_input,
+        catalog: category,
+      },
     }
-  });
+  );
 
   // Destructure the responses
   const { data: searchList, status, error } = search_return;
@@ -201,15 +220,13 @@ export const fetch_category_content_search = async function (
   return value;
 };
 
-export const fetch_search_wikis = async function (
-  search_input: string,
-) {
+export const fetch_search_wikis = async function (search_input: string) {
   // Run the requests in parallel
   const search_return = await useFetch(`/api/search/wiki_search`, {
     server: true,
     params: {
-      search_input: search_input
-    }
+      search_input: search_input,
+    },
   });
 
   // Destructure the responses

@@ -2,13 +2,15 @@
 const route = useRoute();
 remove_trailing_slash(route);
 const path = `${route.params.franchise}/${route.params._category}/index.md`;
+
+const inputValue = ref(typeof route.query.search == "string" ? route.query.search : "");
+
 const [ { parsed_markdown, franchise_data, used_path }, unref_results ] = await Promise.all([
     fetch_markdown_parse(path, route), // Assuming fetch_markdown_parse() returns an array with three elements
-    fetch_category_content_search(route.params.franchise as string, route.params._category as string, "")
+    fetch_category_content_search(route.params.franchise as string, route.params._category as string, inputValue.value)
 ]);
-
 const results = ref(unref_results);
-const inputValue = ref('');
+
 const errored = ref(false);
 const debouce = ref(false);
 const debouce_interfered = ref(false);
@@ -19,13 +21,14 @@ onMounted(() => {
 })
 
 const search_input = async (inputValue: string) => {
+    navigateTo(inputValue != "" ? `?search=${inputValue}` : "?");
     if (debouce.value) {
         debouce_interfered.value = true;
         return
     };
     try {
         debouce.value = true;
-        results.value = await fetch_category_content_search(route.params.franchise as string, route.params._category as string, inputValue.replace(" ", "_"));
+        results.value = await fetch_category_content_search(route.params.franchise as string, route.params._category as string, inputValue);
         errored.value = false;
     } catch (e) {
         errored.value = true;
@@ -40,7 +43,7 @@ const spoiler_warning = parsed_markdown.data.spoiler ? '[SPOILER WARNING]\n' : '
 useHead({
     title: `${parsed_markdown.data.title} Category - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
     meta: [
-        { name: 'description', content: add_description_mark(spoiler_warning + parsed_markdown.data.description) },
+        { name: 'description', content: add_description_mark(spoiler_warning + parsed_markdown.data.description, undefined) },
         { name: 'twitter:card', content: "summary_large_image"}
     ],
     link: [
@@ -54,8 +57,8 @@ const embed_images = embed_svg_url(parsed_markdown.data.image);
 useSeoMeta({
     ogTitle: `${parsed_markdown.data.title} Category - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
     twitterTitle: `${parsed_markdown.data.title} Category - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
-    ogDescription: `${spoiler_warning} [Category]\n ${add_description_mark(parsed_markdown.data.description)}`,
-    twitterDescription: `${spoiler_warning} [Category]\n ${add_description_mark(parsed_markdown.data.description)}`,
+    ogDescription: `${spoiler_warning} [Category]\n ${add_description_mark(parsed_markdown.data.description, undefined)}`,
+    twitterDescription: `${spoiler_warning} [Category]\n ${add_description_mark(parsed_markdown.data.description, undefined)}`,
 	ogImage: embed_images,
 	twitterImage: embed_images,
 })
@@ -83,8 +86,7 @@ useSeoMeta({
             </div>
         </div>
     
-        <h2 class="py-4 text-center font-bold text-6xl underline">Category contents search page</h2>
-        <h3 class="my-2 text-center text-xl">Limited to 50 results per search</h3>
+        <h2 class="py-4 text-center font-bold text-6xl underline my-3">Category contents search page</h2>
         <div class="my-5 p-1 text-center text-2xl bg-yellow-500 mx-20 text-black" v-if="debouce_interfered">Wait a little alright?</div>
         <div class="my-2 p-5 text-center text-3xl bg-red-400 mx-20 text-black" v-if="errored">Oh uh... something
             failed...</div>
@@ -104,6 +106,7 @@ useSeoMeta({
                     <img :src="one_of_rsult.image" class="w-28 h-28 mx-3" :alt="`${one_of_rsult.title} page icon`"/>
                     <div>
                         <p class="spoiler hidden md:flex" v-if="one_of_rsult.spoiler">SPOILER WARNING</p>
+                        <h3 class="flex text-1xl overflow-hidden opacity-50 italic">Last database change: {{date_formatter(one_of_rsult.last_modified)}}</h3>
                         <h1 class="underline">{{one_of_rsult.title}}</h1>
                         <h2 class="text-2xl overflow-hidden">{{one_of_rsult.description}}</h2>
                     </div>

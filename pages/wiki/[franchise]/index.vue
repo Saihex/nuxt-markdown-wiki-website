@@ -24,7 +24,7 @@ show_loading.value = false;
 useHead({
     title: `Home - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
     meta: [
-        { name: 'description', content: add_description_mark(`[${franchise_data.franchise_proper_name} Franchise] \n${parsed_markdown.data.description}`) },
+        { name: 'description', content: add_description_mark(`[${franchise_data.franchise_proper_name} Franchise] \n${parsed_markdown.data.description}`, franchise_data.last_modified) },
         { name: 'twitter:card', content: "summary_large_image"}
     ],
     link: [
@@ -38,8 +38,8 @@ const embed_image = embed_svg_url(parsed_markdown.data.default_embed_image);
 useSeoMeta({
     ogTitle: `Home - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
     twitterTitle: `Home - ${franchise_data.franchise_proper_name} - Saihex Wiki`,
-    ogDescription: add_description_mark(`[${franchise_data.franchise_proper_name} Franchise] \n${parsed_markdown.data.description}`),
-    twitterDescription: add_description_mark(`[${franchise_data.franchise_proper_name} Franchise] \n${parsed_markdown.data.description}`),
+    ogDescription: add_description_mark(`[${franchise_data.franchise_proper_name} Franchise] \n${parsed_markdown.data.description}`, franchise_data.last_modified),
+    twitterDescription: add_description_mark(`[${franchise_data.franchise_proper_name} Franchise] \n${parsed_markdown.data.description}`, franchise_data.last_modified),
 	ogImage: embed_image,
 	twitterImage: embed_image,
 })
@@ -69,6 +69,8 @@ useSeoMeta({
         </div>
 
         <div class="pageDataContainer">
+            <h1 class="text-xl italic opacity-50">Last database change on {{date_formatter(franchise_data.last_modified)}}</h1>
+
             <div class="wiki_container" id="page_contents">
                 <pa class="flex text-5xl m-24 content-center min-h-svh" v-if="show_loading">Loading...</pa>
                 <ContentRendererMarkdown v-if="!show_loading" :value="parsed_markdown" class="min-h-svh">

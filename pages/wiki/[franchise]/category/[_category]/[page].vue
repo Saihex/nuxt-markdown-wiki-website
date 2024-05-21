@@ -5,6 +5,7 @@ const route = useRoute();
 const path = `${route.params.franchise}/${route.params._category}/${route.params.page}.md`;
 const show_loading = ref(true);
 const {parsed_markdown, franchise_data, used_path} = await fetch_markdown_parse(path, route);
+const last_changed_unix = await fetch_last_changed(path);
 const mounted = ref(false);
 
 show_loading.value = false;
@@ -26,12 +27,12 @@ watch(() => route.hash, () => {
 const spoiler_warning = parsed_markdown.data.spoiler ? '[SPOILER WARNING]\n' : '';
 
 const page_title = `${parsed_markdown.data.title} - ${fixup_category_name(route.params._category as string)} Category - ${franchise_data.franchise_proper_name} - Saihex Wiki`;
-const page_desc = add_description_mark(spoiler_warning + `\n[${fixup_category_name(route.params._category as string)} Category]\n` + parsed_markdown.data.description);
+const page_desc = add_description_mark(spoiler_warning + `\n[${fixup_category_name(route.params._category as string)} Category]\n` + parsed_markdown.data.description, last_changed_unix);
 
 useHead({
     title: page_title,
     meta: [
-        { name: 'description', content: add_description_mark(spoiler_warning + parsed_markdown.data.description) },
+        { name: 'description', content: page_desc },
         { name: 'twitter:card', content: "summary_large_image"}
     ],
     link: [
@@ -72,6 +73,7 @@ useSeoMeta({
         </div>
     
         <div class="pageDataContainer">
+            <h1 class="text-xl italic opacity-50">Last database change on {{date_formatter(last_changed_unix)}}</h1>
             <div class="wiki_container" id="page_contents">
                 <pa class="flex text-5xl m-24 content-center min-h-svh" v-if="show_loading">Loading...</pa>
                 <ContentRendererMarkdown v-if="!show_loading" :value="parsed_markdown" class="min-h-svh">

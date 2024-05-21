@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const route = useRoute();
-const results = ref(await fetch_search_wikis(""));
-const inputValue = ref('');
+const inputValue = ref(typeof route.query.search == "string" ? route.query.search : "");
+const results = ref(await fetch_search_wikis(inputValue.value));
 const errored = ref(false);
 const debouce = ref(false);
 const debouce_interfered = ref(false);
@@ -13,12 +13,13 @@ onMounted(async () => {
 })
 
 const search_input = async (inputValue: string) => {
+    navigateTo(inputValue != "" ? `?search=${inputValue}` : "?");
     if (debouce.value) {
         debouce_interfered.value = true;
         return
     };
     try {
-        results.value = await fetch_search_wikis(inputValue.replace(" ", "_"));
+        results.value = await fetch_search_wikis(inputValue);
         errored.value = false;
     } catch (e) {
         errored.value = true;
@@ -77,6 +78,7 @@ useSeoMeta({
                     <div class="md:flex">
                         <img :src="one_of_rsult.image" class="w-32 h-32 mx-3" alt="franchise icon"/>
                         <div>
+                            <h3 class="flex text-1xl overflow-hidden opacity-50 italic">Last database change: {{date_formatter(one_of_rsult.last_modified)}}</h3>
                             <p class="non-saihex hidden md:flex" v-if="!one_of_rsult.saihex_creation">Not owned or/and
                                 controlled by Saihex Studios</p>
                             <h1 class="underline block md:flex no-view-image">{{one_of_rsult.franchise_proper_name}}
