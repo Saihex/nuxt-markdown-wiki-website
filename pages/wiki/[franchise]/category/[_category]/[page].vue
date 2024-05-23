@@ -65,13 +65,14 @@ useSeoMeta({
         <div class="wiki_header justify-between"> <!-- a div to make elements a little bit far from the sides. -->
 
             <Wiki_header :franchise="route.params.franchise" :franchise_image="franchise_data.wiki_head_image"
-                :raw_json="used_path" :page_count="franchise_data.page_count" :saihex_creation="franchise_data" :spoiler="parsed_markdown.data.spoiler" />
-    
+                :raw_json="used_path" :page_count="franchise_data.page_count" :saihex_creation="franchise_data"
+                :spoiler="parsed_markdown.data.spoiler" :category_str="route.params._category" />
+
             <div class="hidden md:flex md:centerItem md:wiki_header_buttons_nohover">
-                <img preload :src="parsed_markdown.data.image" class="h-32 mr-1" alt="page icon"/>
+                <img preload :src="parsed_markdown.data.image" class="h-32 mr-1" alt="page icon" />
             </div>
         </div>
-    
+
         <div class="pageDataContainer">
             <h1 class="text-xl italic opacity-50">Last database change on {{date_formatter(last_changed_unix)}}</h1>
             <div class="wiki_container" id="page_contents">

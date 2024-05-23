@@ -86,7 +86,7 @@ useSeoMeta({
             </div>
         </div>
     
-        <h2 class="py-4 text-center font-bold text-6xl underline my-3">Category contents search page</h2>
+        <h2 class="py-4 text-center font-bold text-6xl underline my-3">{{ parsed_markdown.data.title }} Category contents search page</h2>
         <div class="my-5 p-1 text-center text-2xl bg-yellow-500 mx-20 text-black" v-if="debouce_interfered">Wait a little alright?</div>
         <div class="my-2 p-5 text-center text-3xl bg-red-400 mx-20 text-black" v-if="errored">Oh uh... something
             failed...</div>

@@ -89,6 +89,9 @@ onMounted(async () => {
                 </a>
             </div>
         </nav>
+        <div class="md:hidden bg-orange-900 p-2">
+            <h1 class="text-base font-bold">This website is designed for desktop resolutions as well the pages, we recommends you to enable "desktop site" mode on your browser.</h1>
+        </div>
 
         <slot class="z-0" /> <!-- Inject page Vue code -->
 
