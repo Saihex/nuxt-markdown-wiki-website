@@ -6,9 +6,6 @@ useHead({
 		{ name: 'theme-color', "data-react-helmet": 'true', content: '#FF95FF' },
         { name: 'cache-control', content: `public, max-age=7200` }
 	],
-	link: [
-		{ rel: 'icon', type: 'image/x-icon', href: 'https://img.saihex.com/saihex.ico' } // You don't need "public/".
-	],
 	htmlAttrs: { lang: 'en' }
 })
 

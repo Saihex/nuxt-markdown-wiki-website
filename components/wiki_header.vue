@@ -4,9 +4,9 @@
     <p class="non-saihex w-fit mb-2" v-if="!saihex_creation">Not owned or/and controlled by Saihex Studios</p>
 
     <div class="md:flex md:justify-between select-none">
-      <a :href="`/wiki/${franchise}`" class="centerItem wiki_header_buttons">
+      <NuxtLink :to="`/wiki/${franchise}`" class="centerItem wiki_header_buttons">
         <img :src="franchise_image" class="h-32 mr-1" alt="franchise head image"/>
-      </a>
+      </NuxtLink>
 
       <UTooltip text="Including home page and category page" :popper="{ arrow: true }">
         <div class="py-5 mx-2">
@@ -21,14 +21,14 @@
 
       <div>
         <div class="flex">
-          <a :href="`/wiki/${franchise}/category`" class="wiki_header_topbar centerItem max-sm:hidden">
+          <NuxtLink :to="`/wiki/${franchise}/category`" class="wiki_header_topbar centerItem max-sm:hidden">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round"
                 d="M6 6.878V6a2.25 2.25 0 0 1 2.25-2.25h7.5A2.25 2.25 0 0 1 18 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 0 0 4.5 9v.878m13.5-3A2.25 2.25 0 0 1 19.5 9v.878m0 0a2.246 2.246 0 0 0-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0 1 21 12v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6c0-.98.626-1.813 1.5-2.122" />
             </svg>
             <p class="ml-2">Category List</p>
-          </a>
+          </NuxtLink>
           <a :href="raw_json" class="wiki_header_topbar centerItem" v-if="!no_json">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-6 h-6">
@@ -38,12 +38,12 @@
             <p class="ml-2">Raw JSON</p>
           </a>
         </div>
-        <a :href="`/wiki/${franchise}/category/${category_str}`" class="wiki_header_topbar centerItem max-sm:hidden" v-if="typeof category_str == `string` && category_str.length > 0">
+        <NuxtLink :to="`/wiki/${franchise}/category/${category_str}`" class="wiki_header_topbar centerItem max-sm:hidden" v-if="typeof category_str == `string` && category_str.length > 0">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
           </svg>          
           <p class="ml-2">Back to category page</p>
-        </a>
+        </NuxtLink>
       </div>
     </div>
 

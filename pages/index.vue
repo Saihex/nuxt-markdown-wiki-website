@@ -47,6 +47,7 @@ onMounted(async () => {
 
   await nextTick();
   refresh_image_elements(view_image_ref);
+  new_tab_out_urls();
 })
 
 onUnmounted(() => {
@@ -92,7 +93,7 @@ onUnmounted(() => {
 
             <div class="information_texts justify-between">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="hidden w-[256px] outline outline-1 outline-black max-sm:flex">
+                    stroke="currentColor" class="hidden w-[256px] max-sm:flex">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M6 6.878V6a2.25 2.25 0 0 1 2.25-2.25h7.5A2.25 2.25 0 0 1 18 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 0 0 4.5 9v.878m13.5-3A2.25 2.25 0 0 1 19.5 9v.878m0 0a2.246 2.246 0 0 0-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0 1 21 12v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6c0-.98.626-1.813 1.5-2.122" />
                 </svg>
@@ -103,7 +104,7 @@ onUnmounted(() => {
                         to search for categories.</p>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-[256px] outline outline-1 outline-black max-sm:hidden">
+                    stroke="currentColor" class="w-[256px] max-sm:hidden">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M6 6.878V6a2.25 2.25 0 0 1 2.25-2.25h7.5A2.25 2.25 0 0 1 18 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 0 0 4.5 9v.878m13.5-3A2.25 2.25 0 0 1 19.5 9v.878m0 0a2.246 2.246 0 0 0-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0 1 21 12v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6c0-.98.626-1.813 1.5-2.122" />
                 </svg>
@@ -116,7 +117,7 @@ onUnmounted(() => {
                     <h1 class="underline font-bold">Syntax highlighting</h1>
                     <p class="my-2 text-2xl">Header 1 or the title is only used as the page title. <a
                             class="text-purple-400 underline cursor-pointer"
-                            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Text that are colored
+                            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Text that are colored
                             purple and underlined</a> are links and you can click on them to go to other pages or
                         website, be
                         ware that there is no confirmation dialogue.</p>
@@ -169,7 +170,7 @@ onUnmounted(() => {
                         </li>
                         <li>
                             <p class="my-2 text-2xl">Pages that are spoilers will be tagged too.</p>
-                            <p class="my-2 text-2xl">Embed will have [SPOILER WARNING] text at the beginning of its
+                            <p class="my-2 text-2xl">Embed will have <b>[SPOILER WARNING]</b> text at the beginning of its
                                 description.</p>
                         </li>
                         <li>

@@ -17,21 +17,21 @@ onMounted(async () => {
             <div class="topbar justify-between"> <!-- a div to make elements a little bit far from the sides. -->
 
                 <!-- logo -->
-                <a href="/" class="centerItem topbarButton">
+                <NuxtLink to="/" class="centerItem topbarButton">
                     <img preload src="https://img.saihex.com/saihex.svg" class="h-8 w-8 mr-1" alt="Saihex Studios Icon"/>
                     <h2>Saihex Studios Official Wiki</h2>
-                </a>
+                </NuxtLink>
 
                 <!-- primary navigation -->
                 <div class="hidden md:flex">
-                    <a href="https://www.saihex.com" class="topbarButton centerItem" target="_blank">
+                    <NuxtLink to="https://www.saihex.com" class="topbarButton centerItem" target="_blank">
                         Main Website
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-5 h-5 ml-2">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                         </svg>
-                    </a>
+                    </NuxtLink>
                     <NuxtLink to="/wiki" class="topbarButton centerItem">List of wikis</NuxtLink>
                     <UTooltip text="Backend Software List" :popper="{ arrow: true }">
                         <NuxtLink to="/backends" class="topbarButton centerItem">
@@ -63,7 +63,7 @@ onMounted(async () => {
 
             </div>
             <div class="md:hidden hidden bg-gray-900 mobile-menu z-50">
-                <a href="https://www.saihex.com" class="block topbarButton centerItem" target="_blank">
+                <NuxtLink to="https://www.saihex.com" class="block topbarButton centerItem" target="_blank">
                     Main Website
 
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -71,22 +71,22 @@ onMounted(async () => {
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                     </svg>
-                </a>
-                <a href="/wiki" class="block topbarButton centerItem">List of wikis</a>
+                </NuxtLink>
+                <NuxtLink to="/wiki" class="block topbarButton centerItem">List of wikis</NuxtLink>
 
-                <a href="/backends" class="block topbarButton centerItem">
+                <NuxtLink to="/backends" class="block topbarButton centerItem">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-12 mr-1">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M5.25 14.25h13.5m-13.5 0a3 3 0 0 1-3-3m3 3a3 3 0 1 0 0 6h13.5a3 3 0 1 0 0-6m-16.5-3a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3m-19.5 0a4.5 4.5 0 0 1 .9-2.7L5.737 5.1a3.375 3.375 0 0 1 2.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 0 1 .9 2.7m0 0a3 3 0 0 1-3 3m0 3h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Zm-3 6h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Z" />
                     </svg>
                     Backend Software List
-                </a>
+                </NuxtLink>
 
-                <a href="/wiki/The4Tris" class="block topbarButton centerItem mb-20">
+                <NuxtLink to="/wiki/The4Tris" class="block topbarButton centerItem mb-20">
                     <img src="https://img.saihex.com/wiki_exclusive/The4Tris/The4Tris.svg" class="h-12 mr-1" alt="The 4Tris wiki"/>
                     The 4Tris Wiki
-                </a>
+                </NuxtLink>
             </div>
         </nav>
         <div class="md:hidden bg-orange-900 p-2">

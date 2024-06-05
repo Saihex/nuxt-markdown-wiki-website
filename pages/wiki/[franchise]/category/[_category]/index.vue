@@ -65,9 +65,7 @@ useSeoMeta({
 </script>
 
 <template>
-    <div class="block bg-orange-600 m-5 p-2 font-bold text-center text-2xl" v-if="!mounted">
-        Page still loading, hold on...
-    </div>
+    <LoadingOverlay :visible="!mounted"></LoadingOverlay>
 
     <div :class="!mounted ? `overflow-hidden` : ``">
         <div class="wiki_header justify-between"> <!-- a div to make elements a little bit far from the sides. -->
@@ -101,7 +99,7 @@ useSeoMeta({
         </div>
     
         <div class="result_box mb-20">
-            <a v-for="one_of_rsult in results" :class="!one_of_rsult.spoiler ? `result_boxes` : `result_boxes_spoiler`" :href="`${route.params._category}/${one_of_rsult.dynamic_path}`">
+            <NuxtLink v-for="one_of_rsult in results" :class="!one_of_rsult.spoiler ? `result_boxes` : `result_boxes_spoiler`" :to="`${route.params._category}/${one_of_rsult.dynamic_path}`">
                 <div class="md:flex">
                     <img :src="one_of_rsult.image" class="w-28 h-28 mx-3" :alt="`${one_of_rsult.title} page icon`"/>
                     <div>
@@ -111,7 +109,7 @@ useSeoMeta({
                         <h2 class="text-2xl overflow-hidden">{{one_of_rsult.description}}</h2>
                     </div>
                 </div>
-            </a>
+            </NuxtLink>
         </div>
     </div>
 </template>

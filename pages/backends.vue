@@ -28,7 +28,7 @@ useSeoMeta({
             <p class="text-center text-3xl mb-2">These are the software that we make to make this wiki website
                 possible. Wanna use them? Go ahead! <br /> It would be nice for credits too though 😊</p>
             <p class="text-center text-2xl mb-20 italic">All of repositories linked in this page are <a
-                    href="https://opensource.org/license/mit" class="text-2xl underline text-purple-400">MIT Licensed</a> but please do check their dependencies
+                    href="https://opensource.org/license/mit" class="text-2xl underline text-purple-400" target="_blank">MIT Licensed</a> but please do check their dependencies
                     licensing.</p>
 
             <div class="information_texts">

@@ -13,6 +13,7 @@ onMounted(async () => {
     mounted.value = true;
     await nextTick();
     refresh_image_elements(view_image_ref);
+    new_tab_out_urls();
 })
 
 watch(() => route.hash, () => {
@@ -49,9 +50,7 @@ useSeoMeta({
     <ImageViewer :visible_ref="view_image_ref.visible_ref.value" :url_ref="view_image_ref.url_ref.value"
         @close="view_image_ref.url_ref.value = ``; view_image_ref.visible_ref.value = false"></ImageViewer>
 
-    <div class="block bg-orange-600 m-5 p-2 font-bold text-center text-2xl" v-if="!mounted">
-        Page still loading, hold on...
-    </div>
+    <LoadingOverlay :visible="!mounted"></LoadingOverlay>
 
     <div :class="!mounted ? `overflow-hidden` : ``">
         <div class="wiki_header justify-between"> <!-- a div to make elements a little bit far from the sides. -->

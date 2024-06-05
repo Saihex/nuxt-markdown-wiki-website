@@ -10,6 +10,7 @@ const view_image_ref = create_image_viewer_ref();
 onMounted(async () => {
   await nextTick();
   refresh_image_elements(view_image_ref);
+  new_tab_out_urls();
 })
 
 const search_input = async (inputValue: string) => {
@@ -72,9 +73,9 @@ useSeoMeta({
             </div>
 
             <div class="result_box">
-                <a v-for="one_of_rsult in results"
+                <NuxtLink v-for="one_of_rsult in results"
                     :class="one_of_rsult.saihex_creation ? `result_boxes` : `result_boxes_non_saihex`"
-                    :href="`/wiki/${one_of_rsult.dynamic_path}`">
+                    :to="`/wiki/${one_of_rsult.dynamic_path}`">
                     <div class="md:flex">
                         <img :src="one_of_rsult.image" class="w-32 h-32 mx-3" alt="franchise icon"/>
                         <div>
@@ -86,7 +87,7 @@ useSeoMeta({
                             <h2 class="flex text-2xl overflow-hidden">{{one_of_rsult.description}}</h2>
                         </div>
                     </div>
-                </a>
+                </NuxtLink>
             </div>
         </div>
     </div>
