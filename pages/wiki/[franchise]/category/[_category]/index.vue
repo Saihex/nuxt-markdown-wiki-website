@@ -1,7 +1,8 @@
 <script setup lang="ts">
 const route = useRoute();
-remove_trailing_slash(route);
-const path = `${route.params.franchise}/${route.params._category}/index.md`;
+
+await remove_trailing_slash(route);
+const path = `${route.params.franchise}/category/${route.params._category}/index.md`;
 
 const inputValue = ref(typeof route.query.search == "string" ? route.query.search : "");
 
@@ -21,7 +22,7 @@ onMounted(() => {
 })
 
 const search_input = async (inputValue: string) => {
-    navigateTo(inputValue != "" ? `?search=${inputValue}` : "?");
+    await navigateTo(inputValue != "" ? `?search=${inputValue}` : "?");
     if (debouce.value) {
         debouce_interfered.value = true;
         return

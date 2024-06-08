@@ -2,6 +2,7 @@
 import { embed_svg_url } from '~/composables/embed_svg';
 
 const route = useRoute();
+
 const path = `${route.params.franchise}/index.md`;
 const {parsed_markdown, franchise_data, used_path} = await fetch_markdown_parse(path, route);
 
@@ -18,7 +19,7 @@ onMounted(() => {
 })
 
 const search_input = async (inputValue: string) => {
-    navigateTo(inputValue != "" ? `?search=${inputValue}` : "?");
+    await navigateTo(inputValue != "" ? `?search=${inputValue}` : "?");
     if (debouce.value) {
         debouce_interfered.value = true;
         return

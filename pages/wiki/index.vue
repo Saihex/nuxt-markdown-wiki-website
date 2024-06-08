@@ -10,11 +10,11 @@ const view_image_ref = create_image_viewer_ref();
 onMounted(async () => {
   await nextTick();
   refresh_image_elements(view_image_ref);
-  new_tab_out_urls();
+  await new_tab_out_urls();
 })
 
 const search_input = async (inputValue: string) => {
-    navigateTo(inputValue != "" ? `?search=${inputValue}` : "?");
+    await navigateTo(inputValue != "" ? `?search=${inputValue}` : "?");
     if (debouce.value) {
         debouce_interfered.value = true;
         return

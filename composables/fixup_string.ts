@@ -12,7 +12,7 @@ export const fixup_category_name = function (category_name: string) {
   return formattedString;
 };
 
-export const new_tab_out_urls = function () {
+export const new_tab_out_urls = async function () {
   const url = useRequestURL();
   const any_port = url.port != "" ? `:${url.port}` : "";
   const website_domain = `${url.protocol}//${url.hostname}${any_port}`;
@@ -20,7 +20,9 @@ export const new_tab_out_urls = function () {
     document.querySelectorAll("#page_contents a")
   );
 
-  url_elements.forEach((element) => {
+  for (let i = 0; i < url_elements.length; i++) {
+    const element = url_elements[i];
+
     const href = element.getAttribute("href");
     if (href) {
       const outside_url = !href.startsWith(website_domain);
@@ -30,7 +32,7 @@ export const new_tab_out_urls = function () {
         element.setAttribute("target", "_blank");
       }
     }
-  });
+  }
 
   return url_elements;
 };

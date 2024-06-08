@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const route = useRoute();
-remove_trailing_slash(route);
+await remove_trailing_slash(route);
 const path = `${route.params.franchise}/index.md`;
 const show_loading = ref(true);
 const {parsed_markdown, franchise_data, used_path} = await fetch_markdown_parse(path, route);
@@ -13,7 +13,7 @@ onMounted(async () => {
     mounted.value = true;
     await nextTick();
     refresh_image_elements(view_image_ref);
-    new_tab_out_urls();
+    await new_tab_out_urls();
 })
 
 watch(() => route.hash, () => {

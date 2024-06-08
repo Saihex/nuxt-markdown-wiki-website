@@ -47,7 +47,7 @@ onMounted(async () => {
 
   await nextTick();
   refresh_image_elements(view_image_ref);
-  new_tab_out_urls();
+  await new_tab_out_urls();
 })
 
 onUnmounted(() => {

@@ -2,7 +2,7 @@
 import Wiki_header from '~/components/wiki_header.vue';
 
 const route = useRoute();
-const path = `${route.params.franchise}/${route.params._category}/${route.params.page}.md`;
+const path = `${route.params.franchise}/category/${route.params._category}/${route.params.page}.md`;
 const show_loading = ref(true);
 const {parsed_markdown, franchise_data, used_path} = await fetch_markdown_parse(path, route);
 const last_changed_unix = await fetch_last_changed(path);
@@ -18,7 +18,7 @@ onMounted(async () => {
     mounted.value = true;
     await nextTick();
     refresh_image_elements(view_image_ref);
-    new_tab_out_urls();
+    await new_tab_out_urls();
 })
 
 watch(() => route.hash, () => {
