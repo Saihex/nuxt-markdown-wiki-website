@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
 
   try {
     response1 = (await $fetch(
-      `${endpoint}/${event.context.params?.franchise}/${reqQuery.catalog}`,
+      `${endpoint}/${event.context.params?.franchise}/category/${reqQuery.catalog}`,
       {
         method: "GET",
         query: {
