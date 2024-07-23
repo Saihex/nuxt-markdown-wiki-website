@@ -34,7 +34,7 @@ export default defineNuxtConfig({
   tailwindcss: {},
   googleFonts: {
     preload: true,
-    families: { Roboto: true },
+    families: { Roboto: true, Audiowide: true },
   },
 
   content: {

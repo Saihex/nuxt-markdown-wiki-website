@@ -25,10 +25,9 @@ export default defineEventHandler(async (event) => {
         event.node.res.statusCode = 500;
       }
     }
-    
+
     return;
   }
 
-  
   return { markdown_string: response1, franchise_data: response2 };
 });
