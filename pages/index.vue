@@ -28,26 +28,26 @@ const event_collection = create_event_collection();
 const view_image_ref = create_image_viewer_ref();
 
 function clamp(value: number, min: number, max: number): number {
-  return Math.min(Math.max(value, min), max);
+    return Math.min(Math.max(value, min), max);
 }
 
 onMounted(async () => {
-  const bg_event_handler = () => {
-    const scroll_position = window.scrollY;
-    const scroll_progress = scroll_position / 500; // to threshold
+    const bg_event_handler = () => {
+        const scroll_position = window.scrollY;
+        const scroll_progress = scroll_position / 500; // to threshold
 
-    bg_image_reaction.value.opacity = Math.max(1 - scroll_progress, 0.2);
-    bg_image_reaction.value.top_margin = `${clamp(1 - scroll_progress * 5, 0, 1) * 4}rem`
-  }
+        bg_image_reaction.value.opacity = Math.max(1 - scroll_progress, 0.2);
+        bg_image_reaction.value.top_margin = `${clamp(1 - scroll_progress * 5, 0, 1) * 4}rem`
+    }
 
-  bg_event_handler();
+    bg_event_handler();
 
-  event_collection.addEvent("scroll", bg_event_handler);
-  no_scroll.value = false;
+    event_collection.addEvent("scroll", bg_event_handler);
+    no_scroll.value = false;
 
-  await nextTick();
-  refresh_image_elements(view_image_ref);
-  await new_tab_out_urls();
+    await nextTick();
+    refresh_image_elements(view_image_ref);
+    await new_tab_out_urls();
 })
 
 onUnmounted(() => {
@@ -56,33 +56,43 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <ImageViewer :visible_ref="view_image_ref.visible_ref.value" :url_ref="view_image_ref.url_ref.value"
-        @close="view_image_ref.url_ref.value = ``; view_image_ref.visible_ref.value = false"></ImageViewer>
+    <ImageViewer :visible_ref="view_image_ref.visible_ref.value" :url_ref="view_image_ref.url_ref.value" @close="view_image_ref.url_ref.value = ``; view_image_ref.visible_ref.value = false">
+    </ImageViewer>
 
     <div v-if="!no_scroll" id="page_contents">
         <div class="min-h-dvh">
             <div class="homeImage"></div>
             <div class="my-10 mb-[350px]" />
+
+            <div class="flex mx-3 justify-center">
+                <NuxtLink class="quick-navigation" to="/wiki">List of Wikis <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                        class="w-12 ml-2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                    </svg></NuxtLink>
+                <NuxtLink class="quick-navigation" to="/wiki/The4Tris">
+                    The 4Tris Wiki
+                    <img src="https://img.saihex.com/wiki_exclusive/The4Tris/The4Tris.svg" class="w-12 ml-2" alt="The 4Tris wiki"/>
+                </NuxtLink>
+            </div>
+
+            <div class="text-center font-bold mt-2">Saihex's Nuxt Markdown Wiki Website V0.0.2-e</div>
             <h2 class="py-4 text-center font-bold text-6xl">Welcome to Saihex Studios' Official Wiki Website!</h2>
 
             <p class="text-center text-3xl mb-20">This website contains all the wiki for all of franchises under Saihex
                 Studios and not. Here are few guides to use this website!</p>
 
             <div class="information_texts justify-between">
-                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/wiki_list.png"
-                    class="w-[512px] mr-5 outline outline-black outline-2 h-fit" alt="wiki list example"/>
+                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/wiki_list.png" class="w-[512px] mr-5 outline outline-black outline-2 h-fit" alt="wiki list example" />
                 <div>
                     <h1 class="underline font-bold">Wiki List</h1>
-                    <p class="my-2 text-2xl">You can access the wiki list and search page from clicking the <b
-                            class="underline">List of
+                    <p class="my-2 text-2xl">You can access the wiki list and search page from clicking the <b class="underline">List of
                             wikis</b> button at the website header, for mobile it is hidden within the "burger" stack
                         button.</p>
                     <p class="my-2 text-2xl">You may find wikis with <b class="bg-orange-600 p-1">NOT OWNED OR/AND
                             CONTROLLED BY SAIHEX
                             STUDIOS</b> written inside a orange box <b>(the entire box appear as orange and the text
                             won't be present for mobile)</b>, this indicates that wiki franchise is not owned
-                        or/and controlled by Saihex Studios. However it still falls under <a
-                            class="text-purple-400 underline" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                        or/and controlled by Saihex Studios. However it still falls under <a class="text-purple-400 underline" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
                             target="_blank">CC BY-NC-SA</a>.</p>
                     <p class="my-2 text-2xl">Franchises that are not owned or/and controlled by Saihex Studios are
                         likely to be from our allies or our developer's own projects who wanted to host their franchise
@@ -92,8 +102,7 @@ onUnmounted(() => {
             </div>
 
             <div class="information_texts justify-between">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="hidden w-[256px] max-sm:flex">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden w-[256px] max-sm:flex">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M6 6.878V6a2.25 2.25 0 0 1 2.25-2.25h7.5A2.25 2.25 0 0 1 18 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 0 0 4.5 9v.878m13.5-3A2.25 2.25 0 0 1 19.5 9v.878m0 0a2.246 2.246 0 0 0-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0 1 21 12v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6c0-.98.626-1.813 1.5-2.122" />
                 </svg>
@@ -103,20 +112,17 @@ onUnmounted(() => {
                         main page simply click the <b class="underline">Category List</b> button at the top of the page
                         to search for categories.</p>
                 </div>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-[256px] max-sm:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-[256px] max-sm:hidden">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M6 6.878V6a2.25 2.25 0 0 1 2.25-2.25h7.5A2.25 2.25 0 0 1 18 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 0 0 4.5 9v.878m13.5-3A2.25 2.25 0 0 1 19.5 9v.878m0 0a2.246 2.246 0 0 0-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0 1 21 12v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6c0-.98.626-1.813 1.5-2.122" />
                 </svg>
             </div>
 
             <div class="information_texts justify-between">
-                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/syntax.png"
-                    class="w-[512px] mr-5 outline outline-black outline-2 h-fit" alt="syntax example"/>
+                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/syntax.png" class="w-[512px] mr-5 outline outline-black outline-2 h-fit" alt="syntax example" />
                 <div>
                     <h1 class="underline font-bold">Syntax highlighting</h1>
-                    <p class="my-2 text-2xl">Header 1 or the title is only used as the page title. <a
-                            class="text-purple-400 underline cursor-pointer"
+                    <p class="my-2 text-2xl">Header 1 or the title is only used as the page title. <a class="text-purple-400 underline cursor-pointer"
                             href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Text that are colored
                             purple and underlined</a> are links and you can click on them to go to other pages or
                         website, be
@@ -133,21 +139,20 @@ onUnmounted(() => {
             </div>
 
             <div class="information_texts justify-between">
-                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/anchor_urls.png"
-                    class="flex md:hidden w-[512px] mr-5 outline outline-black outline-2 h-fit" alt="anchor url example"/>
+                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/anchor_urls.png" class="flex md:hidden w-[512px] mr-5 outline outline-black outline-2 h-fit"
+                    alt="anchor url example" />
                 <div>
                     <h1 class="underline font-bold">Hash URL</h1>
                     <p class="my-2 text-2xl">Hash URL will result in the page scrolling down to the subtitle upon page
                         load. It will have a outline and pulsating green background to make it more noticeable thus
                         easier to see especially in text cluttered page.</p>
                 </div>
-                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/anchor_urls.png"
-                    class="hidden md:flex w-[512px] mr-5 outline outline-black outline-2 h-fit" alt="anchor url example"/>
+                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/anchor_urls.png" class="hidden md:flex w-[512px] mr-5 outline outline-black outline-2 h-fit"
+                    alt="anchor url example" />
             </div>
 
             <div class="information_texts justify-between">
-                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/spoilers.png"
-                    class="w-[512px] mr-5 outline outline-black outline-2 h-fit" alt="spoiler warning example"/>
+                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/spoilers.png" class="w-[512px] mr-5 outline outline-black outline-2 h-fit" alt="spoiler warning example" />
                 <div>
                     <h1 class="underline font-bold">Spoiler warnings</h1>
                     <ul class="list-disc ml-3">
@@ -183,8 +188,8 @@ onUnmounted(() => {
             </div>
 
             <div class="information_texts justify-between">
-                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/image_viewer.png"
-                    class="flex md:hidden w-[512px] mr-5 outline outline-black outline-2 h-fit" alt="image viewer example"/>
+                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/image_viewer.png" class="flex md:hidden w-[512px] mr-5 outline outline-black outline-2 h-fit"
+                    alt="image viewer example" />
                 <div>
                     <h1 class="underline font-bold">Image Viewer</h1>
                     <p class="my-2 text-2xl">By clicking on the images within the wiki pages or even this page; a
@@ -192,12 +197,11 @@ onUnmounted(() => {
                         appear showing you the image as well URL to its source link at the bottom.</p>
                     <p class="my-2 text-2xl">The image is set to be minimum scale of 288px and maximum scale of 60% of
                         the screen width. Height will scale alongside with width to maintain aspect ratio.</p>
-                    <p class="my-2 text-2xl font-bold">Images on this website falls under <a
-                            class="text-purple-400 underline" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                    <p class="my-2 text-2xl font-bold">Images on this website falls under <a class="text-purple-400 underline" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
                             target="_blank">CC BY-NC-SA</a> unless otherwise noted.</p>
                 </div>
-                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/image_viewer.png"
-                    class="hidden md:flex w-[512px] mr-5 outline outline-black outline-2 h-fit" alt="image viewer example"/>
+                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/image_viewer.png" class="hidden md:flex w-[512px] mr-5 outline outline-black outline-2 h-fit"
+                    alt="image viewer example" />
             </div>
         </div>
     </div>
@@ -239,5 +243,15 @@ onUnmounted(() => {
 
 .mobile_socials {
     @apply h-16 w-16 mx-5
+}
+
+.quick-navigation {
+    @apply flex bg-gray-800 text-center text-5xl font-bold p-4 m-2 outline outline-1;
+    transition: background-color 0.2s ease-in-out,
+        transform 0.2s ease-in-out;
+}
+
+.quick-navigation:hover {
+    @apply scale-110 rotate-2 bg-green-500
 }
 </style>

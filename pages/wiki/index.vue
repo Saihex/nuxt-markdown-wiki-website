@@ -79,7 +79,7 @@ useSeoMeta({
                     <div class="md:flex">
                         <img :src="one_of_rsult.image" class="w-32 h-32 mx-3" alt="franchise icon"/>
                         <div>
-                            <h3 class="flex text-1xl overflow-hidden opacity-50 italic">Last database change: {{date_formatter(one_of_rsult.last_modified)}}</h3>
+                            <h3 class="flex text-1xl overflow-hidden opacity-50 italic">Last main-page database mirror change: {{date_formatter(one_of_rsult.last_modified)}}</h3>
                             <p class="non-saihex hidden md:flex" v-if="!one_of_rsult.saihex_creation">Not owned or/and
                                 controlled by Saihex Studios</p>
                             <h1 class="underline block md:flex no-view-image">{{one_of_rsult.franchise_proper_name}}

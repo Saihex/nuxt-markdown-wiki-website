@@ -130,3 +130,17 @@
 .warning_box {
     @apply bg-orange-600 p-2 my-2 font-bold text-center
 }
+
+.wiki_container details summary {
+    cursor: pointer;
+    @apply text-2xl font-bold text-green-300 my-2 mt-7;
+    transition: background-color 0.2s ease-in-out, letter-spacing 0.2s ease-in-out;
+}
+
+.wiki_container details summary:hover {
+    @apply text-green-100 tracking-wider
+}
+
+.wiki_container details p {
+    @apply ml-7
+}
