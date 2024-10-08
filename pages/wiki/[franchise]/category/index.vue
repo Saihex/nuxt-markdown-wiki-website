@@ -107,15 +107,15 @@ useSeoMeta({
 
 <style>
 .search_box {
-    @apply flex bg-gray-950 h-16 mx-2 md:mx-16 rounded-sm outline outline-2 outline-black p-2
+    @apply flex bg-zinc-950 h-16 mx-2 md:mx-16 rounded-sm outline outline-2 outline-black p-2
 }
 
 .result_box {
-    @apply flex flex-col bg-zinc-800 min-h-dvh h-fit mx-2 md:mx-12 my-5 px-5 py-2
+    @apply flex flex-col bg-zinc-800 min-h-dvh h-fit mx-2 md:mx-12 my-5 px-5 py-2 pt-7 outline-1 outline-white outline
 }
 
 .result_boxes {
-    @apply flex justify-between bg-zinc-900 min-h-32 h-fit mb-2 transition bounce-ease py-2 overflow-hidden p-2
+    @apply flex justify-between bg-zinc-900 min-h-32 h-fit mb-2 transition bounce-ease py-2 overflow-hidden p-2 outline-1 outline-white outline
 }
 
 .result_boxes:hover {

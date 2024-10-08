@@ -41,7 +41,7 @@ useSeoMeta({
 }
 
 *::-webkit-scrollbar-thumb {
-	@apply bg-gray-500 border-x-4 border-solid border-gray-500;
+	@apply bg-zinc-500 border-x-4 border-solid border-zinc-500;
 	border-radius: 20px;
 }
 </style>

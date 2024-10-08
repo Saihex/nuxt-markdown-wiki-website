@@ -1,7 +1,7 @@
 <template>
     <div v-if="visible_ref" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
         <div
-            class="flex bg-slate-800 p-1 rounded-lg shadow-lg justify-center items-center flex-col h-fit max-h-[98%] mx-5">
+            class="flex bg-zinc-900 p-1 rounded-lg shadow-lg justify-center items-center flex-col h-fit max-h-[98%] mx-5">
             <button class="flex w-full bg-red-700 items-center" @click="close_image_view()">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-7 h-7">

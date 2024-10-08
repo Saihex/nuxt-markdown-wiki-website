@@ -75,7 +75,7 @@ onUnmounted(() => {
                 </NuxtLink>
             </div>
 
-            <div class="text-center font-bold mt-2">Saihex's Nuxt Markdown Wiki Website V0.0.2-e</div>
+            <div class="text-center font-bold mt-2">Saihex's Nuxt Markdown Wiki Website v0.0.2-f</div>
             <h2 class="py-4 text-center font-bold text-6xl">Welcome to Saihex Studios' Official Wiki Website!</h2>
 
             <p class="text-center text-3xl mb-20">This website contains all the wiki for all of franchises under Saihex
@@ -246,7 +246,7 @@ onUnmounted(() => {
 }
 
 .quick-navigation {
-    @apply flex bg-gray-800 text-center text-5xl font-bold p-4 m-2 outline outline-1;
+    @apply flex bg-zinc-800 text-center text-5xl font-bold p-4 m-2 outline outline-1;
     transition: background-color 0.2s ease-in-out,
         transform 0.2s ease-in-out;
 }

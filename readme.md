@@ -5,7 +5,7 @@ Note: Letters after the version numbers are their sub-evolutions when non-major 
 # Saihex Studios' Nuxt Markdown Wiki Website
 **BUILT ON TOP [Nuxt 3](https://nuxt.com/)**
 
-Runs together with [Saihex Studios' Markdown Catalogue Server (MCS)](https://github.com/Saihex/markdown_catalogue_server) **v0.0.2-e**.
+Runs together with [Saihex Studios' Markdown Catalogue Server (MCS)](https://github.com/Saihex/markdown_catalogue_server) **v0.0.2-f**.
 
 **WARNING: This software is meant to be used within a Docker container**
 
@@ -62,5 +62,5 @@ We will only discuss wiki structure as root and `/backends` are self-explanatory
 
 **Docker Image**
 ```
-saihex/nuxt-markdown-wiki-website:v0.0.2-e
+saihex/nuxt-markdown-wiki-website:v0.0.2-f
 ```

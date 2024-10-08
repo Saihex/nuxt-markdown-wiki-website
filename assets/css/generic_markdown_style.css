@@ -32,7 +32,7 @@
 }
 
 .pageDataContainer {
-    @apply mx-2 md:mx-7 bg-gray-800 px-5 py-2 mb-2 pb-5
+    @apply bg-zinc-900 px-5 py-2 mb-2 pb-5 outline outline-1
 }
 
 .wiki_container img {
@@ -100,7 +100,7 @@
 }
 
 .wiki_container table {
-    @apply table-auto border-separate border-slate-500 border w-fit text-left rtl:text-right m-5 mx-2 border-spacing-1 bg-gray-600
+    @apply table-auto border-separate border-slate-500 border w-fit text-left rtl:text-right m-5 mx-2 border-spacing-1 bg-zinc-600
 }
 
 .wiki_container table thead {
@@ -112,7 +112,7 @@
 }
 
 .wiki_container table tbody tr {
-    @apply odd:bg-gray-800 even:bg-gray-700 border-b border-gray-700 p-1
+    @apply odd:bg-zinc-800 even:bg-zinc-700 border-b border-zinc-700 p-1
 }
 
 .wiki_container table tbody tr:hover {
@@ -120,7 +120,7 @@
 }
 
 .wiki_container table tbody tr td {
-    @apply outline outline-1 outline-gray-800 p-1
+    @apply outline outline-1 outline-zinc-800 p-1
 }
 
 .wiki_container div {

@@ -62,7 +62,7 @@ onMounted(async () => {
                 </div>
 
             </div>
-            <div class="md:hidden hidden bg-gray-900 mobile-menu z-50">
+            <div class="md:hidden hidden bg-zinc-900 mobile-menu z-50">
                 <NuxtLink to="https://www.saihex.com" class="block topbarButton centerItem" target="_blank">
                     Main Website
 
@@ -125,7 +125,7 @@ onMounted(async () => {
 
 <style>
 .mainTopbar {
-    @apply bg-gray-900 h-28;
+    @apply bg-zinc-900 h-28;
     z-index: 20;
     position: relative;
 }

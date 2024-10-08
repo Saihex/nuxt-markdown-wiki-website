@@ -1,16 +1,23 @@
 <script setup lang="ts">
+import Wiki_contents from '~/components/wiki_contents.vue';
 import Wiki_header from '~/components/wiki_header.vue';
 
 const route = useRoute();
 const path = `${route.params.franchise}/category/${route.params._category}/${route.params.page}.md`;
 const show_loading = ref(true);
-const {parsed_markdown, franchise_data, used_path} = await fetch_markdown_parse(path, route);
+const { parsed_markdown, franchise_data, used_path } = await fetch_markdown_parse(path, route);
 const last_changed_unix = await fetch_last_changed(path);
 const mounted = ref(false);
 
 show_loading.value = false;
 
 const view_image_ref = create_image_viewer_ref();
+
+const history_data = {
+    absolute_url: `${route.fullPath}`,
+    cover_image: parsed_markdown.data.image,
+    title: parsed_markdown.data.title
+}
 
 onMounted(async () => {
     update_hash_effect(route);
@@ -34,7 +41,7 @@ useHead({
     title: page_title,
     meta: [
         { name: 'description', content: page_desc },
-        { name: 'twitter:card', content: "summary_large_image"}
+        { name: 'twitter:card', content: "summary_large_image" }
     ],
     link: [
         { rel: 'icon', type: 'image/x-icon', href: franchise_data.ico_image }
@@ -49,37 +56,38 @@ useSeoMeta({
     twitterTitle: page_title,
     ogDescription: page_desc,
     twitterDescription: page_desc,
-	ogImage: embed_images,
-	twitterImage: embed_images,
+    ogImage: embed_images,
+    twitterImage: embed_images,
 })
 </script>
 
 <template>
-    <ImageViewer :visible_ref="view_image_ref.visible_ref.value" :url_ref="view_image_ref.url_ref.value"
-        @close="view_image_ref.url_ref.value = ``; view_image_ref.visible_ref.value = false"></ImageViewer>
+    <ImageViewer :visible_ref="view_image_ref.visible_ref.value" :url_ref="view_image_ref.url_ref.value" @close="view_image_ref.url_ref.value = ``; view_image_ref.visible_ref.value = false">
+    </ImageViewer>
 
     <LoadingOverlay :visible="!mounted"></LoadingOverlay>
 
     <div :class="!mounted ? `overflow-hidden` : ``">
-        <div class="wiki_header justify-between"> <!-- a div to make elements a little bit far from the sides. -->
+        <Wiki_contents :franchise="route.params.franchise as string" :additional_data="history_data">
+            <div class="wiki_header justify-between"> <!-- a div to make elements a little bit far from the sides. -->
 
-            <Wiki_header :franchise="route.params.franchise" :franchise_image="franchise_data.wiki_head_image"
-                :raw_json="used_path" :page_count="franchise_data.page_count" :saihex_creation="franchise_data"
-                :spoiler="parsed_markdown.data.spoiler" :category_str="route.params._category" />
+                <Wiki_header :franchise="route.params.franchise" :franchise_image="franchise_data.wiki_head_image" :raw_json="used_path" :page_count="franchise_data.page_count"
+                    :saihex_creation="franchise_data" :spoiler="parsed_markdown.data.spoiler" :category_str="route.params._category" />
 
-            <div class="hidden md:flex md:centerItem md:wiki_header_buttons_nohover">
-                <img preload :src="parsed_markdown.data.image" class="h-32 mr-1" alt="page icon" />
+                <div class="hidden md:flex md:centerItem md:wiki_header_buttons_nohover">
+                    <img preload :src="parsed_markdown.data.image" class="h-32 mr-1" alt="page icon" />
+                </div>
             </div>
-        </div>
 
-        <div class="pageDataContainer">
-            <h1 class="text-xl italic opacity-50">Last database change on {{date_formatter(last_changed_unix)}}</h1>
-            <div class="wiki_container" id="page_contents">
-                <pa class="flex text-5xl m-24 content-center min-h-svh" v-if="show_loading">Loading...</pa>
-                <ContentRendererMarkdown v-if="!show_loading" :value="parsed_markdown" class="min-h-svh">
-                </ContentRendererMarkdown>
+            <div class="pageDataContainer">
+                <h1 class="text-xl italic opacity-50">Last database change on {{ date_formatter(last_changed_unix) }}</h1>
+                <div class="wiki_container" id="page_contents">
+                    <pa class="flex text-5xl m-24 content-center min-h-svh" v-if="show_loading">Loading...</pa>
+                    <ContentRendererMarkdown v-if="!show_loading" :value="parsed_markdown" class="min-h-svh">
+                    </ContentRendererMarkdown>
+                </div>
             </div>
-        </div>
+        </Wiki_contents>
     </div>
 </template>
 
