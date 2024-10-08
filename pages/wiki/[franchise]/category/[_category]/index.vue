@@ -100,7 +100,7 @@ useSeoMeta({
         </div>
 
         <div class="result_box mb-20">
-            <NuxtLink v-for="one_of_rsult in results" :class="!one_of_rsult.spoiler ? `result_boxes` : `result_boxes_spoiler`" :to="`${route.params._category}/${one_of_rsult.dynamic_path}`">
+            <NuxtLink v-for="one_of_rsult in results" :class="!one_of_rsult.spoiler ? `result_boxes` : `result_boxes_spoiler`" :to="`${route.fullPath}/${one_of_rsult.dynamic_path}`">
                 <div class="md:flex">
                     <img :src="one_of_rsult.image" class="w-28 h-28 mx-3" :alt="`${one_of_rsult.title} page icon`" />
                     <div>
