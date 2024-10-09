@@ -74,7 +74,7 @@ useSeoMeta({
                 <Wiki_header :franchise="route.params.franchise" :franchise_image="franchise_data.wiki_head_image" :raw_json="used_path" :page_count="franchise_data.page_count"
                     :saihex_creation="franchise_data" :spoiler="parsed_markdown.data.spoiler" :category_str="route.params._category" />
 
-                <div class="hidden md:flex md:centerItem md:wiki_header_buttons_nohover">
+                <div class="hidden tablet:flex tablet:centerItem tablet:wiki_header_buttons_nohover">
                     <img preload :src="parsed_markdown.data.image" class="h-32 mr-1" alt="page icon" />
                 </div>
             </div>

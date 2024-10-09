@@ -11,8 +11,11 @@ export default {
           auto: 'auto',
           square: '1 / 1',
           video: '16 / 9'
+        },
+        screens: {
+          'tablet': '1126px'
         }
-      },
+      }
     },
     plugins: [],
   }

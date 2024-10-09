@@ -22,8 +22,23 @@ recent_activities.value = [];
 
 const no_recent_activities = ref(false);
 
+const show_recent_activities = ref(false);
+
 function readAgain() {
   const recent_activities_data = localStorage.getItem(`${props.franchise}-History`);
+  const should_show_recent_activities = localStorage.getItem("show_recent_activities");
+
+  if (!should_show_recent_activities) {
+    show_recent_activities.value = true;
+    localStorage.setItem("show_recent_activities", "true");
+
+  } else {
+    if (should_show_recent_activities == "true") {
+      show_recent_activities.value = true;
+    } else {
+      show_recent_activities.value = false;
+    }
+  }
 
   if (recent_activities_data) {
     recent_activities.value = JSON.parse(recent_activities_data);
@@ -52,6 +67,11 @@ function clearHistory() {
   recent_activities.value = [];
 }
 
+function invertShowRecentActivity() {
+  show_recent_activities.value = !show_recent_activities.value;
+  localStorage.setItem("show_recent_activities", show_recent_activities.value ? "true" : "false");
+}
+
 defineExpose({ readAgain });
 
 </script>
@@ -62,7 +82,7 @@ defineExpose({ readAgain });
       <slot></slot>
     </div>
 
-    <div class="activity_box">
+    <div v-if="show_recent_activities" class="activity_box">
       <div class="flex justify-between">
         <p class="font-bold">Recent Activities</p>
 
@@ -101,6 +121,22 @@ defineExpose({ readAgain });
         </div>
       </div>
     </div>
+
+    <div class="fixed top-20 right-0 transform transition-transform duration-300 z-20">
+      <div class="action_grid">
+        <!-- First row item -->
+        <div class="action_button">
+          <UTooltip text="Toggle Recent History List">
+            <button @click="invertShowRecentActivity()">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+            </button>
+          </UTooltip>
+        </div>
+      </div>
+
+    </div>
   </div>
 </template>
 
@@ -110,10 +146,26 @@ defineExpose({ readAgain });
 }
 
 .activity_box {
-  @apply hidden md:block ml-5 bg-zinc-700 p-2 shadow-md min-w-[15%] max-w-[20%] mt-[150px] min-h-72 outline outline-1 max-h-dvh overflow-clip
+  @apply hidden md:block ml-5 bg-zinc-700 p-2 shadow-md min-w-[30%] max-w-[35%] tablet:min-w-[15%] tablet:max-w-[20%] mt-[150px] min-h-72 outline outline-1 max-h-dvh overflow-clip
 }
 
 .activity_button {
   @apply my-20
+}
+
+.action_grid {
+  @apply bg-zinc-800 text-white shadow-lg grid grid-rows-3 gap-4 p-4 opacity-50 transition-all outline outline-1 translate-x-3/4
+}
+
+.action_grid:hover {
+  @apply opacity-100 translate-x-0
+}
+
+.action_button {
+  @apply bg-zinc-700 px-2 pt-2 transition-colors outline outline-1
+}
+
+.action_button:hover {
+  @apply bg-green-500
 }
 </style>
