@@ -122,7 +122,7 @@ defineExpose({ readAgain });
       </div>
     </div>
 
-    <div class="fixed top-20 right-0 transform transition-transform duration-300 z-20">
+    <div class="action_grid_container">
       <div class="action_grid">
         <!-- First row item -->
         <div class="action_button">
@@ -153,12 +153,17 @@ defineExpose({ readAgain });
   @apply my-20
 }
 
-.action_grid {
-  @apply bg-zinc-800 text-white shadow-lg grid grid-rows-3 gap-4 p-4 opacity-50 transition-all outline outline-1 translate-x-3/4
+.action_grid_container {
+  @apply z-20 fixed top-20 right-0 transform transition-transform duration-300 translate-x-3/4;
 }
 
-.action_grid:hover {
-  @apply opacity-100 translate-x-0
+
+.action_grid_container:hover {
+  @apply translate-x-0
+}
+
+.action_grid {
+  @apply bg-zinc-800 text-white shadow-lg grid grid-rows-3 gap-4 p-4 opacity-50 transition-all outline outline-1
 }
 
 .action_button {
