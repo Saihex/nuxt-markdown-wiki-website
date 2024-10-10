@@ -76,13 +76,13 @@ useSeoMeta({
                 <NuxtLink v-for="one_of_rsult in results"
                     :class="one_of_rsult.saihex_creation ? `result_boxes` : `result_boxes_non_saihex`"
                     :to="`/wiki/${one_of_rsult.dynamic_path}`">
-                    <div class="tablet:flex">
+                    <div class="above-tablet:flex">
                         <img :src="one_of_rsult.image" class="w-32 h-32 mx-3" alt="franchise icon"/>
                         <div>
                             <h3 class="flex text-1xl overflow-hidden opacity-50 italic">Last main-page database mirror change: {{date_formatter(one_of_rsult.last_modified)}}</h3>
-                            <p class="non-saihex hidden tablet:flex" v-if="!one_of_rsult.saihex_creation">Not owned or/and
+                            <p class="non-saihex hidden above-tablet:flex" v-if="!one_of_rsult.saihex_creation">Not owned or/and
                                 controlled by Saihex Studios</p>
-                            <h1 class="underline block tablet:flex no-view-image">{{one_of_rsult.franchise_proper_name}}
+                            <h1 class="underline block above-tablet:flex no-view-image">{{one_of_rsult.franchise_proper_name}}
                             </h1>
                             <h2 class="flex text-2xl overflow-hidden">{{one_of_rsult.description}}</h2>
                         </div>
@@ -95,11 +95,11 @@ useSeoMeta({
 
 <style>
 .search_box {
-    @apply flex bg-zinc-950 h-16 mx-2 tablet:mx-16 rounded-sm outline outline-2 outline-black p-2
+    @apply flex bg-zinc-950 h-16 mx-2 above-tablet:mx-16 rounded-sm outline outline-2 outline-black p-2
 }
 
 .result_box {
-    @apply flex flex-col bg-zinc-800 min-h-dvh h-fit mx-2 tablet:mx-12 my-5 px-5 py-2 pt-7 outline-1 outline-white outline
+    @apply flex flex-col bg-zinc-800 min-h-dvh h-fit mx-2 above-tablet:mx-12 my-5 px-5 py-2 pt-7 outline-1 outline-white outline
 }
 
 .result_boxes {
@@ -107,7 +107,7 @@ useSeoMeta({
 }
 
 .result_boxes_non_saihex {
-    @apply flex justify-between bg-orange-950 tablet:bg-zinc-900 min-h-32 h-fit mb-2 transition bounce-ease py-2 overflow-hidden p-2 outline-1 outline-white outline
+    @apply flex justify-between bg-orange-950 above-tablet:bg-zinc-900 min-h-32 h-fit mb-2 transition bounce-ease py-2 overflow-hidden p-2 outline-1 outline-white outline
 }
 
 .result_boxes_non_saihex:hover {
@@ -123,6 +123,6 @@ useSeoMeta({
 }
 
 .non-saihex {
-    @apply bg-orange-700 p-1 font-bold uppercase text-center tablet:text-left
+    @apply bg-orange-700 p-1 font-bold uppercase text-center above-tablet:text-left
 }
 </style>

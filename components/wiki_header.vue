@@ -3,10 +3,12 @@
   <div class="flex flex-col mt-5">
     <p class="non-saihex w-fit mb-2" v-if="!saihex_creation">Not owned or/and controlled by Saihex Studios</p>
 
-    <div class="tablet:flex tablet:justify-between select-none">
+    <div class="above-tablet:flex above-tablet:justify-between select-none">
       <NuxtLink :to="`/wiki/${franchise}`" class="centerItem wiki_header_buttons">
-        <img :src="franchise_image" class="h-32 mr-1 object-scale-down" alt="franchise head image" />
+        <img :src="franchise_image" class="h-32 mr-1 object-scale-down items-center" alt="franchise head image" />
       </NuxtLink>
+
+      <hr class="hidden above-tablet:block mt-3">
 
       <div class="flex">
         <UTooltip text="Including home page and category page" :popper="{ arrow: true }">

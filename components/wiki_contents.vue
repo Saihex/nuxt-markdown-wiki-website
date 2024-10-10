@@ -70,6 +70,20 @@ function clearHistory() {
 function invertShowRecentActivity() {
   show_recent_activities.value = !show_recent_activities.value;
   localStorage.setItem("show_recent_activities", show_recent_activities.value ? "true" : "false");
+
+  if (show_recent_activities.value) {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    })
+  }
+}
+
+function goUp() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  })
 }
 
 defineExpose({ readAgain });
@@ -134,6 +148,17 @@ defineExpose({ readAgain });
             </button>
           </UTooltip>
         </div>
+
+        <div class="action_button">
+          <UTooltip text="Go Up">
+            <button @click="goUp()">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 18.75 7.5-7.5 7.5 7.5" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 7.5-7.5 7.5 7.5" />
+              </svg>
+            </button>
+          </UTooltip>
+        </div>
       </div>
 
     </div>
@@ -146,7 +171,7 @@ defineExpose({ readAgain });
 }
 
 .activity_box {
-  @apply hidden md:block ml-5 bg-zinc-700 p-2 shadow-md min-w-[30%] max-w-[35%] tablet:min-w-[15%] tablet:max-w-[20%] mt-[150px] min-h-72 outline outline-1 max-h-dvh overflow-clip
+  @apply hidden md:block ml-5 bg-zinc-700 p-2 shadow-md min-w-[30%] max-w-[35%] above-tablet:min-w-[18%] above-tablet:max-w-[20%] mt-[150px] outline outline-1 overflow-clip max-h-[90dvh]
 }
 
 .activity_button {
@@ -154,16 +179,16 @@ defineExpose({ readAgain });
 }
 
 .action_grid_container {
-  @apply z-20 fixed top-20 right-0 transform transition-transform duration-300 translate-x-3/4;
+  @apply z-20 fixed bottom-[5%] right-0 transform transition-all duration-300 translate-x-[35%] above-tablet:translate-x-[45%] opacity-40
 }
 
 
 .action_grid_container:hover {
-  @apply translate-x-0
+  @apply translate-x-0 opacity-100
 }
 
 .action_grid {
-  @apply bg-zinc-800 text-white shadow-lg grid grid-rows-3 gap-4 p-4 opacity-50 transition-all outline outline-1
+  @apply bg-zinc-800 text-white shadow-lg grid grid-rows-3 gap-4 p-4 transition-all outline outline-1
 }
 
 .action_button {

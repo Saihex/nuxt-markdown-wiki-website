@@ -139,7 +139,7 @@ onUnmounted(() => {
             </div>
 
             <div class="information_texts justify-between">
-                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/anchor_urls.png" class="flex tablet:hidden w-[512px] mr-5 outline outline-black outline-2 h-fit"
+                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/anchor_urls.png" class="flex above-tablet:hidden w-[512px] mr-5 outline outline-black outline-2 h-fit"
                     alt="anchor url example" />
                 <div>
                     <h1 class="underline font-bold">Hash URL</h1>
@@ -147,7 +147,7 @@ onUnmounted(() => {
                         load. It will have a outline and pulsating green background to make it more noticeable thus
                         easier to see especially in text cluttered page.</p>
                 </div>
-                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/anchor_urls.png" class="hidden tablet:flex w-[512px] mr-5 outline outline-black outline-2 h-fit"
+                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/anchor_urls.png" class="hidden above-tablet:flex w-[512px] mr-5 outline outline-black outline-2 h-fit"
                     alt="anchor url example" />
             </div>
 
@@ -188,7 +188,7 @@ onUnmounted(() => {
             </div>
 
             <div class="information_texts justify-between">
-                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/image_viewer.png" class="flex tablet:hidden w-[512px] mr-5 outline outline-black outline-2 h-fit"
+                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/image_viewer.png" class="flex above-tablet:hidden w-[512px] mr-5 outline outline-black outline-2 h-fit"
                     alt="image viewer example" />
                 <div>
                     <h1 class="underline font-bold">Image Viewer</h1>
@@ -200,7 +200,7 @@ onUnmounted(() => {
                     <p class="my-2 text-2xl font-bold">Images on this website falls under <a class="text-purple-400 underline" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
                             target="_blank">CC BY-NC-SA</a> unless otherwise noted.</p>
                 </div>
-                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/image_viewer.png" class="hidden tablet:flex w-[512px] mr-5 outline outline-black outline-2 h-fit"
+                <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/image_viewer.png" class="hidden above-tablet:flex w-[512px] mr-5 outline outline-black outline-2 h-fit"
                     alt="image viewer example" />
             </div>
         </div>

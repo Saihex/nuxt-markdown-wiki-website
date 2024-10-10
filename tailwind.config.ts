@@ -13,7 +13,7 @@ export default {
           video: '16 / 9'
         },
         screens: {
-          'tablet': '1126px'
+          'above-tablet': '1126px'
         }
       }
     },

@@ -1,5 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => ['Disc', 'pa'].includes(tag)
+    }
+  },
   devtools: {
     enabled: true,
 
