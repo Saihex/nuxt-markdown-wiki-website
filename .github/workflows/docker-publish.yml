@@ -28,6 +28,9 @@ jobs:
         id: repo_name
         run: echo "REPO_NAME=$(echo ${{ github.repository }} | cut -d'/' -f2)" >> $GITHUB_ENV
 
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
       - run: ls
 
       - name: Extract version from Changelog.md
