@@ -26,7 +26,8 @@ jobs:
 
       - name: Get repository name
         id: repo_name
-        run: echo "REPO_NAME=${{ github.repository }}" | cut -d'/' -f2 >> $GITHUB_ENV
+        run: echo "REPO_NAME=$(echo ${{ github.repository }} | cut -d'/' -f2)" >> $GITHUB_ENV
+
 
       - name: Extract version from Changelog.md
         id: get_version
@@ -43,8 +44,8 @@ jobs:
 
       - name: Build and tag the Docker image
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_AUTOMATION_USERNAME }}/${{ env.REPO_NAME }}:${{ env.VERSION }} .
+          docker build -t ${{ secrets.DOCKERHUB_AUTOMATION_USERNAME }}/${{ github.repository }}:${{ env.VERSION }} .
 
       - name: Push Docker Image
         run: |
-          docker push ${{ secrets.DOCKERHUB_AUTOMATION_USERNAME }}/${{ env.REPO_NAME }}:${{ env.VERSION }}
+          docker push ${{ secrets.DOCKERHUB_AUTOMATION_USERNAME }}/${{ github.repository }}:${{ env.VERSION }}
