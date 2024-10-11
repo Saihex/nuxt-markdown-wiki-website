@@ -37,7 +37,7 @@ jobs:
         id: get_version
         run: |
           # Extract the version from the changelog file
-          VERSION=$(ls "*Changelog.md" | grep -oP '^[^ ]+' | cut -c2-)
+          VERSION=$(ls *Changelog.md | grep -oP '^[^ ]+' | cut -c2-)
 
           if [ -z "$VERSION" ]; then
             echo "No version found in Changelog.md"
