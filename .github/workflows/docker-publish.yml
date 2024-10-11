@@ -47,7 +47,7 @@ jobs:
 
       - name: Convert Docker Hub Username to Lowercase
         run: |
-          echo "RESPOSITORY_NAME=$(echo '${{ secrets.DOCKERHUB_AUTOMATION_USERNAME }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+          echo "RESPOSITORY_NAME=${{ secrets.DOCKERHUB_AUTOMATION_USERNAME }}".toLowerCase() >> $GITHUB_ENV
 
       - name: Build and tag the Docker image
         run: |
