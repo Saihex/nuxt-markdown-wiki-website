@@ -28,26 +28,19 @@ jobs:
         id: repo_name
         run: echo "REPO_NAME=$(echo ${{ github.repository }} | cut -d'/' -f2)" >> $GITHUB_ENV
 
-
+      - run: ls *Changelog.md
+      
       - name: Extract version from Changelog.md
         id: get_version
         run: |
-          # Check if Changelog.md exists
-          CHANGELOG_FILE=$(ls *Changelog.md 2>/dev/null || true)
-      
-          if [ -z "$CHANGELOG_FILE" ]; then
-            echo "No Changelog.md file found in the current directory"
-            exit 1
-          fi
-      
-          # Extract the version from the changelog (assuming it's in the first line and starts with 'v')
-          VERSION=$(grep -oP '^[^ ]+' "$CHANGELOG_FILE" | cut -c2-)
-      
+          # Extract the version from the changelog file
+          VERSION=$(grep -oP '^[^ ]+' | cut -c2-)
+
           if [ -z "$VERSION" ]; then
-            echo "No version found in $CHANGELOG_FILE"
+            echo "No version found in Changelog.md"
             exit 1
           fi
-      
+
           echo "VERSION=${VERSION}" >> $GITHUB_ENV
 
       - name: Build and tag the Docker image
