@@ -3,6 +3,7 @@ name: Build and push to Docker Hub
 env:
   VERSION:
   REPO_NAME:
+  RESPOSITORY_NAME:
 
 on:
   push:
@@ -31,8 +32,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - run: ls
-
       - name: Extract version from Changelog.md
         id: get_version
         run: |
@@ -46,10 +45,14 @@ jobs:
 
           echo "VERSION=${VERSION}" >> $GITHUB_ENV
 
+      - name: Convert Docker Hub Username to Lowercase
+        run: |
+          echo "RESPOSITORY_NAME=$(echo '${{ secrets.DOCKERHUB_AUTOMATION_USERNAME }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
       - name: Build and tag the Docker image
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_AUTOMATION_USERNAME }}/${{ github.repository }}:${{ env.VERSION }} .
+          docker build -t ${{ env.RESPOSITORY_NAME }}/${{ github.repository }}:${{ env.VERSION }} .
 
       - name: Push Docker Image
         run: |
-          docker push ${{ secrets.DOCKERHUB_AUTOMATION_USERNAME }}/${{ github.repository }}:${{ env.VERSION }}
+          docker push ${{ env.RESPOSITORY_NAME }}/${{ github.repository }}:${{ env.VERSION }}
