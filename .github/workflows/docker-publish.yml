@@ -33,7 +33,7 @@ jobs:
         id: get_version
         run: |
           # Check if Changelog.md exists
-          CHANGELOG_FILE=$(ls *Changelog.md 2>/dev/null)
+          CHANGELOG_FILE=$(ls *Changelog.md 2>/dev/null || true)
       
           if [ -z "$CHANGELOG_FILE" ]; then
             echo "No Changelog.md file found in the current directory"
@@ -41,7 +41,7 @@ jobs:
           fi
       
           # Extract the version from the changelog (assuming it's in the first line and starts with 'v')
-          VERSION=$(grep -oP '^v[0-9]+\.[0-9]+\.[0-9]+' "$CHANGELOG_FILE")
+          VERSION=$(grep -oP '^v[0-9]+\.[0-9]+\.[0-9]+' "$CHANGELOG_FILE" | head -n 1)
       
           if [ -z "$VERSION" ]; then
             echo "No version found in $CHANGELOG_FILE"
