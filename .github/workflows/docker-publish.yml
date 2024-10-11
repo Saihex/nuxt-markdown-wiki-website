@@ -3,7 +3,6 @@ name: Build and push to Docker Hub
 env:
   VERSION:
   REPO_NAME:
-  RESPOSITORY_NAME:
 
 on:
   push:
@@ -45,14 +44,10 @@ jobs:
 
           echo "VERSION=${VERSION}" >> $GITHUB_ENV
 
-      - name: Convert Docker Hub Username to Lowercase
-        run: |
-          echo "RESPOSITORY_NAME=${{ secrets.DOCKERHUB_AUTOMATION_USERNAME }}".toLowerCase() >> $GITHUB_ENV
-
       - name: Build and tag the Docker image
         run: |
-          docker build -t ${{ env.RESPOSITORY_NAME }}/${{ github.repository }}:${{ env.VERSION }} .
+          docker build -t saihex/${{ github.repository }}:${{ env.VERSION }} .
 
       - name: Push Docker Image
         run: |
-          docker push ${{ env.RESPOSITORY_NAME }}/${{ github.repository }}:${{ env.VERSION }}
+          docker push saihex/${{ github.repository }}:${{ env.VERSION }}
