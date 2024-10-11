@@ -41,7 +41,7 @@ jobs:
           fi
       
           # Extract the version from the changelog (assuming it's in the first line and starts with 'v')
-          VERSION=$(grep -oP '^v[0-9]+\.[0-9]+\.[0-9]+' "$CHANGELOG_FILE" | head -n 1)
+          VERSION=$(grep -oP '^[^ ]+' "$CHANGELOG_FILE" | cut -c2-)
       
           if [ -z "$VERSION" ]; then
             echo "No version found in $CHANGELOG_FILE"
