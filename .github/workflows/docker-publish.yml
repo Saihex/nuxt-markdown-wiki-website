@@ -3,6 +3,7 @@ name: Build and push to Docker Hub
 env:
   VERSION:
   REPO_NAME:
+  repository_name:
 
 on:
   push:
@@ -44,10 +45,14 @@ jobs:
 
           echo "VERSION=${VERSION}" >> $GITHUB_ENV
 
+      - name: Get repository name
+        run: |
+          echo "repository_name=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
       - name: Build and tag the Docker image
         run: |
-          docker build -t saihex/${{ github.repository }}:${{ env.VERSION }} .
+          docker build -t ${{ env.repository_name }}:v${{ env.VERSION }} .
 
       - name: Push Docker Image
         run: |
-          docker push saihex/${{ github.repository }}:${{ env.VERSION }}
+          docker push ${{ env.repository_name }}:v${{ env.VERSION }}
