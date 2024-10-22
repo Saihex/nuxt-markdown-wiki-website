@@ -111,11 +111,11 @@ useSeoMeta({
 }
 
 .result_boxes_non_saihex:hover {
-    @apply bg-orange-500 translate-x-5 -translate-y-5 transition ease-in
+    @apply bg-orange-500 scale-105 transition ease-in
 }
 
 .result_boxes:hover {
-    @apply bg-green-700 translate-x-5 -translate-y-5 transition ease-in
+    @apply bg-green-700 scale-105 transition ease-in
 }
 
 .bounce-ease {

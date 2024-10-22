@@ -71,7 +71,7 @@ onUnmounted(() => {
                     </svg></NuxtLink>
                 <NuxtLink class="quick-navigation" to="/wiki/The4Tris">
                     The 4Tris Wiki
-                    <img src="https://img.saihex.com/wiki_exclusive/The4Tris/The4Tris.svg" class="w-12 ml-2" alt="The 4Tris wiki"/>
+                    <img src="https://img.saihex.com/wiki_exclusive/The4Tris/The4Tris.svg" class="w-12 ml-2" alt="The 4Tris wiki" />
                 </NuxtLink>
             </div>
 
@@ -80,6 +80,8 @@ onUnmounted(() => {
 
             <p class="text-center text-3xl mb-20">This website contains all the wiki for all of franchises under Saihex
                 Studios and not. Here are few guides to use this website!</p>
+
+            <hr class="m-20">
 
             <div class="information_texts justify-between">
                 <img src="https://img.saihex.com/webp?src=wiki_exclusive/tutorial/wiki_list.png" class="w-[512px] mr-5 outline outline-black outline-2 h-fit" alt="wiki list example" />
