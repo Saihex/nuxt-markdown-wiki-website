@@ -103,7 +103,7 @@ onMounted(async () => {
             <div class="flex justify-center my-1">
                 <a href="https://discord.gg/eJjsqzkQ7t" target="_blank"><img alt="Discord" src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6ca814282eca7172c6_icon_clyde_white_RGB.svg"
                     class="mobile_socials_footer" /></a>
-            <a href="https://bsky.app/profile/saihex.bsky.social" target="_blank"><img src="https://img.saihex.com/website_exclusive/socials/Bluesky.svg" alt="Bluesky" class="mobile_socials_footer" /></a>
+            <a href="https://bsky.app/profile/saihex.com" target="_blank"><img src="https://img.saihex.com/website_exclusive/socials/Bluesky.svg" alt="Bluesky" class="mobile_socials_footer" /></a>
             <a href="https://twitter.com/saihex_studios" target="_blank"><img src="https://img.saihex.com/website_exclusive/socials/x.svg" alt="Twitter (X)" class="mobile_socials_footer" /></a>
             <a href="https://www.youtube.com/@saihex_studios" target="_blank"><img alt="YouTube" src="https://img.saihex.com/webp?src=website_exclusive/socials/yt_logo_mono_dark.png"
                     class="mobile_socials_footer" /></a>
