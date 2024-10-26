@@ -1,40 +1,85 @@
 <script setup lang="ts">
-import Wiki_contents from '~/components/wiki_contents.vue';
-import Wiki_header from '~/components/wiki_header.vue';
-
+import type { MDCParserResult } from "@nuxtjs/mdc/runtime/types/parser";
+import Wiki_contents from "~/components/wiki_contents.vue";
+import type franchise_data from "~/composables/generic_types";
 
 const route = useRoute();
-const path = `${route.params.franchise}/changes.md`;
-const show_loading = ref(true);
-const { parsed_markdown, franchise_data, used_path } = await fetch_markdown_parse(path, route);
-const last_changed_unix = await fetch_last_changed(path);
+await remove_trailing_slash(route);
+const view_image_ref = create_image_viewer_ref();
 const mounted = ref(false);
+let the_franchise_data: franchise_data;
+let parsed_markdown: MDCParserResult;
+let last_modified: number = 0;
 
-const history_data = {
-    absolute_url: `${route.fullPath}`,
-    cover_image: parsed_markdown.data.image,
-    title: parsed_markdown.data.title
+// fetch markdown
+{
+  const main_page_frontmatter = await useFetch(
+    `${getOriginURL()}/api/msc/frontmatter/${route.params.franchise}/index.md`
+  );
+
+  if (!main_page_frontmatter.error.value) {
+    the_franchise_data = main_page_frontmatter.data.value as franchise_data;
+  } else {
+    throw createError({
+      statusCode: 404,
+      statusMessage: "Page Not Found",
+    });
+  }
+
+  const main_page_markdown = await useFetch(
+    `${getOriginURL()}/api/msc/files/${route.params.franchise}/changes.md`
+  );
+
+  if (!main_page_markdown.error.value) {
+    parsed_markdown = await parseMarkdown(
+      main_page_markdown.data.value as string
+    );
+  } else {
+    throw createError({
+      statusCode: 404,
+      statusMessage: "Page Not Found",
+    });
+  }
+
+  //
+
+  const last_modified_ = await useFetch(
+    `${getOriginURL()}/api/msc/fileModiDate/${route.params.franchise}/changes.md`
+  );
+
+  if (!last_modified_.error.value) {
+    last_modified = (last_modified_.data.value as {unix_modification_date: number}).unix_modification_date
+  } else {
+    throw createError({
+      statusCode: 404,
+      statusMessage: "Page Not Found",
+    });
+  }
 }
 
-show_loading.value = false;
-
-const view_image_ref = create_image_viewer_ref();
+const history_data = {
+  absolute_url: `${route.fullPath}`,
+  cover_image: parsed_markdown.data.image,
+  title: parsed_markdown.data.title,
+};
 
 onMounted(async () => {
-    update_hash_effect(route);
+  update_hash_effect(route);
 
-    mounted.value = true;
-    await nextTick();
-    refresh_image_elements(view_image_ref);
-    await new_tab_out_urls();
-})
+  mounted.value = true;
+  await nextTick();
+  refresh_image_elements(view_image_ref);
+  await new_tab_out_urls();
+});
 
 watch(() => route.hash, () => {
     update_hash_effect(route);
 })
 
-const page_title = `Recent Changes - ${franchise_data.franchise_proper_name} - Saihex Wiki`;
-const page_desc = add_description_mark(`latest changes made on ${franchise_data.franchise_proper_name} wiki`, last_changed_unix);
+const page_title = `Recent Changes - ${the_franchise_data.franchise_proper_name} - Saihex Wiki`;
+const page_desc = add_description_mark(`latest changes made on ${the_franchise_data.franchise_proper_name} wiki`, last_modified);
+
+// meta
 
 useHead({
     title: page_title,
@@ -43,7 +88,7 @@ useHead({
         { name: 'twitter:card', content: "summary_large_image" }
     ],
     link: [
-        { rel: 'icon', type: 'image/x-icon', href: franchise_data.ico_image }
+        { rel: 'icon', type: 'image/x-icon', href: the_franchise_data.ico_image }
     ],
     htmlAttrs: { lang: 'en' }
 })
@@ -70,8 +115,8 @@ useSeoMeta({
         <Wiki_contents :franchise="route.params.franchise as string" :additional_data="history_data">
             <div class="wiki_header justify-between"> <!-- a div to make elements a little bit far from the sides. -->
 
-                <Wiki_header :franchise="route.params.franchise" :franchise_image="franchise_data.wiki_head_image" :raw_json="used_path" :page_count="franchise_data.page_count"
-                    :saihex_creation="franchise_data" :spoiler="parsed_markdown.data.spoiler" :category_str="route.params._category" />
+                <Wiki_header :franchise="route.params.franchise" :franchise_image="the_franchise_data.wiki_head_image" :raw_json="`${getOriginURL()}/api/msc/files/${route.params.franchise}/changes.md`" :page_count="the_franchise_data.page_count"
+                    :saihex_creation="the_franchise_data.saihex_creation" :spoiler="parsed_markdown.data.spoiler" :category_str="route.params._category" />
 
                 <div class="hidden md:flex md:centerItem md:wiki_header_buttons_nohover">
                     <img preload :src="parsed_markdown.data.image" class="h-32 mr-1" alt="page icon" />
@@ -79,10 +124,9 @@ useSeoMeta({
             </div>
 
             <div class="pageDataContainer">
-                <h1 class="text-xl italic opacity-50">Last database change on {{ date_formatter(last_changed_unix) }}</h1>
+                <h1 class="text-xl italic opacity-50">Last database change on {{ date_formatter(last_modified) }}</h1>
                 <div class="wiki_container" id="page_contents">
-                    <pa class="flex text-5xl m-24 content-center min-h-svh" v-if="show_loading">Loading...</pa>
-                    <ContentRendererMarkdown v-if="!show_loading" :value="parsed_markdown" class="min-h-svh">
+                    <ContentRendererMarkdown :value="parsed_markdown" class="min-h-svh">
                     </ContentRendererMarkdown>
                 </div>
             </div>
