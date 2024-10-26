@@ -1,39 +1,20 @@
 <script setup lang="ts">
+import type franchise_data from '~/composables/generic_types';
+
 const route = useRoute();
 const inputValue = ref(typeof route.query.search == "string" ? route.query.search : "");
-const results = ref(await fetch_search_wikis(inputValue.value));
-const errored = ref(false);
-const debouce = ref(false);
-const debouce_interfered = ref(false);
-const view_image_ref = create_image_viewer_ref();
-
-onMounted(async () => {
-  await nextTick();
-  refresh_image_elements(view_image_ref);
-  await new_tab_out_urls();
-})
+const results = ref<franchise_data[]>([]);
 
 const search_input = async (inputValue: string) => {
     await navigateTo(inputValue != "" ? `?search=${inputValue}` : "?");
-    if (debouce.value) {
-        debouce_interfered.value = true;
-        return
-    };
-    try {
-        results.value = await fetch_search_wikis(inputValue);
-        errored.value = false;
-    } catch (e) {
-        errored.value = true;
-    }
-
-    debouce_interfered.value = false;
-    debouce.value = false;
+    
 }
+
 const desc = "List of wikis available on Saihex Studios Wiki | Saihex Wiki";
 useHead({
     title: 'Saihex Studios Official Wiki - Wiki List | Saihex wiki list',
     meta: [
-        { name: 'description', content: desc }
+        { name: 'description', content: "desc" }
     ],
     link: [
         { rel: 'icon', type: 'image/x-icon', href: 'https://img.saihex.com/saihex.ico' }
@@ -44,24 +25,18 @@ useHead({
 useSeoMeta({
     ogTitle: 'Saihex Studios Wiki List | Saihex wiki list',
     twitterTitle: 'Saihex Studios Wiki List | Saihex wiki list',
-    ogDescription: desc,
-    twitterDescription: desc
+    ogDescription: "desc",
+    twitterDescription: "desc"
 })
 </script>
 
 <template>
     <div>
-        <ImageViewer :visible_ref="view_image_ref.visible_ref.value" :url_ref="view_image_ref.url_ref.value"
-            @close="view_image_ref.url_ref.value = ``; view_image_ref.visible_ref.value = false"></ImageViewer>
 
         <div class="min-h-svh">
             <div class="my-10" />
             <h2 class="py-4 text-center font-bold text-6xl underline">Wiki Search Page</h2>
             <h3 class="my-2 text-center text-xl">Limited to 50 results per search</h3>
-            <div class="my-5 p-1 text-center text-2xl bg-yellow-500 mx-20 text-black" v-if="debouce_interfered">Wait a
-                little alright?</div>
-            <div class="my-2 p-5 text-center text-3xl bg-red-400 mx-20 text-black" v-if="errored">Oh uh... something
-                failed...</div>
             <div class="search_box">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-16">
