@@ -37,7 +37,7 @@ useSeoMeta({
 
                 <div>
                     <h1 class="underline font-bold">Markdown Catalogue Server</h1>
-                    <p class="my-2 text-2xl">This wiki used a Rust program made by Saihex Studios to catalogue and
+                    <p class="my-2 text-2xl">This wiki used a Deno program made by Saihex Studios to catalogue and
                         manage markdown files. It is structured in a way that scaling it would be easy and can be
                         sharded across a Network Attached Storage for horizontal scalability</p>
 

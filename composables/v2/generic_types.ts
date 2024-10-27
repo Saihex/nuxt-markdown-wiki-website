@@ -1,4 +1,4 @@
-export default interface franchise_data {
+export interface franchise_data {
   title: string;
   description: string;
   ico_image: string;
@@ -12,8 +12,11 @@ export default interface franchise_data {
   last_modified: number;
 }
 
-export function getOriginURL() {
-  return process.env.NODE_ENV !== "production"
-    ? "http://localhost:3000"
-    : "https://wiki.saihex.com";
+export interface search_result {
+  title: string;
+  description: string;
+  image: string;
+  dynamic_route: string;
+  spoiler: boolean;
+  last_modified: number;
 }
