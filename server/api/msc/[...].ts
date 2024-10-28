@@ -32,7 +32,7 @@ export default defineEventHandler(async (event) => {
   // Set the status code and return the response body
   event.node.res.statusCode = statusCode;
   event.node.res.setHeader('Content-Type', response.headers.get('Content-Type') || 'application/json');
-  event.node.res.setHeader('Cache-Control', 'max-age=3600, must-revalidate');
+  event.node.res.setHeader('Cache-Control', response.headers.get('Cache-Control') || 'no-cache');
 
   return responseBody;
 });

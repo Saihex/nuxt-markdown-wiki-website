@@ -13,6 +13,7 @@ let parsed_markdown: MDCParserResult;
 
 // fetch markdown
 {
+  await essentials.heartbeatCheck(true, false);
   const main_page_frontmatter = await essentials.getFranchiseFrontmatters_useFetch(route.params.franchise as string);
 
   if (main_page_frontmatter) {

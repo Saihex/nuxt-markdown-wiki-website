@@ -11,6 +11,7 @@ const results = ref<{ [key: string]: franchise_data }>({});
 
 // initial search
 {
+  await essentials.heartbeatCheck(true, false);
   results.value = {};
 
   fetchStatus.value = 1;

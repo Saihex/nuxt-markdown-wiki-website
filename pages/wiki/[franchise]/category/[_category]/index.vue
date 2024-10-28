@@ -6,7 +6,6 @@ import type { franchise_data, search_result } from '~/composables/v2/generic_typ
 
 const route = useRoute();
 await remove_trailing_slash(route);
-const view_image_ref = create_image_viewer_ref();
 const mounted = ref(false);
 let the_franchise_data: franchise_data;
 let parsed_markdown: MDCParserResult;
@@ -20,6 +19,7 @@ const results = ref<{ [key: string]: search_result }>({});
 
 // initial search
 {
+    await essentials.heartbeatCheck(true, false);
     const main_page_frontmatter = await essentials.getFranchiseFrontmatters_useFetch(route.params.franchise as string);
 
     if (main_page_frontmatter) {

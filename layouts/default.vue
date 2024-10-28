@@ -13,6 +13,10 @@ onMounted(async () => {
 <template>
     <div class="flex flex-col h-screen justify-between">
         <!-- Navbar -->
+        <div class="flex justify-center py-1 bg-orange-900 z-[60]">
+            <h2 class="font-semibold">Public testing v0.0.2-g</h2>
+        </div>
+
         <nav class="mainTopbar">
             <div class="topbar justify-between"> <!-- a div to make elements a little bit far from the sides. -->
 

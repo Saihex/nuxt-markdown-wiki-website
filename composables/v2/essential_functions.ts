@@ -27,6 +27,40 @@ export async function getFranchiseFrontmatters_$Fetch(
   return _franchise_data;
 }
 
+export async function heartbeatCheck(error_when_failed: boolean, $fetch_mode: boolean): Promise<boolean> {
+  if ($fetch_mode)
+  {
+    let response;
+    try {
+      response = await $fetch(`${getOriginURL()}/api/msc/heartbeat`)
+    } catch (e) 
+    {      
+      if (error_when_failed) {
+        throw createError({
+          message: "BACKEND HEARTBEAT CHECK FAILED",
+          status: 500
+        })
+      };
+
+      return false
+    }
+  } else {
+    const response = await useFetch(`${getOriginURL()}/api/msc/heartbeat`);
+
+    if (response.error.value) {
+      if (error_when_failed) {
+        throw createError({
+          message: "BACKEND HEARTBEAT CHECK FAILED",
+          status: 500
+        })
+      };
+      return false;
+    }
+  }
+
+  return true;
+}
+
 export async function searchDirectory(
   forwarding_path: string,
   dirMode: boolean,

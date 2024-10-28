@@ -75,7 +75,7 @@ onUnmounted(() => {
                 </NuxtLink>
             </div>
 
-            <div class="text-center font-bold mt-2">Saihex's Nuxt Markdown Wiki Website v0.0.2-f</div>
+            <div class="text-center font-bold mt-2">Saihex's Nuxt Markdown Wiki Website v0.0.2-g</div>
             <h2 class="py-4 text-center font-bold text-6xl">Welcome to Saihex Studios' Official Wiki Website!</h2>
 
             <p class="text-center text-3xl mb-20">This website contains all the wiki for all of franchises under Saihex
