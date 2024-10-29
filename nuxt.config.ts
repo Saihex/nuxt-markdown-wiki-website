@@ -30,7 +30,12 @@ export default defineNuxtConfig({
   routeRules: {
     "/**": {
       headers: {
-        "cache-control": "public, max-age=3600, must-revalidate"
+        "Cache-Control": "public, max-age=3600, must-revalidate"
+      }
+    },
+    "/wiki/**": {
+      headers: {
+        "Cache-Control": "public, max-age=120, must-revalidate"
       }
     },
     "/api/**": {
