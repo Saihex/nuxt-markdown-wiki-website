@@ -30,8 +30,15 @@ export default defineNuxtConfig({
   routeRules: {
     "/**": {
       headers: {
-        "cache-control": "public, max-age=7200"
+        "Cache-Control": "public, max-age=21600, must-revalidate"
       }
+    },
+    "/wiki/**": {
+      headers: {
+        "Cache-Control": "public, max-age=7200, must-revalidate"
+      }
+    },
+    "/api/**": {
     }
   },
   ssr: true,
@@ -53,7 +60,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: "Saihex",
+      title: "Saihex Wiki",
       htmlAttrs: { lang: "en" },
       meta: [
         { charset: "utf-8" },
