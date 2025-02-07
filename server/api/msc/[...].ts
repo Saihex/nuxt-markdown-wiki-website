@@ -2,13 +2,13 @@ export default defineEventHandler(async (event) => {
   // Set the endpoint based on the environment
   const endpoint =
     process.env.NODE_ENV !== "production"
-      ? "http://localhost:8080"
+      ? "http://0.0.0.0:8080"
       : "http://markdown_cat_server:8080";
 
 
   // Construct the target URL by appending the original request path
   const path = event.node.req.url?.replace('/api/msc', '') || '';
-  const targetUrl = new URL(path, endpoint).toString();
+  const targetUrl = new URL(path, endpoint);
 
   // Prepare headers to pass to the fetch request
   const headers: HeadersInit = {};
@@ -23,7 +23,15 @@ export default defineEventHandler(async (event) => {
   }
 
   // Forward the request to the target URL using fetch
-  const response = await fetch(targetUrl);
+  let response;
+
+  try {
+    response = await fetch(targetUrl.toString());
+  } catch (err) {
+    event.node.res.statusCode = 500;
+    event.node.res.setHeader('Cache-Control', 'no-cache');
+    return err;
+  }
 
   // Get the response body and status code from the target server
   const responseBody = await response.text();

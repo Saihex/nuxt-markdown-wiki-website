@@ -23,8 +23,10 @@ onMounted(() => {
 
 // meta
 
+const title = "Saihex Studios\' Official Wiki Website"
+
 useHead({
-	title: 'Saihex Studios',
+	title: title,
 	meta: [
 		{ name: 'description', content: 'Saihex Studios\'s website' },
 		{ name: 'theme-color', "data-react-helmet": 'true', content: '#FF95FF' },
@@ -35,13 +37,13 @@ useHead({
 
 // This will set some embed parameters
 useSeoMeta({
-	ogTitle: 'Saihex Studios\' official website',
-	twitterTitle: "Saihex Studios\' official website",
-	ogDescription: 'Saihex Studios\' official website',
+	ogTitle: title,
+	twitterTitle: title,
+	ogDescription: title,
 	ogImage: 'https://img.saihex.com/webp?src=embed_pic.png',
 	twitterImage: 'https://img.saihex.com/webp?src=embed_pic.png',
 	ogUrl: '/',
-	twitterDescription: "Saihex Studio\' official website",
+	twitterDescription: title,
 	twitterCard: 'summary_large_image'
 })
 </script>
