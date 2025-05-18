@@ -8,10 +8,6 @@ Disallow: /backends
 Disallow: /api/
 Disallow: /super_secret_no_normal_user_knows
 Disallow: /wiki/*/changes
-Allow: /api/sitemap
-Allow: /api/sitemap/
-Allow: /api/sitemap_xml
-Allow: /api/sitemap_xml/
+Allow: /api/msc/sitemap
 
-Sitemap: https://wiki.saihex.com/api/sitemap
-Sitemap: https://wiki.saihex.com/api/sitemap_xml
+Sitemap: https://wiki.saihex.com/api/msc/sitemap
